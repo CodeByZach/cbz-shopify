@@ -47,25 +47,16 @@ use Psr\Http\Client\ClientExceptionInterface;
  *
  * @author Michaël Gallego
  *
- * ACCESS SCOPES METHODS:
- *
+ * ACCESS SCOPE RELATED METHODS:
  * @method array getAccessScopes(array $args = []) {@command Shopify GetAccessScopes}
  *
- * STOREFRONT ACCESS TOKEN METHODS:
- *
- * @method array getStorefrontAccessTokens(array $args = []) {@command Shopify GetStorefrontAccessTokens}
- * @method array createStorefrontAccessToken(array $args = []) {@command Shopify CreateStorefrontAccessToken}
- * @method array deleteStorefrontAccessToken(array $args = []) {@command Shopify DeleteStorefrontAccessToken}
- *
  * APPLICATION CHARGE RELATED METHODS:
- *
  * @method array getApplicationCharges(array $args = []) {@command Shopify GetApplicationCharges}
  * @method array getApplicationCharge(array $args = []) {@command Shopify GetApplicationCharge}
  * @method array createApplicationCharge(array $args = []) {@command Shopify CreateApplicationCharge}
  * @method array activateApplicationCharge(array $args = []) {@command Shopify ActivateApplicationCharge}
  *
  * ARTICLE RELATED METHODS:
- *
  * @method array getArticles(array $args = []) {@command Shopify GetArticles}
  * @method int getArticleCount(array $args = []) {@command Shopify GetArticleCount}
  * @method array getBlogArticles(array $args = []) {@command Shopify GetBlogArticles}
@@ -83,7 +74,6 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteBlogArticle(array $args = []) {@command Shopify DeleteBlogArticle}
  *
  * ASSET RELATED METHODS:
- *
  * @method array getAssets(array $args = []) {@command Shopify GetAssets}
  * @method array getAsset(array $args = []) {@command Shopify GetAsset}
  * @method array createAsset(array $args = []) {@command Shopify CreateAsset}
@@ -91,7 +81,6 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteAsset(array $args = []) {@command Shopify DeleteAsset}
  *
  * BLOG RELATED METHODS:
- *
  * @method array getBlogs(array $args = []) {@command Shopify GetBlogs}
  * @method array getBlogMetafields(array $args = []) {@command Shopify GetBlogMetafields}
  * @method array getBlogCount(array $args = []) {@command Shopify GetBlogCount}
@@ -101,30 +90,13 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteBlog(array $args = []) {@command Shopify DeleteBlog}
  *
  * CARRIER SERVICE RELATED METHODS:
- *
  * @method array getCarrierServices(array $args = []) {@command Shopify GetCarrierServices}
  * @method array getCarrierService(array $args = []) {@command Shopify GetCarrierService}
  * @method array createCarrierService(array $args = []) {@command Shopify CreateCarrierService}
  * @method array updateCarrierService(array $args = []) {@command Shopify UpdateCarrierService}
  * @method array deleteCarrierService(array $args = []) {@command Shopify DeleteCarrierService}
  *
- * CUSTOM COLLECTION RELATED METHODS:
- *
- * @method array getCustomCollections(array $args = []) {@command Shopify GetCustomCollections}
- * @method int getCustomCollectionCount(array $args = []) {@command Shopify GetCustomCollectionCount}
- * @method array getCustomCollection(array $args = []) {@command Shopify GetCustomCollection}
- * @method array createCustomCollection(array $args = []) {@command Shopify CreateCustomCollection}
- * @method array updateCustomCollection(array $args = []) {@command Shopify UpdateCustomCollection}
- * @method array deleteCustomCollection(array $args = []) {@command Shopify DeleteCustomCollection}
- *
- * COLLECTION RELATED METHODS:
- *
- * @method array getCollection(array $args = []) {@command Shopify GetCollection}
- * @method array getCollectionProducts(array $args = []) {@command Shopify GetCollectionProducts}
- * @method array getCollectionMetafields(array $args = []) {@command Shopify GetCollectionMetafields}
- *
- * COLLECTS RELATED METHODS:
- *
+ * COLLECT RELATED METHODS:
  * @method array getCollects(array $args = []) {@command Shopify GetCollects}
  * @method int getCollectCount(array $args = []) {@command Shopify GetCollectCount}
  * @method array getCollect(array $args = []) {@command Shopify GetCollect}
@@ -132,8 +104,28 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateCollect(array $args = []) {@command Shopify UpdateCollect}
  * @method array deleteCollect(array $args = []) {@command Shopify DeleteCollect}
  *
- * CUSTOMER RELATED METHODS:
+ * COLLECTION RELATED METHODS:
+ * @method array getCollection(array $args = []) {@command Shopify GetCollection}
+ * @method array getCollectionProducts(array $args = []) {@command Shopify GetCollectionProducts}
+ * @method array getCollectionMetafields(array $args = []) {@command Shopify GetCollectionMetafields}
  *
+ * CUSTOM COLLECTION RELATED METHODS:
+ * @method array getCustomCollections(array $args = []) {@command Shopify GetCustomCollections}
+ * @method int getCustomCollectionCount(array $args = []) {@command Shopify GetCustomCollectionCount}
+ * @method array getCustomCollection(array $args = []) {@command Shopify GetCustomCollection}
+ * @method array createCustomCollection(array $args = []) {@command Shopify CreateCustomCollection}
+ * @method array updateCustomCollection(array $args = []) {@command Shopify UpdateCustomCollection}
+ * @method array deleteCustomCollection(array $args = []) {@command Shopify DeleteCustomCollection}
+ *
+ * CUSTOMER ADDRESS RELATED METHODS:
+ * @method array getCustomerAddresses(array $args = []) {@command Shopify GetCustomerAddresses}
+ * @method array getCustomerAddress(array $args = []) {@command Shopify GetCustomerAddress}
+ * @method array createCustomerAddress(array $args = []) {@command Shopify CreateCustomerAddress}
+ * @method array updateCustomerAddress(array $args = []) {@command Shopify UpdateCustomerAddress}
+ * @method array deleteCustomerAddress(array $args = []) {@command Shopify DeleteCustomerAddress}
+ * @method array setDefaultCustomerAddress(array $args = []) {@command Shopify SetDefaultCustomerAddress}
+ *
+ * CUSTOMER RELATED METHODS:
  * @method array getCustomers(array $args = []) {@command Shopify GetCustomers}
  * @method int getCustomerCount(array $args = []) {@command Shopify GetCustomerCount}
  * @method array searchCustomers(array $args = []) {@command Shopify SearchCustomers}
@@ -144,89 +136,17 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteCustomer(array $args = []) {@command Shopify DeleteCustomer}
  * @method array createCustomerInvite(array $args = []) {@command Shopify CreateCustomerInvite}
  *
- * CUSTOMER ADDRESS RELATED METHODS:
- * @method array getCustomerAddresses(array $args = []) {@command Shopify GetCustomerAddresses}
- * @method array getCustomerAddress(array $args = []) {@command Shopify GetCustomerAddress}
- * @method array createCustomerAddress(array $args = []) {@command Shopify CreateCustomerAddress}
- * @method array updateCustomerAddress(array $args = []) {@command Shopify UpdateCustomerAddress}
- * @method array deleteCustomerAddress(array $args = []) {@command Shopify DeleteCustomerAddress}
- * @method array setDefaultCustomerAddress(array $args = []) {@command Shopify SetDefaultCustomerAddress}
- *
  * DISCOUNT CODE RELATED METHODS:
- *
  * @method array getDiscountCodes(array $args = []) {@command Shopify GetDiscountCodes}
- * @method int getDiscountCode(array $args = []) {@command Shopify GetDiscountCode}
+ * @method array getDiscountCode(array $args = []) {@command Shopify GetDiscountCode}
+ * @method array lookupDiscountCode(array $args = []) {@command Shopify LookupDiscountCode}
  * @method array createDiscountCode(array $args = []) {@command Shopify CreateDiscountCode}
  * @method array deleteDiscountCode(array $args = []) {@command Shopify DeleteDiscountCode}
- *
- * EVENTS RELATED METHODS:
- *
- * @method array getEvents(array $args = []) {@command Shopify GetEvents}
- * @method int getEventCount(array $args = []) {@command Shopify GetEventCount}
- * @method array getEvent(array $args = []) {@command Shopify GetEvent}
- *
- * FULFILLMENTS RELATED METHODS:
- *
- * @method array getFulfillments(array $args = []) {@command Shopify GetFulfillments}
- * @method int getFulfillmentCount(array $args = []) {@command Shopify GetFulfillmentCount}
- * @method array getFulfillment(array $args = []) {@command Shopify GetFulfillment}
- * @method array createFulfillment(array $args = []) {@command Shopify CreateFulfillment}
- * @method array updateFilfillment(array $args = []) {@command Shopify UpdateFulfillment}
- * @method array completeFulfillment(array $args = []) {@command Shopify CompleteFulfillment}
- * @method array cancelFulfillment(array $args = []) {@command Shopify CancelFulfillment}
- *
- * GIFT CARD RELATED METHODS:
- *
- * @method array getGiftCards(array $args = []) {@command Shopify GetGiftCards}
- * @method int getGiftCardCount(array $args = []) {@command Shopify GetGiftCardCount}
- * @method array getGiftCard(array $args = []) {@command Shopify GetGiftCard}
- * @method array createGiftCard(array $args = []) {@command Shopify CreateGiftCard}
- * @method array updateGiftCard(array $args = []) {@command Shopify CreateGiftCard}
- * @method array disableGiftCard(array $args = []) {@command Shopify DisableGiftCard}
- *
- * INVENTORY ITEM RELATED METHODS:
- *
- * @method array getInventoryItems(array $args = []) {@command Shopify GetInventoryItems}
- * @method array getInventoryItem(array $args = []) {@command Shopify GetInventoryItem}
- * @method array updateInventoryItem(array $args = []) {@command Shopify UpdateInventoryItem}
- *
- * INVENTORY LEVEL RELATED METHODS
- *
- * @method array getInventoryLevels(array $args = []) {@command Shopify GetInventoryLevels}
- * @method array adjustInventoryLevel(array $args = []) {@command Shopify AdjustInventoryLevel}
- * @method array deleteInventoryLevel(array $args = []) {@command Shopify DeleteInventoryLevel}
- * @method array connectInventoryLevel(array $args = []) {@command Shopify ConnectInventoryLevel}
- * @method array setInventoryLevel(array $args = []) {@command Shopify SetInventoryLevel}
- *
- * LOCATION RELATED METHODS:
- *
- * @method array getLocations(array $args = []) {@command Shopify GetLocations}
- * @method array getLocation(array $args = []) {@command Shopify GetLocation}
- * @method int getLocationCount(array $args = []) {@command Shopify GetLocationCount}
- * @method array getLocationInventoryLevels(array $args = []) {@command Shopify GetLocationInventoryLevels}
- *
- * METAFIELDS RELATED METHODS:
- *
- * @method array getMetafields(array $args = []) {@command Shopify GetMetafields}
- * @method array getMetafield(array $args = []) {@command Shopify GetMetafield}
- * @method array createMetafield(array $args = []) {@command Shopify CreateMetafield}
- * @method array updateMetafield(array $args = []) {@command Shopify UpdateMetafield}
- * @method array deleteMetafield(array $args = []) {@command Shopify DeleteMetafield}
- *
- * ORDER RELATED METHODS:
- *
- * @method array getOrders(array $args = []) {@command Shopify GetOrders}
- * @method int getOrderCount(array $args = []) {@command Shopify GetOrderCount}
- * @method array createOrder(array $args = []) {@command Shopify CreateOrder}
- * @method array updateOrder(array $args = []) {@command Shopify UpdateOrder}
- * @method array getOrder(array $args = []) {@command Shopify GetOrder}
- * @method array getOrderMetafields(array $args = []) {@command Shopify GetOrderMetafields}
- * @method array closeOrder(array $args = []) {@command Shopify CloseOrder}
- * @method array openOrder(array $args = []) {@command Shopify OpenOrder}
- * @method array cancelOrder(array $args = []) {@command Shopify CancelOrder}
+ * @method array createDiscountCodeBatch(array $args = []) {@command Shopify CreateDiscountCodeBatch}
+ * @method array getDiscountCodeBatch(array $args = []) {@command Shopify GetDiscountCodeBatch}
+ * @method array getDiscountCodeBatchDiscountCodes(array $args = []) {@command Shopify GetDiscountCodeBatchDiscountCodes}
  *
  * DRAFT ORDER RELATED METHODS:
- *
  * @method array getDraftOrders(array $args = []) {@command Shopify GetDraftOrders}
  * @method array getDraftOrderMetafields(array $args = []) {@command Shopify GetDraftOrderMetafields}
  * @method int getDraftOrderCount(array $args = []) {@command Shopify GetDraftOrderCount}
@@ -237,8 +157,65 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array completeDraftOrder(array $args = []) {@command Shopify CompleteDraftOrder}
  * @method array deleteDraftOrder(array $args = []) {@command Shopify DeleteDraftOrder}
  *
- * PAGE RELATED METHODS:
+ * EVENT RELATED METHODS:
+ * @method array getEvents(array $args = []) {@command Shopify GetEvents}
+ * @method int getEventCount(array $args = []) {@command Shopify GetEventCount}
+ * @method array getEvent(array $args = []) {@command Shopify GetEvent}
  *
+ * FULFILLMENT RELATED METHODS:
+ * @method array getFulfillments(array $args = []) {@command Shopify GetFulfillments}
+ * @method int getFulfillmentCount(array $args = []) {@command Shopify GetFulfillmentCount}
+ * @method array getFulfullment(array $args = []) {@command Shopify GetFulfillment}
+ * @method array createFulfillment(array $args = []) {@command Shopify CreateFulfillment}
+ * @method array updateFilfillment(array $args = []) {@command Shopify UpdateFulfillment}
+ * @method array completeFulfillment(array $args = []) {@command Shopify CompleteFulfillment}
+ * @method array cancelFulfillment(array $args = []) {@command Shopify CancelFulfillment}
+ *
+ * GIFT CARD RELATED METHODS:
+ * @method array getGiftCards(array $args = []) {@command Shopify GetGiftCards}
+ * @method int getGiftCardCount(array $args = []) {@command Shopify GetGiftCardCount}
+ * @method array getGiftCard(array $args = []) {@command Shopify GetGiftCard}
+ * @method array createGiftCard(array $args = []) {@command Shopify CreateGiftCard}
+ * @method array updateGiftCard(array $args = []) {@command Shopify CreateGiftCard}
+ * @method array disableGiftCard(array $args = []) {@command Shopify DisableGiftCard}
+ *
+ * INVENTORY ITEM RELATED METHODS:
+ * @method array getInventoryItems(array $args = []) {@command Shopify GetInventoryItems}
+ * @method array getInventoryItem(array $args = []) {@command Shopify GetInventoryItem}
+ * @method array updateInventoryItem(array $args = []) {@command Shopify UpdateInventoryItem}
+ *
+ * INVENTORY LEVEL RELATED METHODS:
+ * @method array getInventoryLevels(array $args = []) {@command Shopify GetInventoryLevels}
+ * @method array adjustInventoryLevel(array $args = []) {@command Shopify AdjustInventoryLevel}
+ * @method array deleteInventoryLevel(array $args = []) {@command Shopify DeleteInventoryLevel}
+ * @method array connectInventoryLevel(array $args = []) {@command Shopify ConnectInventoryLevel}
+ * @method array setInventoryLevel(array $args = []) {@command Shopify SetInventoryLevel}
+ *
+ * LOCATION RELATED METHODS:
+ * @method array getLocations(array $args = []) {@command Shopify GetLocations}
+ * @method array getLocation(array $args = []) {@command Shopify GetLocation}
+ * @method int getLocationCount(array $args = []) {@command Shopify GetLocationCount}
+ * @method array getLocationInventoryLevels(array $args = []) {@command Shopify GetLocationInventoryLevels}
+ *
+ * METAFIELD RELATED METHODS:
+ * @method array getMetafields(array $args = []) {@command Shopify GetMetafields}
+ * @method array getMetafield(array $args = []) {@command Shopify GetMetafield}
+ * @method array createMetafield(array $args = []) {@command Shopify CreateMetafield}
+ * @method array updateMetafield(array $args = []) {@command Shopify UpdateMetafield}
+ * @method array deleteMetafield(array $args = []) {@command Shopify DeleteMetafield}
+ *
+ * ORDER RELATED METHODS:
+ * @method array getOrders(array $args = []) {@command Shopify GetOrders}
+ * @method int getOrderCount(array $args = []) {@command Shopify GetOrderCount}
+ * @method array createOrder(array $args = []) {@command Shopify CreateOrder}
+ * @method array updateOrder(array $args = []) {@command Shopify UpdateOrder}
+ * @method array getOrder(array $args = []) {@command Shopify GetOrder}
+ * @method array getOrderMetafields(array $args = []) {@command Shopify GetOrderMetafields}
+ * @method array closeOrder(array $args = []) {@command Shopify CloseOrder}
+ * @method array openOrder(array $args = []) {@command Shopify OpenOrder}
+ * @method array cancelOrder(array $args = []) {@command Shopify CancelOrder}
+ *
+ * PAGE RELATED METHODS:
  * @method array getPages(array $args = []) {@command Shopify GetPages}
  * @method int getPageCount(array $args = []) {@command Shopify GetPageCount}
  * @method array getPage(array $args = []) {@command Shopify GetPage}
@@ -248,15 +225,21 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deletePage(array $args = []) {@command Shopify DeletePage}
  *
  * PRICE RULE RELATED METHODS:
- *
  * @method array getPriceRules(array $args = []) {@command Shopify GetPriceRules}
  * @method int getPriceRule(array $args = []) {@command Shopify GetPriceRule}
  * @method array createPriceRule(array $args = []) {@command Shopify CreatePriceRule}
  * @method array updatePriceRule(array $args = []) {@command Shopify UpdatePriceRule}
  * @method array deletePriceRule(array $args = []) {@command Shopify DeletePriceRule}
  *
- * PRODUCT RELATED METHODS:
+ * PRODUCT IMAGE RELATED METHODS:
+ * @method array getProductImages(array $args = []) {@command Shopify GetProductImages}
+ * @method int getProductImageCount(array $args = []) {@command Shopify GetProductImageCount}
+ * @method array getProductImage(array $args = []) {@command Shopify GetProductImage}
+ * @method array createProductImage(array $args = []) {@command Shopify CreateProductImage}
+ * @method array updateProductImage(array $args = []) {@command Shopify UpdateProductImage}
+ * @method array deleteProductImage(array $args = []) {@command Shopify DeleteProductImage}
  *
+ * PRODUCT RELATED METHODS:
  * @method array getProducts(array $args = []) {@command Shopify GetProducts}
  * @method int getProductCount(array $args = []) {@command Shopify GetProductCount}
  * @method array getProduct(array $args = []) {@command Shopify GetProduct}
@@ -265,62 +248,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateProduct(array $args = []) {@command Shopify UpdateProduct}
  * @method array deleteProduct(array $args = []) {@command Shopify DeleteProduct}
  *
- * PRODUCT IMAGE RELATED METHODS:
- *
- * @method array getProductImages(array $args = []) {@command Shopify GetProductImages}
- * @method int getProductImageCount(array $args = []) {@command Shopify GetProductImageCount}
- * @method array getProductImage(array $args = []) {@command Shopify GetProductImage}
- * @method array createProductImage(array $args = []) {@command Shopify CreateProductImage}
- * @method array updateProductImage(array $args = []) {@command Shopify UpdateProductImage}
- * @method array deleteProductImage(array $args = []) {@command Shopify DeleteProductImage}
- *
- * REDIRECT RELATED METHODS:
- *
- * @method array getRedirects(array $args = []) {@command Shopify GetRedirects}
- * @method int getRedirectCount(array $args = []) {@command Shopify GetRedirectCount}
- * @method array getRedirect(array $args = []) {@command Shopify GetRedirect}
- * @method array createRedirect(array $args = []) {@command Shopify CreateRedirect}
- * @method array updateRedirect(array $args = []) {@command Shopify UpdateRedirect}
- * @method array deleteRedirect(array $args = []) {@command Shopify DeleteRedirect}
- *
- * RECURRING APPLICATION CHARGE RELATED METHODS:
- *
- * @method array getRecurringApplicationCharges(array $args = []) {@command Shopify GetRecurringApplicationCharges}
- * @method array getRecurringApplicationCharge(array $args = []) {@command Shopify GetRecurringApplicationCharge}
- * @method array createRecurringApplicationCharge(array $args = []) {@command Shopify CreateRecurringApplicationCharge}
- * @method array activateRecurringApplicationCharge(array $args = []) {@command Shopify ActivateRecurringApplicationCharge}
- * @method array deleteRecurringApplicationCharge(array $args = []) {@command Shopify DeleteRecurringApplicationCharge}
- *
- * REFUND RELATED METHODS:
- *
- * @method array getRefunds(array $args = []) {@command Shopify GetRefunds}
- * @method array getRefund(array $args = []) {@command Shopify GetRefund}
- * @method array calculateRefund(array $args = []) {@command Shopify CalculateRefund}
- * @method array createRefund(array $args = []) {@command Shopify CreateRefund}
- *
- * SHOP RELATED METHODS:
- *
- * @method array getShop(array $args = []) {@command Shopify GetShop}
- *
- * SMART COLLECTION RELATED METHODS:
- *
- * @method array getSmartCollections(array $args = []) {@command Shopify GetSmartCollections}
- * @method int getSmartCollectionCount(array $args = []) {@command Shopify GetSmartCollectionCount}
- * @method array getSmartCollection(array $args = []) {@command Shopify GetSmartCollection}
- * @method array createSmartCollection(array $args = []) {@command Shopify CreateSmartCollection}
- * @method array updateSmartCollection(array $args = []) {@command Shopify UpdateSmartCollection}
- * @method array deleteSmartCollection(array $args = []) {@command Shopify DeleteSmartCollection}
- *
- * THEME RELATED METHODS:
- *
- * @method array getThemes(array $args = []) {@command Shopify GetThemes}
- * @method array getTheme(array $args = []) {@command Shopify GetTheme}
- * @method array createTheme(array $args = []) {@command Shopify CreateTheme}
- * @method array updateTheme(array $args = []) {@command Shopify UpdateTheme}
- * @method array deleteTheme(array $args = []) {@command Shopify DeleteTheme}
- *
- * VARIANT RELATED METHODS:
- *
+ * PRODUCT VARIANT RELATED METHODS:
  * @method array getProductVariants(array $args = []) {@command Shopify GetProductVariants}
  * @method int getProductVariantCount(array $args = []) {@command Shopify GetProductVariantCount}
  * @method array getProductVariant(array $args = []) {@command Shopify GetProductVariant}
@@ -329,8 +257,35 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateProductVariant(array $args = []) {@command Shopify UpdateProductVariant}
  * @method array deleteProductVariant(array $args = []) {@command Shopify DeleteProductVariant}
  *
- * SCRIPT TAGS RELATED METHODS:
+ * RECURRING APPLICATION CHARGE RELATED METHODS:
+ * @method array getRecurringApplicationCharges(array $args = []) {@command Shopify GetRecurringApplicationCharges}
+ * @method array getRecurringApplicationCharge(array $args = []) {@command Shopify GetRecurringApplicationCharge}
+ * @method array createRecurringApplicationCharge(array $args = []) {@command Shopify CreateRecurringApplicationCharge}
+ * @method array activateRecurringApplicationCharge(array $args = []) {@command Shopify ActivateRecurringApplicationCharge}
+ * @method array deleteRecurringApplicationCharge(array $args = []) {@command Shopify DeleteRecurringApplicationCharge}
  *
+ * REDIRECT RELATED METHODS:
+ * @method array getRedirects(array $args = []) {@command Shopify GetRedirects}
+ * @method int getRedirectCount(array $args = []) {@command Shopify GetRedirectCount}
+ * @method array getRedirect(array $args = []) {@command Shopify GetRedirect}
+ * @method array createRedirect(array $args = []) {@command Shopify CreateRedirect}
+ * @method array updateRedirect(array $args = []) {@command Shopify UpdateRedirect}
+ * @method array deleteRedirect(array $args = []) {@command Shopify DeleteRedirect}
+ *
+ * REFUND RELATED METHODS:
+ * @method array getRefunds(array $args = []) {@command Shopify GetRefunds}
+ * @method array getRefund(array $args = []) {@command Shopify GetRefund}
+ * @method array calculateRefund(array $args = []) {@command Shopify CalculateRefund}
+ * @method array createRefund(array $args = []) {@command Shopify CreateRefund}
+ *
+ * REPORT RELATED METHODS:
+ * @method array getReports(array $args = []) {@command Shopify GetReports}
+ * @method array getReport(array $args = []) {@command Shopify GetReport}
+ * @method array createReport(array $args = []) {@command Shopify CreateReport}
+ * @method array updateReport(array $args = []) {@command Shopify UpdateReport}
+ * @method array deleteReport(array $args = []) {@command Shopify DeleteReport}
+ *
+ * SCRIPT TAG RELATED METHODS:
  * @method array getScriptTags(array $args = []) {@command Shopify GetScriptTags}
  * @method int getScriptTagCount(array $args = []) {@command Shopify GetScriptTagCount}
  * @method array getScriptTag(array $args = []) {@command Shopify GetScriptTag}
@@ -339,24 +294,43 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteScriptTag(array $args = []) {@command Shopify DeleteScriptTag}
  *
  * SHIPPING ZONE RELATED METHODS:
- *
  * @method array getShippingZones(array $args = []) {@command Shopify GetShippingZones}
  *
- * TRANSACTION RELATED METHODS:
+ * SHOP RELATED METHODS:
+ * @method array getShop(array $args = []) {@command Shopify GetShop}
  *
+ * SMART COLLECTION RELATED METHODS:
+ * @method array getSmartCollections(array $args = []) {@command Shopify GetSmartCollections}
+ * @method int getSmartCollectionCount(array $args = []) {@command Shopify GetSmartCollectionCount}
+ * @method array getSmartCollection(array $args = []) {@command Shopify GetSmartCollection}
+ * @method array createSmartCollection(array $args = []) {@command Shopify CreateSmartCollection}
+ * @method array updateSmartCollection(array $args = []) {@command Shopify UpdateSmartCollection}
+ * @method array deleteSmartCollection(array $args = []) {@command Shopify DeleteSmartCollection}
+ *
+ * STOREFRONT ACCESS TOKEN RELATED METHODS:
+ * @method array getStorefrontAccessTokens(array $args = []) {@command Shopify GetStorefrontAccessTokens}
+ * @method array createStorefrontAccessToken(array $args = []) {@command Shopify CreateStorefrontAccessToken}
+ * @method array deleteStorefrontAccessToken(array $args = []) {@command Shopify DeleteStorefrontAccessToken}
+ *
+ * THEME RELATED METHODS:
+ * @method array getThemes(array $args = []) {@command Shopify GetThemes}
+ * @method array getTheme(array $args = []) {@command Shopify GetTheme}
+ * @method array createTheme(array $args = []) {@command Shopify CreateTheme}
+ * @method array updateTheme(array $args = []) {@command Shopify UpdateTheme}
+ * @method array deleteTheme(array $args = []) {@command Shopify DeleteTheme}
+ *
+ * TRANSACTION RELATED METHODS:
  * @method array getTransactions(array $args = []) {@command Shopify GetTransactions}
  * @method int getTransactionCount(array $args = []) {@command Shopify GetTransactionCount}
  * @method array getTransaction(array $args = []) {@command Shopify GetTransaction}
  * @method array createTransaction(array $args = []) {@command Shopify CreateTransaction}
  *
  * USAGE CHARGE RELATED METHODS:
- *
  * @method array getUsageCharges(array $args = []) {@command Shopify GetUsageCharges}
  * @method array getUsageCharge(array $args = []) {@command Shopify GetUsageCharge}
  * @method array createUsageCharge(array $args = []) {@command Shopify CreateUsageCharge}
  *
  * WEBHOOK RELATED METHODS:
- *
  * @method array getWebhooks(array $args = []) {@command Shopify GetWebhooks}
  * @method int getWebhookCount(array $args = []) {@command Shopify GetWebhookCount}
  * @method array getWebhook(array $args = []) {@command Shopify GetWebhook}
@@ -365,11 +339,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteWebhook(array $args = []) {@command Shopify DeleteWebhook}
  *
  * OTHER METHODS:
- *
  * @method array createDelegateAccessToken(array $args = []) {@command Shopify CreateDelegateAccessToken}
  *
  * ITERATOR METHODS:
- *
  * @method \Traversable getApplicationChargesIterator(array $commandArgs = [], array $iteratorArgs = []) {@command Shopify GetApplicationCharges}
  * @method \Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = []) {@command Shopify GetArticles}
  * @method \Traversable getBlogArticlesIterator(array $commandArgs = [], array $iteratorArgs = []) {@command Shopify GetBlogArticles}
@@ -428,10 +400,11 @@ class ShopifyClient
      */
     public function getCommand(string $method, $args = []): CommandInterface
     {
+        $additional_headers = $args['_additional_parameters_']['headers'] ?? [];
         $args = array_merge(
             $args,
             ['version' => $this->connectionOptions['version']],
-            ['@http' => $this->getRequestAuthorizationArguments()]
+            ['@http' => $this->getRequestArguments($additional_headers)]
         );
 
         return $this->guzzleClient->getCommand(ucfirst($method), $args);
@@ -484,7 +457,9 @@ class ShopifyClient
      */
     public function __call($method, $args)
     {
-        $args = $args[0] ?? [];
+        $additional_parameters           = $args[1] ?? [];
+        $args                            = $args[0] ?? [];
+        $args['_additional_parameters_'] = $additional_parameters;
 
         // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
         if (substr($method, -8) === 'Iterator') {
@@ -601,7 +576,17 @@ class ShopifyClient
             $handlerStack->push($curMiddleware);
         }
 
-        $httpClient  = new Client(['base_uri' => $baseUri, 'handler' => $handlerStack]);
+        $httpClient = new Client([
+            'base_uri' => $baseUri,
+            'handler' => $handlerStack,
+            'allow_redirects' => [
+                'max'             => 5,
+                'strict'          => true,
+                'referer'         => true,
+                'protocols'       => ['https'],
+                'track_redirects' => true
+            ]
+        ]);
         $description = new Description(require __DIR__ . '/ServiceDescription/Shopify-v1.php');
 
         return new GuzzleClient($httpClient, $description, [$this, 'wrapRequestData']);
@@ -642,7 +627,7 @@ class ShopifyClient
 
                 // We initiate the next request using the bare client, as we can't re-use commands at this stage
                 $httpClient = $this->guzzleClient->getHttpClient();
-                $response   = $httpClient->request('GET', $matches[1], $this->getRequestAuthorizationArguments());
+                $response   = $httpClient->request('GET', $matches[1], $this->getRequestArguments());
 
                 // Decode the response and yield the result
                 $resources = $this->unwrapResponseData($command, json_decode($response->getBody()->getContents(), true));
@@ -700,6 +685,17 @@ class ShopifyClient
         }
 
         return $result;
+    }
+
+    private function getRequestArguments($headers=[]): array
+    {
+        $request_arguments = $this->getRequestAuthorizationArguments();
+
+        if (!empty($headers)) {
+            $request_arguments['headers'] = (array_key_exists('headers', $request_arguments)) ? array_merge($request_arguments['headers'], $headers) : $headers;
+        }
+
+        return $request_arguments;
     }
 
     private function getRequestAuthorizationArguments(): array

@@ -27,125 +27,51 @@ return [
          * DOC: https://help.shopify.com/en/api/reference/access/accessscope
          * --------------------------------------------------------------------------------
          */
-
         'GetAccessScopes' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/oauth/access_scopes.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of access scopes',
-            'data'                 => ['root_key' => 'access_scopes'],
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/oauth/access_scopes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of access scopes',
+            'data'          => ['root_key' => 'access_scopes'],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * STOREFRONT RELATED METHODS
-         *
-         * DOC: https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetStorefrontAccessTokens' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/storefront_access_tokens.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of storefront access tokens',
-            'data'                 => ['root_key' => 'storefront_access_tokens'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateStorefrontAccessToken' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/storefront_access_tokens.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new storefront token',
-            'data'             => ['root_key' => 'storefront_access_token'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'title' => [
-                    'description' => 'StorefrontAccessToken title',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteStorefrontAccessToken' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/storefront_access_tokens/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing storefront access token',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'StorefrontAccessToken ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
+                'location' => 'query'
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
-         * APPLICATION CHARGES RELATED METHODS
+         * APPLICATION CHARGE RELATED METHODS
          *
          * DOC: https://help.shopify.com/en/api/reference/billing/applicationcharge
          * --------------------------------------------------------------------------------
          */
-
         'GetApplicationCharges' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/application_charges.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of application charges',
-            'data'                 => ['root_key' => 'application_charges'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/application_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of application charges',
+            'data'          => ['root_key' => 'application_charges'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetApplicationCharge' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/application_charges/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific application charge',
-            'data'             => ['root_key' => 'application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/application_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific application charge',
+            'data'          => ['root_key' => 'application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -157,20 +83,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateApplicationCharge' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/application_charges.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new application charge',
-            'data'             => ['root_key' => 'application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/application_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new application charge',
+            'data'          => ['root_key' => 'application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -194,20 +120,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'ActivateApplicationCharge' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/application_charges/{id}/activate.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Activate a previously accepted application charge',
-            'data'             => ['root_key' => 'application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/application_charges/{id}/activate.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Activate a previously accepted application charge',
+            'data'          => ['root_key' => 'application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -223,6 +149,7 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
          * ARTICLE RELATED METHODS
@@ -230,51 +157,50 @@ return [
          * DOC: https://docs.shopify.com/api/article
          * --------------------------------------------------------------------------------
          */
-
         'GetArticles' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/articles.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of articles',
-            'data'                 => ['root_key' => 'articles'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/articles.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of articles',
+            'data'          => ['root_key' => 'articles'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetArticleCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/articles/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of articles (for all blogs)',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/articles/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of articles (for all blogs)',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlogArticles' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of articles for a given blog',
-            'data'             => ['root_key' => 'articles'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of articles for a given blog',
+            'data'          => ['root_key' => 'articles'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -286,11 +212,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlogArticleCount' => [
@@ -310,20 +236,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetArticle' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific article',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific article',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -335,11 +261,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetArticleMetafields' => [
@@ -360,20 +286,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlogArticle' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific article from a given blog',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific article from a given blog',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -391,11 +317,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetArticlesAuthors' => [
@@ -410,17 +336,17 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
-            ],
+                ]
+            ]
         ],
 
         'GetArticlesTags' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles/tags.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve all tags for a given blog',
-            'data'             => ['root_key' => 'tags'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/tags.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve all tags for a given blog',
+            'data'          => ['root_key' => 'tags'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -435,17 +361,17 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateArticle' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/articles.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new article',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/articles.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new article',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -457,20 +383,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'CreateBlogArticle' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new article',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new article',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -488,20 +414,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateArticle' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing article',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing article',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -513,20 +439,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateBlogArticle' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing article',
-            'data'             => ['root_key' => 'article'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing article',
+            'data'          => ['root_key' => 'article'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -544,19 +470,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteArticle' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing article',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing article',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -573,11 +499,11 @@ return [
         ],
 
         'DeleteBlogArticle' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing article',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing article',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -595,25 +521,25 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
-         * ASSETS RELATED METHODS
+         * ASSET RELATED METHODS
          *
          * DOC: https://docs.shopify.com/api/asset
          * --------------------------------------------------------------------------------
          */
-
         'GetAssets' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/themes/{theme_id}/assets.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of assets for a given theme',
-            'data'             => ['root_key' => 'assets'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/themes/{theme_id}/assets.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of assets for a given theme',
+            'data'          => ['root_key' => 'assets'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -625,20 +551,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetAsset' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/themes/{theme_id}/assets.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a single asset',
-            'data'             => ['root_key' => 'asset'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/themes/{theme_id}/assets.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a single asset',
+            'data'          => ['root_key' => 'asset'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -657,20 +583,20 @@ return [
                     'type'        => 'string',
                     'required'    => true,
                     'sentAs'      => 'asset[key]'
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateAsset' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/themes/{theme_id}/assets.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new asset in the given theme',
-            'data'             => ['root_key' => 'asset'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/themes/{theme_id}/assets.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new asset in the given theme',
+            'data'          => ['root_key' => 'asset'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -688,20 +614,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateAsset' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/themes/{theme_id}/assets.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new asset in the given theme',
-            'data'             => ['root_key' => 'asset'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/themes/{theme_id}/assets.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new asset in the given theme',
+            'data'          => ['root_key' => 'asset'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -719,19 +645,19 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteAsset' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/themes/{theme_id}/assets.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing asset',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/themes/{theme_id}/assets.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing asset',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -754,31 +680,31 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
-         * BLOGS RELATED METHODS
+         * BLOG RELATED METHODS
          *
          * DOC: https://help.shopify.com/en/api/reference/online-store/blog
          * --------------------------------------------------------------------------------
          */
-
         'GetBlogs' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/blogs.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of blogs',
-            'data'             => ['root_key' => 'blogs'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of blogs',
+            'data'          => ['root_key' => 'blogs'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlogMetafields' => [
@@ -799,11 +725,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlogCount' => [
@@ -817,20 +743,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetBlog' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/blogs/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a single blog',
-            'data'             => ['root_key' => 'blog'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a single blog',
+            'data'          => ['root_key' => 'blog'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -845,17 +771,17 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateBlog' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/blogs.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new blog',
-            'data'             => ['root_key' => 'blog'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/blogs.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new blog',
+            'data'          => ['root_key' => 'blog'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -870,17 +796,17 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateBlog' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/blogs/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing blog',
-            'data'             => ['root_key' => 'blog'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/blogs/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing blog',
+            'data'          => ['root_key' => 'blog'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -895,16 +821,16 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteBlog' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/blogs/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing blog',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/blogs/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing blog',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -920,6 +846,7 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
          * CARRIER SERVICE RELATED METHODS
@@ -927,33 +854,32 @@ return [
          * DOC: https://help.shopify.com/en/api/reference/shipping-and-fulfillment/carrierservice
          * --------------------------------------------------------------------------------
          */
-
         'GetCarrierServices' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/carrier_services.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of carrier services',
-            'data'                 => ['root_key' => 'carrier_services'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/carrier_services.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of carrier services',
+            'data'          => ['root_key' => 'carrier_services'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCarrierService' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/carrier_services/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific carrier service',
-            'data'             => ['root_key' => 'carrier_service'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/carrier_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific carrier service',
+            'data'          => ['root_key' => 'carrier_service'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -965,20 +891,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateCarrierService' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/carrier_services.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a carrier service',
-            'data'             => ['root_key' => 'carrier_service'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/carrier_services.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a carrier service',
+            'data'          => ['root_key' => 'carrier_service'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -996,20 +922,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateCarrierService' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/carrier_services/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a carrier service',
-            'data'             => ['root_key' => 'carrier_service'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/carrier_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a carrier service',
+            'data'          => ['root_key' => 'carrier_service'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1021,19 +947,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteCarrierService' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/carrier_services/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete a carrier service',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/carrier_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a carrier service',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1049,6 +975,129 @@ return [
             ]
         ],
 
+
+        /**
+         * --------------------------------------------------------------------------------
+         * COLLECT RELATED METHODS
+         *
+         * DOC: https://help.shopify.com/en/api/reference/products/collect
+         * --------------------------------------------------------------------------------
+         */
+        'GetCollects' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collects.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of collects',
+            'data'          => ['root_key' => 'collects'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetCollectCount' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collects/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of collects',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetCollect' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collects/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific collect',
+            'data'          => ['root_key' => 'collect'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Collect ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateCollect' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/collects.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Adds a product to a custom collection',
+            'data'          => ['root_key' => 'collect'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Custom collection ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteCollect' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/collects/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a collect',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Collect ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
         /**
          * --------------------------------------------------------------------------------
          * COLLECTION RELATED METHODS
@@ -1056,14 +1105,13 @@ return [
          * DOC: https://help.shopify.com/en/api/reference/products/collection
          * --------------------------------------------------------------------------------
          */
-
         'GetCollection' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/collections/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a collection',
-            'data'                 => ['root_key' => 'collection'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a collection',
+            'data'          => ['root_key' => 'collection'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1075,20 +1123,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCollectionProducts' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/collections/{id}/products.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of collection products',
-            'data'                 => ['root_key' => 'products'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{id}/products.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of collection products',
+            'data'          => ['root_key' => 'products'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1100,11 +1148,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCollectionMetafields' => [
@@ -1125,12 +1173,13 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -1139,51 +1188,50 @@ return [
          * DOC: https://docs.shopify.com/api/customcollection
          * --------------------------------------------------------------------------------
          */
-
         'GetCustomCollections' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/custom_collections.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of custom collections',
-            'data'                 => ['root_key' => 'custom_collections'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/custom_collections.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of custom collections',
+            'data'          => ['root_key' => 'custom_collections'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCustomCollectionCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/custom_collections/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of custom collections',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/custom_collections/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of custom collections',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCustomCollection' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/custom_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific custom collection',
-            'data'             => ['root_key' => 'custom_collection'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/custom_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific custom collection',
+            'data'          => ['root_key' => 'custom_collection'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1195,20 +1243,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateCustomCollection' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/custom_collections.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a custom collection',
-            'data'             => ['root_key' => 'custom_collection'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/custom_collections.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a custom collection',
+            'data'          => ['root_key' => 'custom_collection'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1220,20 +1268,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateCustomCollection' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/custom_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a custom collection',
-            'data'             => ['root_key' => 'custom_collection'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/custom_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a custom collection',
+            'data'          => ['root_key' => 'custom_collection'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1245,19 +1293,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteCustomCollection' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/custom_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete a custom collection',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/custom_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a custom collection',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1272,128 +1320,199 @@ return [
                 ]
             ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
-         * COLLECTS RELATED METHODS
+         * CUSTOMER ADDRESS RELATED METHODS
          *
-         * DOC: https://help.shopify.com/en/api/reference/products/collect
+         * DOC: https://shopify.dev/docs/admin-api/rest/reference/customers/customer-address
          * --------------------------------------------------------------------------------
          */
-
-        'GetCollects' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/collects.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of collects',
-            'data'                 => ['root_key' => 'collects'],
-            'parameters'           => [
+        'GetCustomerAddresses' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list addresses for a customer',
+            'data'          => ['root_key' => 'addresses'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetCollectCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/collects/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of collects',
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetCollect' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/collects/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific collect',
-            'data'             => ['root_key' => 'collect'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Collect ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateCollect' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/collects.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Adds a product to a custom collection',
-            'data'             => ['root_key' => 'collect'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'json',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'collection_id' => [
-                    'description' => 'Custom collection ID',
-                    'location'    => 'json',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteCollect' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/collects/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete a collect',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Collect ID',
+                'customer_id' => [
+                    'description' => 'Customer ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
             ]
         ],
+
+        'GetCustomerAddress' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves details of a single customer addresses',
+            'data'          => ['root_key' => 'customer_address'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Address ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateCustomerAddress' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new address for a customer',
+            'data'          => ['root_key' => 'customer_address'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'address' => [
+                    'description' => 'The customer address',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'UpdateCustomerAddress' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing address for a customer',
+            'data'          => ['root_key' => 'customer_address'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Address ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'address' => [
+                    'description' => 'The customer address',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'DeleteCustomerAddress' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
+            'responseModel' => 'GenericModel',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Address ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'SetDefaultCustomerAddress' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/addresses/{id}/default.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing address for a customer',
+            'data'          => ['root_key' => 'customer_address'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Address ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -1402,42 +1521,41 @@ return [
          * DOC: https://docs.shopify.com/api/customer
          * --------------------------------------------------------------------------------
          */
-
         'GetCustomers' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/customers.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of customers',
-            'data'                 => ['root_key' => 'customers'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of customers',
+            'data'          => ['root_key' => 'customers'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCustomerCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/customers/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of customers',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of customers',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'SearchCustomers' => [
@@ -1457,19 +1575,19 @@ return [
                     'description' => 'Field and direction to order results by',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'query' => [
                     'description' => 'Text to search customers',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'page' => [
                     'description' => 'Page to show',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'limit' => [
                     'description' => 'Amount of results',
@@ -1477,15 +1595,15 @@ return [
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 250,
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'comma-separated list of fields to include in the response',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                ],
-            ],
+                    'required'    => false
+                ]
+            ]
         ],
 
         'GetCustomer' => [
@@ -1505,12 +1623,12 @@ return [
                     'description' => 'Customer ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetCustomerMetafields' => [
@@ -1531,11 +1649,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateCustomer' => [
@@ -1555,24 +1673,24 @@ return [
                     'description' => 'The email address of the customer',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'first_name' => [
                     'description' => 'The customer\'s first name',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'last_name' => [
                     'description' => 'The customer\'s last name',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateCustomer' => [
@@ -1592,20 +1710,20 @@ return [
                     'description' => 'Customer ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteCustomer' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/customers/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Remove a customer from the database',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/customers/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Remove a customer from the database',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1616,9 +1734,9 @@ return [
                     'description' => 'Customer ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
+                    'required'    => true
+                ]
+            ]
         ],
 
         'CreateCustomerInvite' => [
@@ -1638,13 +1756,14 @@ return [
                     'description' => 'Customer ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -1653,14 +1772,13 @@ return [
          * DOC: https://help.shopify.com/en/api/reference/discounts/discountcode
          * --------------------------------------------------------------------------------
          */
-
         'GetDiscountCodes' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of discount codes',
-            'data'                 => ['root_key' => 'discount_codes'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of discount codes',
+            'data'          => ['root_key' => 'discount_codes'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1672,20 +1790,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetDiscountCode' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific discount code',
-            'data'             => ['root_key' => 'discount_code'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific discount code',
+            'data'          => ['root_key' => 'discount_code'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1703,20 +1821,41 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
+        ],
+
+        'LookupDiscountCode' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/discount_codes/lookup.json',
+            'responseModel' => 'RedirectModel',
+            'summary'       => 'Retrieves the location of a discount code',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'code' => [
+                    'description' => 'Code',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
         ],
 
         'CreateDiscountCode' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new discount code for the given price rule',
-            'data'             => ['root_key' => 'discount_code'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new discount code for the given price rule',
+            'data'          => ['root_key' => 'discount_code'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1737,17 +1876,53 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateDiscountCode' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing discount code',
-            'data'             => ['root_key' => 'discount_code'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing discount code',
+            'data'          => ['root_key' => 'discount_code'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'price_rule_id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific discount code ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'code' => [
+                    'description' => 'Discount code',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteDiscountCode' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a discount code',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1766,18 +1941,136 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
+            ]
         ],
 
-        'DeleteDiscountCode' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/price_rules/{price_rule_id}/discount_codes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing discount code',
-            'parameters'       => [
+        'CreateDiscountCodeBatch' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/batch.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a discount code creation job',
+            'data'          => ['root_key' => 'discount_code_creation'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'price_rule_id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'discount_codes' => [
+                    'description' => 'Discount codes',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'GetDiscountCodeBatch' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/batch/{batch_id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a discount code creation job',
+            'data'          => ['root_key' => 'discount_code_creation'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'price_rule_id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'batch_id' => [
+                    'description' => 'Batch ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'GetDiscountCodeBatchDiscountCodes' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules/{price_rule_id}/batch/{batch_id}/discount_codes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of discount codes for a discount code creation job',
+            'data'          => ['root_key' => 'discount_codes'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'price_rule_id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'batch_id' => [
+                    'description' => 'Batch ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * DRAFT ORDER RELATED METHODS
+         *
+         * DOC: https://help.shopify.com/en/api/reference/orders/draftorder
+         * --------------------------------------------------------------------------------
+         */
+        'GetDraftOrders' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of draft orders',
+            'data'          => ['root_key' => 'draft_orders'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetDraftOrderMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of metafields for an draft order',
+            'data'          => ['root_key' => 'metafields'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -1785,7 +2078,149 @@ return [
                     'required'    => true
                 ],
                 'id' => [
-                    'description' => 'Specific discount code ID',
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetDraftOrderCount' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of draft orders',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetDraftOrder' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific draft order',
+            'data'          => ['root_key' => 'draft_order'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateDraftOrder' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/draft_orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new draft order',
+            'data'          => ['root_key' => 'draft_order'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'line_items' => [
+                    'description' => 'The draft order line items',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'SendDraftOrderInvoice' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}/send_invoice.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Send an invoice for the draft order',
+            'data'          => ['root_key' => 'draft_order'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Draft order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateDraftOrder' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing draft order',
+            'data'          => ['root_key' => 'draft_order'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Draft order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteDraftOrder' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete the draft order from the database',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Draft order ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
@@ -1793,250 +2228,80 @@ return [
             ]
         ],
 
-        /**
-         * --------------------------------------------------------------------------------
-         * CUSTOMER ADDRESS RELATED METHODS
-         *
-         * DOC: https://shopify.dev/docs/admin-api/rest/reference/customers/customer-address
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetCustomerAddresses' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieves a list addresses for a customer',
-            'data'                 => ['root_key' => 'addresses'],
-            'parameters'           => [
+        'CompleteDraftOrder' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/draft_orders/{id}/complete.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Complete a draft order, marking it as paid',
+            'data'          => ['root_key' => 'draft_order'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetCustomerAddress' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieves details of a single customer addresses',
-            'data'                 => ['root_key' => 'customer_address'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
                     'required'    => true
                 ],
                 'id' => [
-                    'description' => 'Address ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateCustomerAddress' => [
-            'httpMethod'           => 'POST',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Creates a new address for a customer',
-            'data'                 => ['root_key' => 'customer_address'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'address' => [
-                    'description' => 'The customer address',
-                    'location'    => 'json',
-                    'type'        => 'array',
-                    'required'    => true,
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'UpdateCustomerAddress' => [
-            'httpMethod'           => 'PUT',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Update an existing address for a customer',
-            'data'                 => ['root_key' => 'customer_address'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Address ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'address' => [
-                    'description' => 'The customer address',
-                    'location'    => 'json',
-                    'type'        => 'array',
-                    'required'    => true,
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'DeleteCustomerAddress' => [
-            'httpMethod'           => 'DELETE',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Address ID',
+                    'description' => 'Order ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
+            ]
         ],
 
-        'SetDefaultCustomerAddress' => [
-            'httpMethod'           => 'PUT',
-            'uri'                  => 'admin/api/{version}/customers/{customer_id}/addresses/{id}/default.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Update an existing address for a customer',
-            'data'                 => ['root_key' => 'customer_address'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'customer_id' => [
-                    'description' => 'Customer ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Address ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
 
         /**
          * --------------------------------------------------------------------------------
-         * EVENTS RELATED METHODS
+         * EVENT RELATED METHODS
          *
          * DOC: https://docs.shopify.com/api/events
          * --------------------------------------------------------------------------------
          */
-
         'GetEvents' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/events.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of events',
-            'data'                 => ['root_key' => 'events'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/events.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of events',
+            'data'          => ['root_key' => 'events'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetEventCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/events/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of events',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/events/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of events',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetEvent' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/events/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific event',
-            'data'             => ['root_key' => 'event'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/events/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific event',
+            'data'          => ['root_key' => 'event'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2048,12 +2313,13 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -2062,14 +2328,13 @@ return [
          * DOC: https://docs.shopify.com/api/reference/fulfillment
          * --------------------------------------------------------------------------------
          */
-
         'GetFulfillments' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of fulfillments for a given order',
-            'data'             => ['root_key' => 'fulfillments'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of fulfillments for a given order',
+            'data'          => ['root_key' => 'fulfillments'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2081,19 +2346,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetFulfillmentCount' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/count.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve the number of fulfillments',
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of fulfillments',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2105,20 +2370,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetFulfillment' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific order',
-            'data'             => ['root_key' => 'fulfillment'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific order',
+            'data'          => ['root_key' => 'fulfillment'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2136,20 +2401,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateFulfillment' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a fulfillment for a given order',
-            'data'             => ['root_key' => 'fulfillment'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a fulfillment for a given order',
+            'data'          => ['root_key' => 'fulfillment'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2161,20 +2426,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateFulfillment' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a fulfillment for a given order',
-            'data'             => ['root_key' => 'fulfillment'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a fulfillment for a given order',
+            'data'          => ['root_key' => 'fulfillment'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2192,20 +2457,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'CompleteFulfillment' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}/complete.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Complete a pending fulfillment',
-            'data'             => ['root_key' => 'fulfillment'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}/complete.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Complete a pending fulfillment',
+            'data'          => ['root_key' => 'fulfillment'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2223,17 +2488,17 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ]
         ],
 
         'CancelFulfillment' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}/cancel.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Cancel a pending fulfillment',
-            'data'             => ['root_key' => 'fulfillment'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{id}/cancel.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Cancel a pending fulfillment',
+            'data'          => ['root_key' => 'fulfillment'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2251,9 +2516,10 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -2430,51 +2696,50 @@ return [
          * DOC: https://docs.shopify.com/api/reference/gift_card
          * --------------------------------------------------------------------------------
          */
-
         'GetGiftCards' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/gift_cards.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Receive a list of all Gift Cards',
-            'data'                 => ['root_key' => 'gift_cards'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/gift_cards.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Receive a list of all Gift Cards',
+            'data'          => ['root_key' => 'gift_cards'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetGiftCardCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/gift_cards/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of gift cards',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/gift_cards/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of gift cards',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetGiftCard' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/gift_cards/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Receive a single Gift Card',
-            'data'             => ['root_key' => 'gift_card'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/gift_cards/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Receive a single Gift Card',
+            'data'          => ['root_key' => 'gift_card'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2485,18 +2750,18 @@ return [
                     'description' => 'Gift Card ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
+                    'required'    => true
+                ]
+            ]
         ],
 
         'CreateGiftCard' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/gift_cards.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new Gift Card',
-            'data'             => ['root_key' => 'gift_card'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/gift_cards.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new Gift Card',
+            'data'          => ['root_key' => 'gift_card'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2507,21 +2772,21 @@ return [
                     'description' => 'The initial Gift Card value',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateGiftCard' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/gift_cards/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update the Gift Card',
-            'data'             => ['root_key' => 'gift_card'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/gift_cards/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update the Gift Card',
+            'data'          => ['root_key' => 'gift_card'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2532,21 +2797,21 @@ return [
                     'description' => 'Gift Card ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DisableGiftCard' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/gift_cards/{id}/disable.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Disabling a Gift Card is permanent and cannot be undone',
-            'data'             => ['root_key' => 'gift_card'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/gift_cards/{id}/disable.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Disabling a Gift Card is permanent and cannot be undone',
+            'data'          => ['root_key' => 'gift_card'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2557,10 +2822,11 @@ return [
                     'description' => 'Gift Card ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
+                    'required'    => true
+                ]
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -2569,14 +2835,13 @@ return [
          * DOC: https://docs.shopify.com/api/reference/inventory/inventoryitem
          * --------------------------------------------------------------------------------
          */
-
         'GetInventoryItems' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/inventory_items.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of inventory items by passed identifiers',
-            'data'                 => ['root_key' => 'inventory_items'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/inventory_items.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of inventory items by passed identifiers',
+            'data'          => ['root_key' => 'inventory_items'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2587,13 +2852,13 @@ return [
                     'description' => 'Comma seperated list of IDs',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'page' => [
                     'description' => 'Page to show',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'limit' => [
                     'description' => 'Amount of results',
@@ -2601,43 +2866,18 @@ return [
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 250,
-                    'required'    => false,
-                ],
-            ],
+                    'required'    => false
+                ]
+            ]
         ],
 
         'GetInventoryItem' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/inventory_items/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a specific inventory item',
-            'data'                 => ['root_key' => 'inventory_item'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Inventory Item ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'UpdateInventoryItem' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/inventory_items/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a specific inventory item',
-            'data'             => ['root_key' => 'inventory_item'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/inventory_items/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific inventory item',
+            'data'          => ['root_key' => 'inventory_item'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2652,9 +2892,35 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'query'
+            ]
         ],
+
+        'UpdateInventoryItem' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/inventory_items/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a specific inventory item',
+            'data'          => ['root_key' => 'inventory_item'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Inventory Item ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -2663,14 +2929,13 @@ return [
          * DOC: https://docs.shopify.com/api/reference/inventory/inventorylevel
          * --------------------------------------------------------------------------------
          */
-
         'GetInventoryLevels' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/inventory_levels.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of inventory levels either by passed inventory item IDs, location IDs or both',
-            'data'                 => ['root_key' => 'inventory_levels'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/inventory_levels.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of inventory levels either by passed inventory item IDs, location IDs or both',
+            'data'          => ['root_key' => 'inventory_levels'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2681,19 +2946,19 @@ return [
                     'description' => 'Comma seperated list of inventory item IDs',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'location_ids' => [
                     'description' => 'Comma seperated list of location IDs',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'page' => [
                     'description' => 'Page to show',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'required'    => false,
+                    'required'    => false
                 ],
                 'limit' => [
                     'description' => 'Amount of results',
@@ -2701,17 +2966,17 @@ return [
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 250,
-                    'required'    => false,
-                ],
-            ],
+                    'required'    => false
+                ]
+            ]
         ],
 
         'AdjustInventoryLevel' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/inventory_levels/adjust.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Adjusts the inventory level of an inventory item at a single location',
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/inventory_levels/adjust.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Adjusts the inventory level of an inventory item at a single location',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2722,20 +2987,20 @@ return [
                     'description' => 'The inventory item id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'location_id' => [
                     'description' => 'The location id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'available_adjustment' => [
                     'description' => 'The amount to adjust the available inventory quantity',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ]
         ],
 
@@ -2754,23 +3019,23 @@ return [
                     'description' => 'The inventory item id',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'location_id' => [
                     'description' => 'The location id',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ]
         ],
 
         'ConnectInventoryLevel' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/inventory_levels/connect.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Connects an inventory item to a location by creating an inventory level at that location',
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/inventory_levels/connect.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Connects an inventory item to a location by creating an inventory level at that location',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2781,29 +3046,29 @@ return [
                     'description' => 'The inventory item id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'location_id' => [
                     'description' => 'The location id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'relocate_if_necessary' => [
                     'description' => 'The amount to adjust the available inventory quantity',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => false,
-                ],
+                    'required'    => false
+                ]
             ]
         ],
 
         'SetInventoryLevel' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/inventory_levels/set.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Sets the inventory level for an inventory item at a location',
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/inventory_levels/set.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Sets the inventory level for an inventory item at a location',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2814,28 +3079,29 @@ return [
                     'description' => 'The inventory item id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'location_id' => [
                     'description' => 'The location id',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'available' => [
                     'description' => 'Sets the available inventory quantity',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true,
+                    'required'    => true
                 ],
                 'disconnect_if_necessary' => [
                     'description' => 'Whether inventory for any previously connected locations will be set to 0 and the locations disconnected',
                     'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => false,
-                ],
+                    'required'    => false
+                ]
             ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -2844,33 +3110,32 @@ return [
          * DOC: https://docs.shopify.com/api/reference/inventory/location
          * --------------------------------------------------------------------------------
          */
-
         'GetLocations' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/locations.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of locations',
-            'data'                 => ['root_key' => 'locations'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/locations.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of locations',
+            'data'          => ['root_key' => 'locations'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetLocation' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/locations/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a specific location',
-            'data'                 => ['root_key' => 'location'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/locations/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific location',
+            'data'          => ['root_key' => 'location'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2882,38 +3147,38 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetLocationCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/locations/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a count of locations',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/locations/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a count of locations',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetLocationInventoryLevels' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/locations/{id}/inventory_levels.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a specific location',
-            'data'                 => ['root_key' => 'inventory_levels'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/locations/{id}/inventory_levels.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific location',
+            'data'          => ['root_key' => 'inventory_levels'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2925,47 +3190,47 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
-         * METAFIELDS RELATED METHODS
+         * METAFIELD RELATED METHODS
          *
          * DOC: https://docs.shopify.com/api/metafield
          * --------------------------------------------------------------------------------
          */
-
         'GetMetafields' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/metafields.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of metafields',
-            'data'                 => ['root_key' => 'metafields'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of metafields',
+            'data'          => ['root_key' => 'metafields'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetMetafield' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/metafields/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific metafield',
-            'data'             => ['root_key' => 'metafield'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific metafield',
+            'data'          => ['root_key' => 'metafield'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -2977,20 +3242,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateMetafield' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/metafields.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new metafield',
-            'data'             => ['root_key' => 'metafield'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new metafield',
+            'data'          => ['root_key' => 'metafield'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3014,20 +3279,20 @@ return [
                     'location'    => 'json',
                     'type'        => ['string', 'integer'],
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateMetafield' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/metafields/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a specific metafield',
-            'data'             => ['root_key' => 'metafield'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a specific metafield',
+            'data'          => ['root_key' => 'metafield'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3045,11 +3310,11 @@ return [
                     'location'    => 'json',
                     'type'        => ['string', 'integer'],
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteMetafield' => [
@@ -3073,6 +3338,7 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
          * ORDER RELATED METHODS
@@ -3080,51 +3346,50 @@ return [
          * DOC: https://docs.shopify.com/api/order
          * --------------------------------------------------------------------------------
          */
-
         'GetOrders' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/orders.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of orders',
-            'data'                 => ['root_key' => 'orders'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of orders',
+            'data'          => ['root_key' => 'orders'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetOrderCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/orders/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of orders',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of orders',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetOrder' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific order',
-            'data'             => ['root_key' => 'order'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific order',
+            'data'          => ['root_key' => 'order'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3136,11 +3401,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetOrderMetafields' => [
@@ -3161,20 +3426,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateOrder' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new order',
-            'data'             => ['root_key' => 'order'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new order',
+            'data'          => ['root_key' => 'order'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3185,21 +3450,21 @@ return [
                     'description' => 'The order line items',
                     'location'    => 'json',
                     'type'        => 'array',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'CloseOrder' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{id}/close.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Close a specific order',
-            'data'             => ['root_key' => 'order'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{id}/close.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Close a specific order',
+            'data'          => ['root_key' => 'order'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3216,12 +3481,12 @@ return [
         ],
 
         'OpenOrder' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{id}/open.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Re-open a closed order',
-            'data'             => ['root_key' => 'order'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{id}/open.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Re-open a closed order',
+            'data'          => ['root_key' => 'order'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3238,12 +3503,12 @@ return [
         ],
 
         'UpdateOrder' => [
-          'httpMethod'           => 'PUT',
-          'uri'                  => 'admin/api/{version}/orders/{id}.json',
-          'responseModel'        => 'GenericModel',
-          'summary'              => 'Update an existing order',
-          'data'                 => ['root_key' => 'order'],
-          'parameters'           => [
+          'httpMethod'    => 'PUT',
+          'uri'           => 'admin/api/{version}/orders/{id}.json',
+          'responseModel' => 'GenericModel',
+          'summary'       => 'Update an existing order',
+          'data'          => ['root_key' => 'order'],
+          'parameters'    => [
               'version' => [
                   'description' => 'API version',
                   'location'    => 'uri',
@@ -3254,72 +3519,20 @@ return [
                   'description' => 'Order ID',
                   'location'    => 'uri',
                   'type'        => 'integer',
-                  'required'    => TRUE
+                  'required'    => true
               ],
           ],
           'additionalParameters' => [
             'location' => 'json',
-          ],
+          ]
         ],
 
         'CancelOrder' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{id}/cancel.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Cancel a given order',
-            'data'             => ['root_key' => 'order'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * DRAFT ORDER RELATED METHODS
-         *
-         * DOC: https://help.shopify.com/en/api/reference/orders/draftorder
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetDraftOrders' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/draft_orders.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of draft orders',
-            'data'                 => ['root_key' => 'draft_orders'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetDraftOrderMetafields' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/draft_orders/{id}/metafields.json',
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{id}/cancel.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for an draft order',
-            'data'          => ['root_key' => 'metafields'],
+            'summary'       => 'Cancel a given order',
+            'data'          => ['root_key' => 'order'],
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -3328,177 +3541,17 @@ return [
                     'required'    => true
                 ],
                 'id' => [
-                    'description' => 'Draft Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetDraftOrderCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/draft_orders/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of draft orders',
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetDraftOrder' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/draft_orders/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific draft order',
-            'data'             => ['root_key' => 'draft_order'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateDraftOrder' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/draft_orders.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new draft order',
-            'data'             => ['root_key' => 'draft_order'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'line_items' => [
-                    'description' => 'The draft order line items',
-                    'location'    => 'json',
-                    'type'        => 'array',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'SendDraftOrderInvoice' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/draft_orders/{id}/send_invoice.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Send an invoice for the draft order',
-            'data'             => ['root_key' => 'draft_order'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Draft order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateDraftOrder' => [
-            'httpMethod'           => 'PUT',
-            'uri'                  => 'admin/api/{version}/draft_orders/{id}.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Update an existing draft order',
-            'data'                 => ['root_key' => 'draft_order'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Draft order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteDraftOrder' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/draft_orders/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete the draft order from the database',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Draft order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
-
-        'CompleteDraftOrder' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/draft_orders/{id}/complete.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Complete a draft order, marking it as paid',
-            'data'             => ['root_key' => 'draft_order'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
                     'description' => 'Order ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
             ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -3507,51 +3560,50 @@ return [
          * DOC: https://docs.shopify.com/api/page
          * --------------------------------------------------------------------------------
          */
-
         'GetPages' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/pages.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of pages',
-            'data'                 => ['root_key' => 'pages'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of pages',
+            'data'          => ['root_key' => 'pages'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetPageCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/pages/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of pages',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of pages',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetPage' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/pages/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific page',
-            'data'             => ['root_key' => 'page'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific page',
+            'data'          => ['root_key' => 'page'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3566,8 +3618,8 @@ return [
                 ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetPageMetafields' => [
@@ -3588,20 +3640,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreatePage' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/pages.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new page',
-            'data'             => ['root_key' => 'page'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/pages.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new page',
+            'data'          => ['root_key' => 'page'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3619,20 +3671,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdatePage' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/pages/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing page',
-            'data'             => ['root_key' => 'page'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/pages/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing page',
+            'data'          => ['root_key' => 'page'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3644,19 +3696,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeletePage' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/pages/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing page',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/pages/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing page',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3672,6 +3724,349 @@ return [
             ]
         ],
 
+
+        /**
+         * --------------------------------------------------------------------------------
+         * PRICE RULE RELATED METHODS
+         *
+         * DOC: https://help.shopify.com/en/api/reference/discounts/pricerule
+         * --------------------------------------------------------------------------------
+         */
+        'GetPriceRules' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of price rules',
+            'data'          => ['root_key' => 'price_rules'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetPriceRule' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/price_rules/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific price rule',
+            'data'          => ['root_key' => 'price_rule'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreatePriceRule' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/price_rules.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new price rule',
+            'data'          => ['root_key' => 'price_rule'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Price rule title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'target_type' => [
+                    'description' => 'Price rule target type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => ['line_item', 'shipping_line']
+                ],
+                'target_selection' => [
+                    'description' => 'Price rule target selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => ['all', 'entitled']
+                ],
+                'value_type' => [
+                    'description' => 'Price rule value type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => ['fixed_amount', 'percentage']
+                ],
+                'value' => [
+                    'description' => 'Price rule value',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'allocation_method' => [
+                    'description' => 'Price rule allocation method',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => ['each', 'across']
+                ],
+                'starts_at' => [
+                    'description' => 'Price rule starts at date',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => true
+                ],
+                'customer_selection' => [
+                    'description' => 'Price rule customer selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => ['all', 'prerequisite']
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdatePriceRule' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/price_rules/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing price rule code',
+            'data'          => ['root_key' => 'price_rule'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeletePriceRule' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/price_rules/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing price rule',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * PRODUCT IMAGE RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/product_image
+         * --------------------------------------------------------------------------------
+         */
+        'GetProductImages' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of product images',
+            'data'          => ['root_key' => 'images'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetProductImageCount' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of images for a given product',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetProductImage' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific product image',
+            'data'          => ['root_key' => 'image'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Product image ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateProductImage' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new product image',
+            'data'          => ['root_key' => 'image'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateProductImage' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing product image',
+            'data'          => ['root_key' => 'image'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Product image ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteProductImage' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing product image',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Product image ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
         /**
          * --------------------------------------------------------------------------------
          * PRODUCT RELATED METHODS
@@ -3679,51 +4074,50 @@ return [
          * DOC: https://docs.shopify.com/api/product
          * --------------------------------------------------------------------------------
          */
-
         'GetProducts' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/products.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of products',
-            'data'                 => ['root_key' => 'products'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of products',
+            'data'          => ['root_key' => 'products'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetProductCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/products/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of products',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of products',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetProduct' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific product',
-            'data'             => ['root_key' => 'product'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific product',
+            'data'          => ['root_key' => 'product'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3735,11 +4129,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetProductMetafields' => [
@@ -3760,20 +4154,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateProduct' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/products.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new product',
-            'data'             => ['root_key' => 'product'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/products.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new product',
+            'data'          => ['root_key' => 'product'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3785,123 +4179,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateProduct' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/products/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing product',
-            'data'             => ['root_key' => 'product'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteProduct' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/products/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing product',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
+                'location' => 'json'
             ]
         ],
 
-        /**
-         * --------------------------------------------------------------------------------
-         * PRODUCT IMAGES RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/product_image
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetProductImages' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of product images',
-            'data'             => ['root_key' => 'images'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetProductImageCount' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images/count.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve the number of images for a given product',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetProductImage' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific product image',
-            'data'             => ['root_key' => 'image'],
-            'parameters'       => [
+        'UpdateProduct' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/products/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing product',
+            'data'          => ['root_key' => 'product'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3909,55 +4200,23 @@ return [
                     'required'    => true
                 ],
                 'id' => [
-                    'description' => 'Product image ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'product_id' => [
                     'description' => 'Product ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'json'
+            ]
         ],
 
-        'CreateProductImage' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new product image',
-            'data'             => ['root_key' => 'image'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateProductImage' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing product image',
-            'data'             => ['root_key' => 'image'],
-            'parameters'       => [
+        'DeleteProduct' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/products/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing product',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -3965,42 +4224,6 @@ return [
                     'required'    => true
                 ],
                 'id' => [
-                    'description' => 'Product image ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteProductImage' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/products/{product_id}/images/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing product image',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Product image ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'product_id' => [
                     'description' => 'Product ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
@@ -4009,40 +4232,224 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
-         * RECURRING APPLICATION CHARGES RELATED METHODS
+         * PRODUCT VARIANT RELATED METHODS
          *
-         * DOC: https://docs.shopify.com/api/recurringapplicationcharge
+         * DOC: https://docs.shopify.com/api/product_variant
          * --------------------------------------------------------------------------------
          */
-
-        'GetRecurringApplicationCharges' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/recurring_application_charges.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of recurring application charges',
-            'data'                 => ['root_key' => 'recurring_application_charges'],
-            'parameters'           => [
+        'GetProductVariants' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Get all variants for the given product',
+            'data'          => ['root_key' => 'variants'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
+                'location' => 'query'
+            ]
+        ],
+
+        'GetProductVariantCount' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of variants for a given product',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
             ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetProductVariant' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/variants/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific variant',
+            'data'          => ['root_key' => 'variant'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetProductVariantMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/variants/{id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of metafields for a variant',
+            'data'          => ['root_key' => 'metafields'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateProductVariant' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new variant',
+            'data'          => ['root_key' => 'variant'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateProductVariant' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/variants/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing variant',
+            'data'          => ['root_key' => 'variant'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteProductVariant' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing variant for the given product',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * RECURRING APPLICATION CHARGE RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/recurringapplicationcharge
+         * --------------------------------------------------------------------------------
+         */
+        'GetRecurringApplicationCharges' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of recurring application charges',
+            'data'          => ['root_key' => 'recurring_application_charges'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
         ],
 
         'GetRecurringApplicationCharge' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific recurring application charge',
-            'data'             => ['root_key' => 'recurring_application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific recurring application charge',
+            'data'          => ['root_key' => 'recurring_application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -4054,20 +4461,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateRecurringApplicationCharge' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/recurring_application_charges.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new recurring application charge',
-            'data'             => ['root_key' => 'recurring_application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/recurring_application_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new recurring application charge',
+            'data'          => ['root_key' => 'recurring_application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -4091,20 +4498,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'ActivateRecurringApplicationCharge' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{id}/activate.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Activate a previously accepted recurring application charge',
-            'data'             => ['root_key' => 'recurring_application_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}/activate.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Activate a previously accepted recurring application charge',
+            'data'          => ['root_key' => 'recurring_application_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -4121,11 +4528,11 @@ return [
         ],
 
         'DeleteRecurringApplicationCharge' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing recurring application charge',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing recurring application charge',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -4141,777 +4548,6 @@ return [
             ]
         ],
 
-        /**
-         * --------------------------------------------------------------------------------
-         * REFUND RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/refund
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetRefunds' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/refunds.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of Refunds for an Order',
-            'data'             => ['root_key' => 'refunds'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'order_id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetRefund' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/refunds/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific refund',
-            'data'             => ['root_key' => 'refund'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'order_id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-                'id' => [
-                    'description' => 'Specific refund ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CalculateRefund' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/refunds/calculate.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Calculate refund transactions based on line items and shipping',
-            'data'             => ['root_key' => 'refund'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'order_id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'CreateRefund' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/orders/{order_id}/refunds.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a Refund for an existing Order',
-            'data'             => ['root_key' => 'refund'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'order_id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * SHOP RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/shop
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetShop' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/shop.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Get data about a single shop',
-            'data'                 => ['root_key' => 'shop'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * SMART COLLECTION RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/smartcollection
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetSmartCollections' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/smart_collections.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of smart collections',
-            'data'                 => ['root_key' => 'smart_collections'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetSmartCollectionCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/smart_collections/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of smart collections',
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetSmartCollection' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/smart_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve specific smart collection',
-            'data'             => ['root_key' => 'smart_collection'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Smart collection ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateSmartCollection' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/smart_collections.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a smart collection',
-            'data'             => ['root_key' => 'smart_collection'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'title' => [
-                    'description' => 'Smart collection title',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateSmartCollection' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/smart_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update a smart collection',
-            'data'             => ['root_key' => 'smart_collection'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Smart collection ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteSmartCollection' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/smart_collections/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete a smart collection',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Smart collection ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * THEME RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/theme
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetThemes' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/themes.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of themes',
-            'data'                 => ['root_key' => 'themes'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetTheme' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/themes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific theme',
-            'data'             => ['root_key' => 'theme'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific webhook ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateTheme' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/themes.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new theme',
-            'data'             => ['root_key' => 'theme'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'name' => [
-                    'description' => 'Name of the theme',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'src' => [
-                    'description' => 'Zip source for the theme',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateTheme' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/themes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing theme',
-            'data'             => ['root_key' => 'theme'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific theme ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'name' => [
-                    'description' => 'Name of the theme',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteTheme' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/themes/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing theme',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific theme ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * PRICE RULE RELATED METHODS
-         *
-         * DOC: https://help.shopify.com/en/api/reference/discounts/pricerule
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetPriceRules' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/price_rules.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of price rules',
-            'data'                 => ['root_key' => 'price_rules'],
-            'parameters'           => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetPriceRule' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/price_rules/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific price rule',
-            'data'             => ['root_key' => 'price_rule'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific price rule ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreatePriceRule' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/price_rules.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new price rule',
-            'data'             => ['root_key' => 'price_rule'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'title' => [
-                    'description' => 'Price rule title',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'target_type' => [
-                    'description' => 'Price rule target type',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => ['line_item', 'shipping_line'],
-                ],
-                'target_selection' => [
-                    'description' => 'Price rule target selection',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => ['all', 'entitled'],
-                ],
-                'value_type' => [
-                    'description' => 'Price rule value type',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => ['fixed_amount', 'percentage'],
-                ],
-                'value' => [
-                    'description' => 'Price rule value',
-                    'location'    => 'json',
-                    'type'        => 'integer',
-                    'required'    => true,
-                ],
-                'allocation_method' => [
-                    'description' => 'Price rule allocation method',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => ['each', 'across']
-                ],
-                'starts_at' => [
-                    'description' => 'Price rule starts at date',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'format'      => 'date-time',
-                    'required'    => true
-                ],
-                'customer_selection' => [
-                    'description' => 'Price rule customer selection',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => ['all', 'prerequisite']
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdatePriceRule' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/price_rules/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing price rule code',
-            'data'             => ['root_key' => 'price_rule'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Price rule ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeletePriceRule' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/price_rules/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing price rule',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific price rule ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
-
-        /**
-         * --------------------------------------------------------------------------------
-         * PRODUCT VARIANT RELATED METHODS
-         *
-         * DOC: https://docs.shopify.com/api/product_variant
-         * --------------------------------------------------------------------------------
-         */
-
-        'GetProductVariants' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{product_id}/variants.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Get all variants for the given product',
-            'data'             => ['root_key' => 'variants'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Specific product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetProductVariantCount' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/products/{product_id}/variants/count.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve the number of variants for a given product',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Specific product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetProductVariant' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/variants/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific variant',
-            'data'             => ['root_key' => 'variant'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific variant ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'GetProductVariantMetafields' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/variants/{id}/metafields.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for a variant',
-            'data'          => ['root_key' => 'metafields'],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific variant ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'query',
-            ],
-        ],
-
-        'CreateProductVariant' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/products/{product_id}/variants.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new variant',
-            'data'             => ['root_key' => 'variant'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Specific product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'UpdateProductVariant' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/variants/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing variant',
-            'data'             => ['root_key' => 'variant'],
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific variant ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-            ],
-            'additionalParameters' => [
-                'location' => 'json',
-            ],
-        ],
-
-        'DeleteProductVariant' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/products/{product_id}/variants/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing variant for the given product',
-            'parameters'       => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific variant ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'product_id' => [
-                    'description' => 'Specific product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -4920,51 +4556,50 @@ return [
          * DOC: https://help.shopify.com/api/reference/redirect
          * --------------------------------------------------------------------------------
          */
-
         'GetRedirects' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/redirects.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of redirects',
-            'data'                 => ['root_key' => 'redirects'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/redirects.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of redirects',
+            'data'          => ['root_key' => 'redirects'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetRedirectCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/redirects/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of redirects',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/redirects/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of redirects',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetRedirect' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/redirects/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific redirect',
-            'data'             => ['root_key' => 'redirect'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/redirects/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific redirect',
+            'data'          => ['root_key' => 'redirect'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -4976,20 +4611,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateRedirect' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/redirects.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a redirect',
-            'data'             => ['root_key' => 'redirect'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/redirects.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a redirect',
+            'data'          => ['root_key' => 'redirect'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5007,17 +4642,17 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ]
         ],
 
         'UpdateRedirect' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/redirects/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing redirect',
-            'data'             => ['root_key' => 'redirect'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/redirects/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing redirect',
+            'data'          => ['root_key' => 'redirect'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5035,16 +4670,16 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ]
         ],
 
         'DeleteRedirect' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/redirects/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing redirect',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/redirects/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing redirect',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5060,58 +4695,363 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
-         * SCRIPT TAGS RELATED METHODS
+         * REFUND RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/refund
+         * --------------------------------------------------------------------------------
+         */
+        'GetRefunds' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/refunds.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of Refunds for an Order',
+            'data'          => ['root_key' => 'refunds'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetRefund' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/refunds/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific refund',
+            'data'          => ['root_key' => 'refund'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific refund ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CalculateRefund' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/refunds/calculate.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Calculate refund transactions based on line items and shipping',
+            'data'          => ['root_key' => 'refund'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'CreateRefund' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/refunds.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a Refund for an existing Order',
+            'data'          => ['root_key' => 'refund'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * REPORT SCOPE RELATED METHODS
+         *
+         * DOC: https://help.shopify.com/en/api/reference/analytics/report
+         * --------------------------------------------------------------------------------
+         */
+        'GetReports' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/reports.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of reports',
+            'data'          => ['root_key' => 'reports'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'ids' => [
+                    'description' => 'Comma seperated list of IDs',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'page' => [
+                    'description' => 'Page to show',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Amount of results',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show reports last updated after date. (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show reports last updated before date. (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'date-time',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetReport' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/reports/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single report created by your app',
+            'data'          => ['root_key' => 'report'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'ID of the report',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateReport' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/reports.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new report',
+            'data'          => ['root_key' => 'report'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'The name of the report. Maximum length: 255 characters',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'shopify_ql' => [
+                    'description' => 'The ShopifyQL the report will query',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateReport' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/reports/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a report',
+            'data'          => ['root_key' => 'report'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'ID of the report',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+               'name' => [
+                    'description' => 'The name of the report. Maximum length: 255 characters',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shopify_ql' => [
+                    'description' => 'The ShopifyQL the report will query',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteReport' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/reports/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single report created by your app',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'ID of the report',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * SCRIPT TAG RELATED METHODS
          *
          * DOC: https://docs.shopify.com/api/scripttag
          * --------------------------------------------------------------------------------
          */
-
         'GetScriptTags' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/script_tags.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of installed script tags',
-            'data'                 => ['root_key' => 'script_tags'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/script_tags.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of installed script tags',
+            'data'          => ['root_key' => 'script_tags'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetScriptTagCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/script_tags/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of script tags',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/script_tags/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of script tags',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetScriptTag' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/script_tags/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a single script tag',
-            'data'             => ['root_key' => 'script_tag'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/script_tags/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a single script tag',
+            'data'          => ['root_key' => 'script_tag'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5123,20 +5063,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateScriptTag' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/script_tags.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new script tags',
-            'data'             => ['root_key' => 'script_tag'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/script_tags.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new script tags',
+            'data'          => ['root_key' => 'script_tag'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5148,27 +5088,27 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => ['onload'],
+                    'enum'        => ['onload']
                 ],
                 'src' => [
                     'description' => 'URL of the script tag',
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateScriptTag' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/script_tags/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing script tag',
-            'data'             => ['root_key' => 'script_tag'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/script_tags/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing script tag',
+            'data'          => ['root_key' => 'script_tag'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5186,26 +5126,26 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => ['onload'],
+                    'enum'        => ['onload']
                 ],
                 'src' => [
                     'description' => 'URL of the script tag',
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteScriptTag' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/script_tags/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing script tag',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/script_tags/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing script tag',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5221,6 +5161,7 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
          * SHIPPING ZONE RELATED METHODS
@@ -5228,25 +5169,401 @@ return [
          * DOC: https://shopify.dev/docs/admin-api/rest/reference/store-properties/shippingzone
          * --------------------------------------------------------------------------------
          */
-
         'GetShippingZones' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/shipping_zones.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of all shipping zones',
-            'data'                 => ['root_key' => 'shipping_zones'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shipping_zones.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of all shipping zones',
+            'data'          => ['root_key' => 'shipping_zones'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * SHOP RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/shop
+         * --------------------------------------------------------------------------------
+         */
+        'GetShop' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shop.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Get data about a single shop',
+            'data'          => ['root_key' => 'shop'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * SMART COLLECTION RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/smartcollection
+         * --------------------------------------------------------------------------------
+         */
+        'GetSmartCollections' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/smart_collections.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of smart collections',
+            'data'          => ['root_key' => 'smart_collections'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetSmartCollectionCount' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/smart_collections/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of smart collections',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetSmartCollection' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/smart_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve specific smart collection',
+            'data'          => ['root_key' => 'smart_collection'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'id' => [
+                    'description' => 'Smart collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
+
+        'CreateSmartCollection' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/smart_collections.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a smart collection',
+            'data'          => ['root_key' => 'smart_collection'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Smart collection title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateSmartCollection' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/smart_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update a smart collection',
+            'data'          => ['root_key' => 'smart_collection'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Smart collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteSmartCollection' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/smart_collections/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a smart collection',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Smart collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * STOREFRONT RELATED METHODS
+         *
+         * DOC: https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken
+         * --------------------------------------------------------------------------------
+         */
+        'GetStorefrontAccessTokens' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/storefront_access_tokens.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of storefront access tokens',
+            'data'          => ['root_key' => 'storefront_access_tokens'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateStorefrontAccessToken' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/storefront_access_tokens.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new storefront token',
+            'data'          => ['root_key' => 'storefront_access_token'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'title' => [
+                    'description' => 'StorefrontAccessToken title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'DeleteStorefrontAccessToken' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/storefront_access_tokens/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing storefront access token',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'StorefrontAccessToken ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * --------------------------------------------------------------------------------
+         * THEME RELATED METHODS
+         *
+         * DOC: https://docs.shopify.com/api/theme
+         * --------------------------------------------------------------------------------
+         */
+        'GetThemes' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/themes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of themes',
+            'data'          => ['root_key' => 'themes'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'GetTheme' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/themes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific theme',
+            'data'          => ['root_key' => 'theme'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific webhook ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'CreateTheme' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/themes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new theme',
+            'data'          => ['root_key' => 'theme'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'Name of the theme',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'src' => [
+                    'description' => 'Zip source for the theme',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'UpdateTheme' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/themes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing theme',
+            'data'          => ['root_key' => 'theme'],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific theme ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'Name of the theme',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'DeleteTheme' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/themes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing theme',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific theme ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -5255,7 +5572,6 @@ return [
          * DOC: https://docs.shopify.com/api/transaction
          * --------------------------------------------------------------------------------
          */
-
         'GetTransactions' => [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/orders/{order_id}/transactions.json',
@@ -5274,11 +5590,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetTransactionCount' => [
@@ -5298,11 +5614,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetTransaction' => [
@@ -5329,11 +5645,11 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateTransaction' => [
@@ -5360,29 +5676,29 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => ['authorization', 'capture', 'sale', 'void', 'refund'],
-                ],
+                    'enum'        => ['authorization', 'capture', 'sale', 'void', 'refund']
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
-         * USAGE CHARGES RELATED METHODS
+         * USAGE CHARGE RELATED METHODS
          *
          * DOC: https://docs.shopify.com/api/usagecharge
          * --------------------------------------------------------------------------------
          */
-
         'GetUsageCharges' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a list of usage charges for the given recurring application charges',
-            'data'             => ['root_key' => 'usage_charges'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of usage charges for the given recurring application charges',
+            'data'          => ['root_key' => 'usage_charges'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5394,20 +5710,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetUsageCharge' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific usage charge',
-            'data'             => ['root_key' => 'usage_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific usage charge',
+            'data'          => ['root_key' => 'usage_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5425,20 +5741,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateUsageCharge' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new usage charge',
-            'data'             => ['root_key' => 'usage_charge'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new usage charge',
+            'data'          => ['root_key' => 'usage_charge'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5462,9 +5778,10 @@ return [
                     'location'    => 'json',
                     'type'        => 'number',
                     'required'    => true
-                ],
+                ]
             ]
         ],
+
 
         /**
          * --------------------------------------------------------------------------------
@@ -5473,51 +5790,50 @@ return [
          * DOC: https://docs.shopify.com/api/webhook
          * --------------------------------------------------------------------------------
          */
-
         'GetWebhooks' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/webhooks.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve a list of webhooks',
-            'data'                 => ['root_key' => 'webhooks'],
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/webhooks.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of webhooks',
+            'data'          => ['root_key' => 'webhooks'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetWebhookCount' => [
-            'httpMethod'           => 'GET',
-            'uri'                  => 'admin/api/{version}/webhooks/count.json',
-            'responseModel'        => 'GenericModel',
-            'summary'              => 'Retrieve the number of webhooks',
-            'parameters'           => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/webhooks/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve the number of webhooks',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'GetWebhook' => [
-            'httpMethod'       => 'GET',
-            'uri'              => 'admin/api/{version}/webhooks/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Retrieve a specific webhook',
-            'data'             => ['root_key' => 'webhook'],
-            'parameters'       => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/webhooks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific webhook',
+            'data'          => ['root_key' => 'webhook'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5529,20 +5845,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
 
         'CreateWebhook' => [
-            'httpMethod'       => 'POST',
-            'uri'              => 'admin/api/{version}/webhooks.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Create a new webhook',
-            'data'             => ['root_key' => 'webhook'],
-            'parameters'       => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/webhooks.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new webhook',
+            'data'          => ['root_key' => 'webhook'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5568,31 +5884,89 @@ return [
                     'type'        => 'string',
                     'required'    => true,
                     'enum'        => [
-                        'carts/create', 'carts/update', 'checkouts/create', 'checkouts/update', 'checkouts/delete', 'collections/create', 'collections/update',
-                        'collections/delete', 'collection_listings/add', 'collection_listings/remove', 'collection_listings/update', 'customers/create',
-                        'customers/enable', 'customers/disable', 'customers/update', 'customers/delete', 'customer_groups/create', 'customer_groups/update',
-                        'customer_groups/delete', 'draft_orders/create', 'draft_orders/update', 'draft_orders/delete', 'fulfillments/create', 'fulfillments/update',
-                        'fulfillment_events/create', 'fulfillment_events/delete', 'inventory_items/create', 'inventory_items/update', 'inventory_items/delete',
-                        'inventory_levels/connect', 'inventory_levels/update', 'inventory_levels/disconnect', 'locations/create', 'locations/update',
-                        'locations/delete', 'orders/cancelled', 'orders/create', 'orders/fulfilled', 'orders/paid', 'orders/partially_fulfilled',
-                        'orders/updated', 'orders/delete', 'order_transactions/create', 'products/create', 'products/update', 'products/delete',
-                        'product_listings/add', 'product_listings/remove', 'product_listings/update', 'refunds/create', 'app/uninstalled', 'shop/update',
-                        'themes/create', 'themes/publish', 'themes/update', 'themes/delete'
+                        'carts/create',
+                        'carts/update',
+                        'checkouts/create',
+                        'checkouts/update',
+                        'checkouts/delete',
+                        'collections/create',
+                        'collections/update',
+                        'collections/delete',
+                        'collection_listings/add',
+                        'collection_listings/update',
+                        'collection_listings/remove',
+                        'customers/create',
+                        'customers/disable',
+                        'customers/enable',
+                        'customers/update',
+                        'customers/delete',
+                        'customer_groups/create',
+                        'customer_groups/update',
+                        'customer_groups/delete',
+                        'disputes/create',
+                        'disputes/update',
+                        'domains/create',
+                        'domains/destroy',
+                        'domains/update',
+                        'draft_orders/create',
+                        'draft_orders/update',
+                        'draft_orders/delete',
+                        'fulfillments/create',
+                        'fulfillments/update',
+                        'fulfillment_events/create',
+                        'fulfillment_events/delete',
+                        'inventory_items/create',
+                        'inventory_items/update',
+                        'inventory_items/delete',
+                        'inventory_levels/connect',
+                        'inventory_levels/disconnect',
+                        'inventory_levels/update',
+                        'locations/create',
+                        'locations/update',
+                        'locations/delete',
+                        'orders/cancelled',
+                        'orders/create',
+                        'orders/fulfilled',
+                        'orders/paid',
+                        'orders/partially_fulfilled',
+                        'orders/updated',
+                        'orders/delete',
+                        'orders/edited',
+                        'order_transactions/create',
+                        'products/create',
+                        'products/update',
+                        'products/delete',
+                        'product_listings/add',
+                        'product_listings/update',
+                        'product_listings/remove',
+                        'profiles/create',
+                        'profiles/update',
+                        'profiles/delete',
+                        'refunds/create',
+                        'app/uninstalled',
+                        'shop/update',
+                        'locales/create',
+                        'locales/update',
+                        'tender_transactions/create',
+                        'themes/create',
+                        'themes/publish',
+                        'themes/update',
+                        'themes/delete'
                     ]
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'UpdateWebhook' => [
-            'httpMethod'       => 'PUT',
-            'uri'              => 'admin/api/{version}/webhooks/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Update an existing webhook',
-            'data'             => ['root_key' => 'webhook'],
-            'parameters'       => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/webhooks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing webhook',
+            'data'          => ['root_key' => 'webhook'],
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5604,19 +5978,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ],
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'json',
-            ],
+                'location' => 'json'
+            ]
         ],
 
         'DeleteWebhook' => [
-            'httpMethod'       => 'DELETE',
-            'uri'              => 'admin/api/{version}/webhooks/{id}.json',
-            'responseModel'    => 'GenericModel',
-            'summary'          => 'Delete an existing webhook',
-            'parameters'       => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/webhooks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete an existing webhook',
+            'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
@@ -5632,12 +6006,12 @@ return [
             ]
         ],
 
+
         /**
          * --------------------------------------------------------------------------------
          * OTHERS
          * --------------------------------------------------------------------------------
          */
-
         'CreateDelegateAccessToken' => [
             'httpMethod'    => 'POST',
             'uri'           => 'admin/api/{version}/access_tokens/delegate.json',
@@ -5654,12 +6028,12 @@ return [
                     'description' => 'New scopes that are granted to the delegate access token',
                     'location'    => 'json',
                     'type'        => 'array',
-                    'required'    => true,
-                ],
+                    'required'    => true
+                ]
             ],
             'additionalParameters' => [
-                'location' => 'query',
-            ],
+                'location' => 'query'
+            ]
         ],
     ],
 
@@ -5675,6 +6049,21 @@ return [
             ],
             'additionalProperties' => [
                 'location' => 'json'
+            ]
+        ],
+        'RedirectModel' => [
+            'type'       => 'object',
+            'properties' => [
+                'redirect_history' => [
+                    'location' => 'header',
+                    'sentAs'   => 'X-Guzzle-Redirect-History',
+                    'type'     => 'array'
+                ],
+                'redirect_status_history' => [
+                    'location' => 'header',
+                    'sentAs'   => 'X-Guzzle-Redirect-Status-History',
+                    'type'     => 'array'
+                ]
             ]
         ]
     ]

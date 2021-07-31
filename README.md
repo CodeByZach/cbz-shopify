@@ -35,7 +35,7 @@ $shopifyClient = new ShopifyClient([
     'api_key'     => 'YOUR_API_KEY',
     'password'    => 'YOUR_PASSWORD',
     'shop'        => 'domain.myshopify.com',
-    'version'     => '2019-04'
+    'version'     => '2020-10'
 ]);
 ```
 
@@ -51,7 +51,7 @@ $shopifyClient = new ShopifyClient([
     'api_key'       => 'YOUR_API_KEY', // In public app, this is the app ID
     'access_token'  => 'MERCHANT_TOKEN',
     'shop'          => 'merchant.myshopify.com',
-    'version'       => '2019-04'
+    'version'       => '2020-10'
 ]);
 ```
 
@@ -282,7 +282,7 @@ a private app:
 ```php
 $client = new ShopifyGraphQLClient([
     'shop'        => 'test.myshopify.com',
-    'version'     => '2019-04',
+    'version'     => '2020-10',
     'private_app' => true,
     'password'    => 'YOUR PASSWORD'
 ]);
@@ -295,7 +295,7 @@ If you are using a public app:
 ```php
 $client = new ShopifyGraphQLClient([
     'shop'         => 'test.myshopify.com',
-    'version'      => '2019-04',
+    'version'      => '2020-10',
     'private_app'  => false,
     'access_token' => 'ACCESS TOKEN'
 ]);
@@ -444,17 +444,9 @@ try {
 Here is a list of supported endpoints (more to come in the future):
 
 **ACCESS SCOPE RELATED METHODS:**
-
 * array getAccessScopes(array $args = [])
 
-**STOREFRONT ACCESS TOKEN RELATED METHODS:**
-
-* array getStorefrontAccessTokens(array $args = [])
-* array createStorefrontAccessToken(array $args = [])
-* array deleteStorefrontAccessToken(array $args = [])
-
 **APPLICATION CHARGE RELATED METHODS:**
-
 * array getApplicationCharges(array $args = [])
 * array getApplicationCharge(array $args = [])
 * array createApplicationCharge(array $args = [])
@@ -462,7 +454,6 @@ Here is a list of supported endpoints (more to come in the future):
 * array deleteApplicationCharge(array $args = [])
 
 **ARTICLE RELATED METHODS:**
-
 * array getArticles(array $args = [])
 * int getArticleCount(array $args = [])
 * array getBlogArticles(array $args = [])
@@ -480,7 +471,6 @@ Here is a list of supported endpoints (more to come in the future):
 * array deleteBlogArticle(array $args = [])
 
 **ASSET RELATED METHODS:**
-
 * array getAssets(array $args = [])
 * array getAsset(array $args = [])
 * array createAsset(array $args = [])
@@ -488,7 +478,6 @@ Here is a list of supported endpoints (more to come in the future):
 * array deleteAsset(array $args = [])
 
 **BLOG RELATED METHODS:**
-
 * array getBlogs(array $args = [])
 * array getBlogMetafields(array $args = [])
 * int getBlogCount(array $args = [])
@@ -497,8 +486,26 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateBlog(array $args = [])
 * array deleteBlog(array $args = [])
 
-**CUSTOM COLLECTION RELATED METHODS:**
+**CARRIER SERVICE RELATED METHODS:**
+* array getCarrierServices(array $args = [])
+* array getCarrierService(array $args = [])
+* array createCarrierService(array $args = [])
+* array updateCarrierService(array $args = [])
+* array deleteCarrierService(array $args = [])
 
+**COLLECT RELATED METHODS:**
+* array getCollects(array $args = [])
+* int getCollectCount(array $args = [])
+* array getCollect(array $args = [])
+* array createCollect(array $args = [])
+* array deleteCollect(array $args = [])
+
+**COLLECTION RELATED METHODS:**
+* array getCollection(array $args = [])
+* array getCollectionProducts(array $args = [])
+* array getCollectionMetafields(array $args = [])
+
+**CUSTOM COLLECTION RELATED METHODS:**
 * array getCustomCollections(array $args = [])
 * int getCustomCollectionCount(array $args = [])
 * array getCustomCollection(array $args = [])
@@ -506,21 +513,15 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateCustomCollection(array $args = [])
 * array deleteCustomCollection(array $args = [])
 
-**COLLECTION RELATED METHODS**
-* array getCollection(array $args = [])
-* array getCollectionProducts(array $args = [])
-* array getCollectionMetafields(array $args = [])
-
-**COLLECT RELATED METHODS:**
-
-* array getCollects(array $args = [])
-* int getCollectCount(array $args = [])
-* array getCollect(array $args = [])
-* array createCollect(array $args = [])
-* array deleteCollect(array $args = [])
+**CUSTOMER ADDRESS RELATED METHODS:**
+* array getCustomerAddresses(array $args = [])
+* array getCustomerAddress(array $args = [])
+* array createCustomerAddress(array $args = [])
+* array updateCustomerAddress(array $args = [])
+* array deleteCustomerAddress(array $args = [])
+* array setDefaultCustomerAddress(array $args = [])
 
 **CUSTOMER RELATED METHODS:**
-
 * array getCustomers(array $args = [])
 * int getCustomerCount(array $args = [])
 * array searchCustomers(array $args = [])
@@ -529,101 +530,19 @@ Here is a list of supported endpoints (more to come in the future):
 * array createCustomer(array $args = [])
 * array updateCustomer(array $args = [])
 * array deleteCustomer(array $args = [])
-
-**CUSTOMER ADDRESS RELATED METHODS:**
-
-* array getCustomerAddresses(array $args = [])
-* array getCustomerAddress(array $args = [])
-* array createCustomerAddress(array $args = [])
-* array updateCustomerAddress(array $args = [])
-* array deleteCustomerAddress(array $args = [])
-* array setDefaultCustomerAddress(array $args = [])
+* array createCustomerInvite(array $args = [])
 
 **DISCOUNT CODE RELATED METHODS:**
-
 * array getDiscountCodes(array $args = [])
 * array getDiscountCode(array $args = [])
+* array lookupDiscountCode(array $args = [])
 * array createDiscountCode(array $args = [])
 * array deleteDiscountCode(array $args = [])
-
-**EVENT RELATED METHODS:**
-
-* array getEvents(array $args = [])
-* int getEventCount(array $args = [])
-* array getEvent(array $args = [])
-
-**FULFILLMENTS RELATED METHODS:**
-
-* array getFulfillments(array $args = [])
-* int getFulfillmentCount(array $args = [])
-* array getFulfillment(array $args = [])
-* array createFulfillment(array $args = [])
-* array updateFilfillment(array $args = [])
-* array completeFulfillment(array $args = [])
-* array cancelFulfillment(array $args = [])
-
-**FULFILLMENT ORDER RELATED METHODS:**
-
-* array getFulfillmentOrders(array $args = [])
-* array getFulfillmentOrder(array $args = [])
-* array cancelFulfillmentOrder(array $args = [])
-* array closeFulfillmentOrder(array $args = [])
-* array moveFulfillmentOrder(array $args = [])
-* array openFulfillmentOrder(array $args = [])
-* array rescheduleFulfillmentOrder(array $args = [])
-
-**GIFT CARD RELATED METHODS:**
-
-* array getGiftCards(array $args = [])
-* int getGiftCardCount(array $args = [])
-* array getGiftCard(array $args = [])
-* array createGiftCard(array $args = [])
-* array updateGiftCard(array $args = [])
-* array disableGiftCard(array $args = [])
-
-**INVENTORY ITEM RELATED METHODS:**
-
-* array getInventoryItems(array $args = [])
-* array getInventoryItem(array $args = [])
-* array updateInventoryItem(array $args = [])
-
-**INVENTORY LEVEL RELATED METHODS:**
-
-* array getInventoryLevels(array $args = [])
-* array adjustInventoryLevel(array $args = [])
-* array deleteInventoryLevel(array $args = [])
-* array connectInventoryLevel(array $args = [])
-* array setInventoryLevel(array $args = [])
-
-**LOCATION RELATED METHODS:**
-
-* array getLocations(array $args = [])
-* array getLocation(array $args = [])
-* int getLocationCount(array $args = [])
-* array getLocationInventoryLevels(array $args = [])
-
-**METAFIELDS RELATED METHODS:**
-
-* array getMetafields(array $args = [])
-* array getMetafield(array $args = [])
-* array createMetafield(array $args = [])
-* array updateMetafield(array $args = [])
-* array deleteMetafield(array $args = [])
-
-**ORDER RELATED METHODS:**
-
-* array getOrders(array $args = [])
-* int getOrderCount(array $args = [])
-* array getOrder(array $args = [])
-* array getOrderMetafields(array $args = [])
-* array createOrder(array $args = [])
-* array updateOrder(array $args = [])
-* array closeOrder(array $args = [])
-* array openOrder(array $args = [])
-* array cancelOrder(array $args = [])
+* array createDiscountCodeBatch(array $args = [])
+* array getDiscountCodeBatch(array $args = [])
+* array getDiscountCodeBatchDiscountCodes(array $args = [])
 
 **DRAFT ORDER RELATED METHODS:**
-
 * array getDraftOrders(array $args = [])
 * array getDraftOrderMetafields(array $args = [])
 * int getDraftOrderCount(array $args = [])
@@ -634,8 +553,74 @@ Here is a list of supported endpoints (more to come in the future):
 * array completeDraftOrder(array $args = [])
 * array deleteDraftOrder(array $args = [])
 
-**PAGE RELATED METHODS:**
+**EVENT RELATED METHODS:**
+* array getEvents(array $args = [])
+* int getEventCount(array $args = [])
+* array getEvent(array $args = [])
 
+**FULFILLMENT RELATED METHODS:**
+* array getFulfillments(array $args = [])
+* int getFulfillmentCount(array $args = [])
+* array getFulfillment(array $args = [])
+* array createFulfillment(array $args = [])
+* array updateFilfillment(array $args = [])
+* array completeFulfillment(array $args = [])
+* array cancelFulfillment(array $args = [])
+
+**FULFILLMENT ORDER RELATED METHODS:**
+* array getFulfillmentOrders(array $args = [])
+* array getFulfillmentOrder(array $args = [])
+* array cancelFulfillmentOrder(array $args = [])
+* array closeFulfillmentOrder(array $args = [])
+* array moveFulfillmentOrder(array $args = [])
+* array openFulfillmentOrder(array $args = [])
+* array rescheduleFulfillmentOrder(array $args = [])
+
+**GIFT CARD RELATED METHODS:**
+* array getGiftCards(array $args = [])
+* int getGiftCardCount(array $args = [])
+* array getGiftCard(array $args = [])
+* array createGiftCard(array $args = [])
+* array updateGiftCard(array $args = [])
+* array disableGiftCard(array $args = [])
+
+**INVENTORY ITEM RELATED METHODS:**
+* array getInventoryItems(array $args = [])
+* array getInventoryItem(array $args = [])
+* array updateInventoryItem(array $args = [])
+
+**INVENTORY LEVEL RELATED METHODS:**
+* array getInventoryLevels(array $args = [])
+* array adjustInventoryLevel(array $args = [])
+* array deleteInventoryLevel(array $args = [])
+* array connectInventoryLevel(array $args = [])
+* array setInventoryLevel(array $args = [])
+
+**LOCATION RELATED METHODS:**
+* array getLocations(array $args = [])
+* array getLocation(array $args = [])
+* int getLocationCount(array $args = [])
+* array getLocationInventoryLevels(array $args = [])
+
+**METAFIELD RELATED METHODS:**
+* array getMetafields(array $args = [])
+* array getMetafield(array $args = [])
+* array createMetafield(array $args = [])
+* array updateMetafield(array $args = [])
+* array deleteMetafield(array $args = [])
+
+**ORDER RELATED METHODS:**
+* array getOrders(array $args = [])
+* int getOrderCount(array $args = [])
+* array getOrder(array $args = [])
+* array getOrderMetafields(array $args = [])
+* array createOrder(array $args = [])
+* array updateOrder(array $args = [])
+* array closeOrder(array $args = [])
+* array openOrder(array $args = [])
+* array cancelOrder(array $args = [])
+
+**PAGE RELATED METHODS:**
 * array getPages(array $args = [])
 * int getPageCount(array $args = [])
 * array getPage(array $args = [])
@@ -645,15 +630,21 @@ Here is a list of supported endpoints (more to come in the future):
 * array deletePage(array $args = [])
 
 **PRICE RULE RELATED METHODS:**
-
 * array getPriceRules(array $args = [])
 * array getPriceRule(array $args = [])
 * array createPriceRule(array $args = [])
 * array updatePriceRule(array $args = [])
 * array deletePriceRule(array $args = [])
 
-**PRODUCT RELATED METHODS:**
+**PRODUCT IMAGE RELATED METHODS:**
+* array getProductImages(array $args = [])
+* int getProductImageCount(array $args = [])
+* array getProductImage(array $args = [])
+* array createProductImage(array $args = [])
+* array updateProductImage(array $args = [])
+* array deleteProductImage(array $args = [])
 
+**PRODUCT RELATED METHODS:**
 * array getProducts(array $args = [])
 * int getProductCount(array $args = [])
 * array getProduct(array $args = [])
@@ -662,53 +653,7 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateProduct(array $args = [])
 * array deleteProduct(array $args = [])
 
-**PRODUCT IMAGE RELATED METHODS:**
-
-* array getProductImages(array $args = [])
-* int getProductImageCount(array $args = [])
-* array getProductImage(array $args = [])
-* array createProductImage(array $args = [])
-* array updateProductImage(array $args = [])
-* array deleteProductImage(array $args = [])
-
-**RECURRING APPLICATION CHARGE RELATED METHODS:**
-
-* array getRecurringApplicationCharges(array $args = [])
-* array getRecurringApplicationCharge(array $args = [])
-* array createRecurringApplicationCharge(array $args = [])
-* array activateRecurringApplicationCharge(array $args = [])
-* array deleteRecurringApplicationCharge(array $args = [])
-
-**REFUND RELATED METHODS:**
-
-* array getRefunds(array $args = [])
-* array getRefund(array $args = [])
-* array calculateRefund(array $args = [])
-* array createRefund(array $args = [])
-
-**SHOP RELATED METHODS:**
-
-* array getShop(array $args = [])
-
-**SMART COLLECTION RELATED METHODS:**
-
-* array getSmartCollections(array $args = [])
-* int getSmartCollectionCount(array $args = [])
-* array getSmartCollection(array $args = [])
-* array createSmartCollection(array $args = [])
-* array updateSmartCollection(array $args = [])
-* array deleteSmartCollection(array $args = [])
-
-**THEME RELATED METHODS:**
-
-* array getThemes(array $args = [])
-* array getTheme(array $args = [])
-* array createTheme(array $args = [])
-* array updateTheme(array $args = [])
-* array deleteTheme(array $args = [])
-
 **PRODUCT VARIANT RELATED METHODS:**
-
 * array getProductVariants(array $args = [])
 * int getProductVariantCount(array $args = [])
 * array getProductVariant(array $args = [])
@@ -717,8 +662,14 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateProductVariant(array $args = [])
 * array deleteProductVariant(array $args = [])
 
-**REDIRECT RELATED METHODS:**
+**RECURRING APPLICATION CHARGE RELATED METHODS:**
+* array getRecurringApplicationCharges(array $args = [])
+* array getRecurringApplicationCharge(array $args = [])
+* array createRecurringApplicationCharge(array $args = [])
+* array activateRecurringApplicationCharge(array $args = [])
+* array deleteRecurringApplicationCharge(array $args = [])
 
+**REDIRECT RELATED METHODS:**
 * array getRedirects(array $args = [])
 * int getRedirectCount(array $args = [])
 * array getRedirect(array $args = [])
@@ -726,8 +677,20 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateRedirect(array $args = [])
 * array deleteRedirect(array $args = [])
 
-**SCRIPT TAG RELATED METHODS:**
+**REFUND RELATED METHODS:**
+* array getRefunds(array $args = [])
+* array getRefund(array $args = [])
+* array calculateRefund(array $args = [])
+* array createRefund(array $args = [])
 
+**REPORT RELATED METHODS:**
+* array getReports(array $args = [])
+* array getReport(array $args = [])
+* array createReport(array $args = [])
+* array updateReport(array $args = [])
+* array deleteReport(array $args = [])
+
+**SCRIPT TAG RELATED METHODS:**
 * array getScriptTags(array $args = [])
 * int getScriptTagCount(array $args = [])
 * array getScriptTag(array $args = [])
@@ -735,21 +698,44 @@ Here is a list of supported endpoints (more to come in the future):
 * array updateScriptTag(array $args = [])
 * array deleteScriptTag(array $args = [])
 
-**TRANSACTION RELATED METHODS:**
+**SHIPPING ZONE RELATED METHODS:**
+* array getShippingZones(array $args = [])
 
+**SHOP RELATED METHODS:**
+* array getShop(array $args = [])
+
+**SMART COLLECTION RELATED METHODS:**
+* array getSmartCollections(array $args = [])
+* int getSmartCollectionCount(array $args = [])
+* array getSmartCollection(array $args = [])
+* array createSmartCollection(array $args = [])
+* array updateSmartCollection(array $args = [])
+* array deleteSmartCollection(array $args = [])
+
+**STOREFRONT ACCESS TOKEN RELATED METHODS:**
+* array getStorefrontAccessTokens(array $args = [])
+* array createStorefrontAccessToken(array $args = [])
+* array deleteStorefrontAccessToken(array $args = [])
+
+**THEME RELATED METHODS:**
+* array getThemes(array $args = [])
+* array getTheme(array $args = [])
+* array createTheme(array $args = [])
+* array updateTheme(array $args = [])
+* array deleteTheme(array $args = [])
+
+**TRANSACTION RELATED METHODS:**
 * array getTransactions(array $args = [])
 * int getTransactionCount(array $args = [])
 * array getTransaction(array $args = [])
 * array createTransaction(array $args = [])
 
 **USAGE CHARGE RELATED METHODS:**
-
 * array getUsageCharges(array $args = [])
 * array getUsageCharge(array $args = [])
 * array createUsageCharge(array $args = [])
 
 **WEBHOOK RELATED METHODS:**
-
 * array getWebhooks(array $args = [])
 * int getWebhookCount(array $args = [])
 * array getWebhook(array $args = [])
@@ -758,5 +744,26 @@ Here is a list of supported endpoints (more to come in the future):
 * array deleteWebhook(array $args = [])
 
 **OTHER METHODS:**
-
 * array createDelegateAccessToken(array $args = [])
+
+**ITERATOR METHODS:**
+* Traversable createDelegateAccessToken(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getBlogArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getProductImagesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getRecurringApplicationChargesIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = [])
+* Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = [])
