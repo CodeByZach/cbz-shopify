@@ -4061,6 +4061,77 @@ return [
 
         /**
          * ---------------------------------------------------------------------------------------------
+         * DiscountCode
+         * https://shopify.dev/api/admin/rest/reference/discounts/discountcode
+         * ---------------------------------------------------------------------------------------------
+         */
+        'GetDisputes' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/disputes.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve all disputes ordered by initiated_at date and time (ISO 8601 format), with the most recent being first.',
+            'data'          => [ 'root_key' => 'disputes' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Return only disputes after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'last_id' => [
+                    'description' => 'Return only disputes before the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'Filter by draft order status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'needs_response', 'under_review', 'charge_refunded', 'accepted', 'won', 'lost' ]
+                ],
+                'initiated_at' => [
+                    'description' => 'Return only disputes with the specified initiated_at date (ISO 8601 format).',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetDispute' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/disputes/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single dispute by ID.',
+            'data'          => [ 'root_key' => 'dispute' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Dispute ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * ---------------------------------------------------------------------------------------------
          * DraftOrder
          * https://shopify.dev/api/admin/rest/reference/orders/draftorder
          * ---------------------------------------------------------------------------------------------

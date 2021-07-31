@@ -180,6 +180,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getDiscountCodeBatch(array $args = []) { @command Shopify GetDiscountCodeBatch }
  * @method array getDiscountCodeBatchDiscountCodes(array $args = []) { @command Shopify GetDiscountCodeBatchDiscountCodes }
  *
+ * Dispute:
+ * @method array getDisputes(array $args = []) { @command Shopify GetDisputes }
+ * @method array getDispute(array $args = []) { @command Shopify GetDispute }
+ *
  * DraftOrder:
  * @method array createDraftOrder(array $args = []) { @command Shopify CreateDraftOrder }
  * @method array updateDraftOrder(array $args = []) { @command Shopify UpdateDraftOrder }
@@ -411,7 +415,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method \Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCustomers }
  * @method \Traversable getCustomerSavedSearchesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCustomerSavedSearches }
  * @method \Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetDiscountCodes }
- * Dispute
+ * @method \Traversable getDisputesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetDisputes }
  * @method \Traversable getDraftOrdersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetDraftOrders }
  * @method \Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetEvents }
  * @method \Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetFulfillments }
