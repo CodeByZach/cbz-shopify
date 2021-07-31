@@ -16,13 +16,14 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\Validator;
+namespace CbzShopifyTest\Validator;
 
 use Psr\Http\Message\ServerRequestInterface;
-use ZfrShopify\Exception\InvalidRequestException;
-use ZfrShopify\Validator\RequestValidator;
+use CbzShopify\Exception\InvalidRequestException;
+use CbzShopify\Validator\RequestValidator;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class RequestValidatorTest extends \PHPUnit\Framework\TestCase

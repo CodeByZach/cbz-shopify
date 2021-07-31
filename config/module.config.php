@@ -17,13 +17,13 @@
  */
 
 use Zend\ServiceManager\Factory\InvokableFactory;
-use ZfrShopify\Container\ShopifyClientFactory;
-use ZfrShopify\Container\TokenExchangerFactory;
-use ZfrShopify\OAuth\TokenExchanger;
-use ZfrShopify\ShopifyClient;
-use ZfrShopify\ShopifyGraphQLClient;
-use ZfrShopify\Validator\RequestValidator;
-use ZfrShopify\Validator\WebhookValidator;
+use CbzShopify\Container\ShopifyClientFactory;
+use CbzShopify\Container\TokenExchangerFactory;
+use CbzShopify\OAuth\TokenExchanger;
+use CbzShopify\ShopifyClient;
+use CbzShopify\ShopifyGraphQLClient;
+use CbzShopify\Validator\RequestValidator;
+use CbzShopify\Validator\WebhookValidator;
 
 return [
     'dependencies' => [

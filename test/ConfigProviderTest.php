@@ -16,9 +16,9 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest;
+namespace CbzShopifyTest;
 
-use ZfrShopify\ConfigProvider;
+use CbzShopify\ConfigProvider;
 use PHPUnit\Framework\TestCase;
 
 /**

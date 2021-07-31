@@ -16,11 +16,12 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Exception;
+namespace CbzShopify\Exception;
 
 /**
  * This exception is thrown when a GraphQL request contains any errors
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class GraphQLErrorException extends RuntimeException implements ExceptionInterface

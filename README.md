@@ -1,73 +1,72 @@
-ZfrShopify
+CbzShopify
 ==========
 
-[![Latest Stable Version](https://poser.pugx.org/zfr/zfr-shopify/v/stable.png)](https://packagist.org/packages/zfr/zfr-shopify)
-[![Build Status](https://travis-ci.org/zf-fr/zfr-shopify.svg)](https://travis-ci.org/zf-fr/zfr-shopify)
+[![Latest Release](https://img.shields.io/github/tag/codebyzach/cbz-shopify.svg?label=version)](https://github.com/codebyzach/cbz-shopify/releases)
 
-ZfrShopify is a modern PHP library based on Guzzle for [Shopify](https://www.shopify.com).
+CbzShopify is a modern PHP library based on Guzzle for [Shopify](https://www.shopify.com).
 
 ## Dependencies
 
 * PHP 7
-* [Guzzle](http://www.guzzlephp.org): ^6.1
-* [Zend Diactoros](https://github.com/zendframework/zend-diactoros): >=1.3
+* [Guzzle Services](https://github.com/guzzle/guzzle-services): ^1.0
+* [Laminas Diactoros](https://github.com/laminas/laminas-diactoros): ^2.0
 
 ## Installation
 
-Installation of ZfrShopify is only officially supported using Composer:
+Installation of CbzShopify is only officially supported using Composer:
 
 ```sh
-php composer.phar require 'zfr/zfr-shopify:6.0'
+php composer.phar require 'codebyzach/cbz-shopify'
 ```
 
 ## REST API
 
-ZfrShopify provides a one-to-one mapping with API methods defined in [Shopify doc](https://docs.shopify.com/api/). Since the version 4, it also
+CbzShopify provides a one-to-one mapping with API methods defined in [Shopify doc](https://shopify.dev/api). Since version 4, it also
 supports a basic integration with the new GraphQL admin API.
 
 ### Private app
 
-In order to use ZfrShopify as a private app, you must first instantiate the client:
+In order to use CbzShopify as a private app, you must first instantiate the client:
 
 ```php
-$shopifyClient = new ShopifyClient([
+$shopify_client = new ShopifyClient([
     'private_app' => true,
     'api_key'     => 'YOUR_API_KEY',
     'password'    => 'YOUR_PASSWORD',
     'shop'        => 'domain.myshopify.com',
-    'version'     => '2020-10'
+    'version'     => '2021-07'
 ]);
 ```
 
-> Make sure to always include a version. [More info about Shopify versioning](https://help.shopify.com/en/api/versioning)
+> Make sure to always include a version. [More info about Shopify versioning](https://shopify.dev/api/usage/versioning)
 
 ### Public app
 
 When using a public app, you instantiate the client a bit differently:
 
 ```php
-$shopifyClient = new ShopifyClient([
+$shopify_client = new ShopifyClient([
     'private_app'   => false,
     'api_key'       => 'YOUR_API_KEY', // In public app, this is the app ID
     'access_token'  => 'MERCHANT_TOKEN',
     'shop'          => 'merchant.myshopify.com',
-    'version'       => '2020-10'
+    'version'       => '2021-07'
 ]);
 ```
 
-> Make sure to always include a version. [More info about Shopify versioning](https://help.shopify.com/en/api/versioning)
+> Make sure to always include a version. [More info about Shopify versioning](https://shopify.dev/api/usage/versioning)
 
 ### Using a container
 
-ZfrShopify also provides built-in [container-interop](https://github.com/container-interop/container-interop) factories
+CbzShopify also provides built-in [container-interop](https://github.com/container-interop/container-interop) factories
 that you can use. You must make sure that your container contains a service called "config" that is an array with a key
-`zfr_shopify` containing the required config:
+`cbz_shopify` containing the required config:
 
 ```php
 // myconfig.php
 
 return [
-    'zfr_shopify' => [
+    'cbz_shopify' => [
         'private_app'   => false,
         'api_key'       => 'YOUR_API_KEY', // In public app, this is the app ID
         'access_token'  => 'MERCHANT_TOKEN',
@@ -84,12 +83,12 @@ under [src/Container](/src/Container) folder.
 
 ### Validating a request
 
-ZfrShopify client provides an easy way to validate an incoming request to make sure it comes from Shopify through the `RequestValidator`
+CbzShopify client provides an easy way to validate an incoming request to make sure it comes from Shopify through the `RequestValidator`
 object. It requires a PSR7 requests and a shared secret:
 
 ```php
-use ZfrShopify\Exception\InvalidRequestException;
-use ZfrShopify\Validator\RequestValidator;
+use CbzShopify\Exception\InvalidRequestException;
+use CbzShopify\Validator\RequestValidator;
 
 $validator = new RequestValidator();
 
@@ -105,8 +104,8 @@ try {
 Similarily, you can use the `WebhookValidator` to validate your webhook:
 
 ```php
-use ZfrShopify\Exception\InvalidWebhookException;
-use ZfrShopify\Validator\WebhookValidator;
+use CbzShopify\Exception\InvalidWebhookException;
+use CbzShopify\Validator\WebhookValidator;
 
 $validator = new WebhookValidator();
 
@@ -123,8 +122,8 @@ Finally, you can also use the `ApplicationProxyRequestValidator` to validate app
 
 
 ```php
-use ZfrShopify\Exception\InvalidApplicationProxyRequestException;
-use ZfrShopify\Validator\ApplicationProxyRequestValidator;
+use CbzShopify\Exception\InvalidApplicationProxyRequestException;
+use CbzShopify\Validator\ApplicationProxyRequestValidator;
 
 $validator = new ApplicationProxyRequestValidator();
 
@@ -137,21 +136,21 @@ try {
 
 ### Create an authorization response
 
-ZfrShopify provides an easy way to create a PSR7 compliant `ResponseInterface` to create an authorization response:
+CbzShopify provides an easy way to create a PSR7 compliant `ResponseInterface` to create an authorization response:
 
 ```php
-use ZfrShopify\OAuth\AuthorizationRedirectResponse;
+use CbzShopify\OAuth\AuthorizationRedirectResponse;
 
-$apiKey         = 'app_123';
-$shopDomain     = 'shop_to_authorize.myshopify.com';
+$api_key         = 'app_123';
+$shop_domain     = 'shop_to_authorize.myshopify.com';
 $scopes         = ['read_orders', 'read_products'];
 $redirectionUri = 'https://myapp.test.com/oauth/redirect';
 $nonce          = 'strong_nonce';
 
-$response = new AuthorizationRedirectResponse($apiKey, $shopDomain, $scopes, $redirectionUri, $nonce);
+$response = new AuthorizationRedirectResponse($api_key, $shop_domain, $scopes, $redirectionUri, $nonce);
 ```
 
-While the `nonce` parameter is required, ZfrShopify does not make any assumption about how to save the nonce and check it when
+While the `nonce` parameter is required, CbzShopify does not make any assumption about how to save the nonce and check it when
 Shopify redirects to your server. You are responsible to safely saving the nonce.
 
 ### Exchanging a code against an access token
@@ -160,23 +159,23 @@ You can use the `TokenExchanger` class to exchange a code to a long-lived access
 
 ```php
 use GuzzleHttp\Client;
-use ZfrShopify\OAuth\TokenExchanger;
+use CbzShopify\OAuth\TokenExchanger;
 
-$apiKey         = 'app_123';
-$sharedSecret   = 'secret_123';
-$shopDomain     = 'shop_to_authorize.myshopify.com';
-$code           = 'code_123';
+$api_key       = 'app_123';
+$shared_secret = 'secret_123';
+$shop_domain   = 'shop_to_authorize.myshopify.com';
+$code          = 'code_123';
 
-$tokenExchanger = new TokenExchanger(new Client());
-$accessToken    = $tokenExchanger->exchangeCodeForToken($apiKey, $sharedSecret, $shopDomain, $code);
+$token_exchanger = new TokenExchanger(new Client());
+$access_token    = $token_exchanger->exchangeCodeForToken($api_key, $shared_secret, $shop_domain, $code);
 ```
 
-ZfrShopify also provides a simple factory compliant with [container-interop](https://github.com/container-interop/container-interop)
-that you can register to the container of your choice, with the `ZfrShopify\Container\TokenExchangerFactory`.
+CbzShopify also provides a simple factory compliant with [container-interop](https://github.com/container-interop/container-interop)
+that you can register to the container of your choice, with the `CbzShopify\Container\TokenExchangerFactory`.
 
 ### Exploiting responses
 
-ZfrShopify returns Shopify response directly. However, by default, Shopify wrap the responses by a top-key. For instance, if
+CbzShopify returns Shopify response directly. However, by default, Shopify wrap the responses by a top-key. For instance, if
 you want to retrieve shop information, Shopify will return this payload:
 
 ```json
@@ -191,24 +190,24 @@ you want to retrieve shop information, Shopify will return this payload:
 This is a bit inconvenient to use as we would need to do that:
 
 ```php
-$shopDomain = $shopifyClient->getShop()['shop']['domain'];
+$shop_domain = $shopify_client->getShop()['shop']['domain'];
 ```
 
-Instead, ZfrShopify automatically "unwraps" response, so you can use the more concise code:
+Instead, CbzShopify automatically "unwraps" response, so you can use the more concise code:
 
 ```php
-$shopDomain = $shopifyClient->getShop()['domain'];
+$shop_domain = $shopify_client->getShop()['domain'];
 ```
 
 When reading Shopify API doc, make sure you remove the top key when exploiting responses.
 
 #### Count
 
-Similarily, when you use one of the `count` endpoint, ZfrShopify will automatically extract the value from Shopify's response, so you do not need
+Similarily, when you use one of the `count` endpoint, CbzShopify will automatically extract the value from Shopify's response, so you do not need
 to manually access the count property:
 
 ``php
-$count = $shopifyClient->getOrderCount();
+$count = $shopify_client->CountOrders();
 // $count is already an integer
 ``
 
@@ -217,23 +216,23 @@ $count = $shopifyClient->getOrderCount();
 For most "list" endpoints (`getProducts`, `getCollections`...), Shopify allows you to get up to 250 resources at a time. When using the standard `get**`
 method, you are responsible to handle the pagination yourself.
 
-For convenience, ZfrShopify allows you to easily iterate through all resources efficiently (internally, we are using generators). Here is how you can
+For convenience, CbzShopify allows you to easily iterate through all resources efficiently (internally, we are using generators). Here is how you can
 get all the products from a given store:
 
 ```php
-foreach ($shopifyClient->getProductsIterator(['fields' => 'id,title']) as $product) {
+foreach ($shopify_client->getProductsIterator(['fields' => 'id,title']) as $product) {
    // Do something with product
 }
 ```
 
-ZfrShopify will take care of doing additional requests when it has reached the end of a given page.
+CbzShopify will take care of doing additional requests when it has reached the end of a given page.
 
 ### Executing multiple requests concurrently
 
-For optimization purposes, it may be desirable to execute multiple requests concurrently. To do that, ZfrShopify client allow you to take advantage of
+For optimization purposes, it may be desirable to execute multiple requests concurrently. To do that, CbzShopify client allow you to take advantage of
 the underlying Guzzle client and execute multiple requests at the same time.
 
-To do that, you can manually create the Guzzle commands, and execute them all. ZfrShopify will take care of authenticating all requests individually, and
+To do that, you can manually create the Guzzle commands, and execute them all. CbzShopify will take care of authenticating all requests individually, and
 extracting the response payload. For instance, here is how you could get both shop info and products info:
 
 ```php
@@ -264,44 +263,44 @@ foreach ($results as $singleResult) {
 
 ## GraphQL API
 
-In 2018, Shopify launched a new API, called the [GraphQL Admin API](https://help.shopify.com/en/api/graphql-admin-api). This new API comes with a lot of
+In 2018, Shopify launched a new API, called the [GraphQL Admin API](https://shopify.dev/api/admin/graphql/reference). This new API comes with a lot of
 advantages compared to the REST API:
 
 * It allows to access more efficiently to the various Shopify resources (you can for instance get a collection, with all its products and variants, by
 using a single request).
 * It offers access to some resources that are not exposed through the REST API.
 
-The version 4 of ZfrShopify now ships with a basic GraphQL client. It does not yet support the following features, though:
+The version 4 of CbzShopify now ships with a basic GraphQL client. It does not yet support the following features, though:
 
 * Automatic pagination
 * Automatic handling of Shopify rate limits
 
-In order to use the client, you must instantiate it. Instead of the ShopifyClient, you must create a `ZfrShopify\ShopifyGraphQLClient`. If you are using
+In order to use the client, you must instantiate it. Instead of the ShopifyClient, you must create a `CbzShopify\ShopifyGraphQLClient`. If you are using
 a private app:
 
 ```php
 $client = new ShopifyGraphQLClient([
     'shop'        => 'test.myshopify.com',
-    'version'     => '2020-10',
+    'version'     => '2021-07',
     'private_app' => true,
     'password'    => 'YOUR PASSWORD'
 ]);
 ```
 
-> Make sure to always include a version. [More info about Shopify versioning](https://help.shopify.com/en/api/versioning)
+> Make sure to always include a version. [More info about Shopify versioning](https://shopify.dev/api/usage/versioning)
 
 If you are using a public app:
 
 ```php
 $client = new ShopifyGraphQLClient([
     'shop'         => 'test.myshopify.com',
-    'version'      => '2020-10',
+    'version'      => '2021-07',
     'private_app'  => false,
     'access_token' => 'ACCESS TOKEN'
 ]);
 ```
 
-> Make sure to always include a version. [More info about Shopify versioning](https://help.shopify.com/en/api/versioning)
+> Make sure to always include a version. [More info about Shopify versioning](https://shopify.dev/api/usage/versioning)
 
 ### Queries
 
@@ -335,7 +334,7 @@ EOT;
 $result = $client->request($request);
 ```
 
-ZfrShopify automatically unwrap the `data` top key from Shopify response, so you can retrieves the data like this:
+CbzShopify automatically unwrap the `data` top key from Shopify response, so you can retrieves the data like this:
 
 ```php
 foreach ($result['collections']['edges'] as $collection) {
@@ -347,11 +346,11 @@ foreach ($result['collections']['edges'] as $collection) {
 }
 ```
 
-ZfrShopify does not attempt to re-write the GraphQL response.
+CbzShopify does not attempt to re-write the GraphQL response.
 
 #### Variables
 
-ZfrShopify also fully supports GraphQL variable. For instance, here is how you can retrieve a given product by its ID by
+CbzShopify also fully supports GraphQL variable. For instance, here is how you can retrieve a given product by its ID by
 using GraphQL variables:
 
 ```php
@@ -376,7 +375,7 @@ var_dump($result);
 
 ### Mutations
 
-Similarly, ZfrShopify supports mutation. To do this, you simply need to use a mutation query. Here is an example that
+Similarly, CbzShopify supports mutation. To do this, you simply need to use a mutation query. Here is an example that
 is creating a product:
 
 ```php
@@ -416,12 +415,12 @@ When using GraphQL requests, there are two kinds of errors that you can catch.
 
 #### Request errors
 
-Those errors are for malformed GraphQL requests. You can catch them using the `\ZfrShopify\Exception\GraphQLErrorException` exception:
+Those errors are for malformed GraphQL requests. You can catch them using the `\CbzShopify\Exception\GraphQLErrorException` exception:
 
 ```php
 try {
     $result = $client->request($request);
-} catch (\ZfrShopify\Exception\GraphQLErrorException $exception) {
+} catch (\CbzShopify\Exception\GraphQLErrorException $exception) {
     var_dump($exception->getErrors());
 }
 ```
@@ -429,341 +428,519 @@ try {
 #### User errors
 
 Those errors are for requests that are missing data (like incorrect data, missing data...). You can catch them using the
-`\ZfrShopify\Exception\GraphQLUserErrorException` exception:
+`\CbzShopify\Exception\GraphQLUserErrorException` exception:
 
 ```php
 try {
     $result = $client->request($request);
-} catch (\ZfrShopify\Exception\GraphQLUserErrorException $exception) {
+} catch (\CbzShopify\Exception\GraphQLUserErrorException $exception) {
     var_dump($exception->getErrors());
 }
 ```
 
 ## Implemented endpoints
 
-Here is a list of supported endpoints (more to come in the future):
+- [Abandoned Checkouts](#abandoned-checkouts)
+- [AccessScope](#access-scope)
+- [ApplicationCharge](#application-charge)
+- [ApplicationCredit](#application-credit)
+- [Article](#article)
+- [Asset](#asset)
+- [Blog](#blog)
+- [CarrierService](#carrier-service)
+- [Collect](#collect)
+- [Collection](#collection)
+- [CollectionListing](#collection-listing)
+- [CustomCollection](#custom-collection)
+- [Customer](#customer)
+- [Customer Address](#customer-address)
+- [CustomerSavedSearch](#customer-saved-search)
+- [Deprecated API Calls](#deprecated-api-calls)
+- [DiscountCode](#discount-code)
+- [DraftOrder](#draft-order)
+- [Event](#event)
+- [Fulfillment](#fulfillment)
+- [FulfillmentOrder](#fulfillment-order)
+- [GiftCard](#gift-card)
+- [InventoryItem](#inventory-item)
+- [InventoryLevel](#inventory-level)
+- [Location](#location)
+- [MarketingEvent](#marketing-event)
+- [Metafield](#metafield)
+- [Order](#order)
+- [Page](#page)
+- [PriceRule](#price-rule)
+- [Product](#product)
+- [ProductImage](#product-image)
+- [ProductVariant](#product-variant)
+- [RecurringApplicationCharge](#recurring-application-charge)
+- [Redirect](#redirect)
+- [Refund](#refund)
+- [Report](#report)
+- [ScriptTag](#script-tag)
+- [ShippingZone](#shipping-zone)
+- [Shop](#shop)
+- [SmartCollection](#smart-collection)
+- [Storefront](#storefront)
+- [Theme](#theme)
+- [Transaction](#transaction)
+- [UsageCharge](#usage-charge)
+- [Webhook](#webhook)
+- [Other Methods](#other-methods)
+- [Iterator Methods](#iterator-methods)
 
-**ACCESS SCOPE RELATED METHODS:**
-* array getAccessScopes(array $args = [])
+### [Abandoned Checkouts](https://shopify.dev/api/admin/rest/reference/orders/abandoned-checkouts)
+```php
+int countAbandonedCheckouts(array $args = []);
+array getAbandonedCheckouts(array $args = []);
+```
 
-**APPLICATION CHARGE RELATED METHODS:**
-* array getApplicationCharges(array $args = [])
-* array getApplicationCharge(array $args = [])
-* array createApplicationCharge(array $args = [])
-* array activateApplicationCharge(array $args = [])
-* array deleteApplicationCharge(array $args = [])
+### [AccessScope](https://shopify.dev/api/admin/rest/reference/access/accessscope)
+```php
+array getAccessScopes(array $args = []);
+```
 
-**ARTICLE RELATED METHODS:**
-* array getArticles(array $args = [])
-* int getArticleCount(array $args = [])
-* array getBlogArticles(array $args = [])
-* int getBlogArticleCount(array $args = [])
-* array getArticle(array $args = [])
-* array getArticleMetafields(array $args = [])
-* array getBlogArticle(array $args = [])
-* array getArticlesAuthors(array $args = [])
-* array getArticlesTags(array $args = [])
-* array createArticle(array $args = [])
-* array createBlogArticle(array $args = [])
-* array updateArticle(array $args = [])
-* array updateBlogArticle(array $args = [])
-* array deleteArticle(array $args = [])
-* array deleteBlogArticle(array $args = [])
+### [ApplicationCharge](https://shopify.dev/api/admin/rest/reference/billing/applicationcharge)
+```php
+array createApplicationCharge(array $args = []);
+array getApplicationCharges(array $args = []);
+array getApplicationCharge(array $args = []);
+```
 
-**ASSET RELATED METHODS:**
-* array getAssets(array $args = [])
-* array getAsset(array $args = [])
-* array createAsset(array $args = [])
-* array updateAsset(array $args = [])
-* array deleteAsset(array $args = [])
+### [ApplicationCredit](https://shopify.dev/api/admin/rest/reference/billing/applicationcredit)
+```php
+array createApplicationCredit(array $args = []);
+array getApplicationCredit(array $args = []);
+array getApplicationCredits(array $args = []);
+```
 
-**BLOG RELATED METHODS:**
-* array getBlogs(array $args = [])
-* array getBlogMetafields(array $args = [])
-* int getBlogCount(array $args = [])
-* array getBlog(array $args = [])
-* array createBlog(array $args = [])
-* array updateBlog(array $args = [])
-* array deleteBlog(array $args = [])
+### [Article](https://shopify.dev/api/admin/rest/reference/online-store/article)
+```php
+array getArticles(array $args = []);
+int countArticles(array $args = []);
+array getArticle(array $args = []);
+array createArticle(array $args = []);
+array updateArticle(array $args = []);
+array getArticlesAuthors(array $args = []);
+array getArticlesTags(array $args = []);
+array deleteArticle(array $args = []);
+```
 
-**CARRIER SERVICE RELATED METHODS:**
-* array getCarrierServices(array $args = [])
-* array getCarrierService(array $args = [])
-* array createCarrierService(array $args = [])
-* array updateCarrierService(array $args = [])
-* array deleteCarrierService(array $args = [])
+### [Asset](https://shopify.dev/api/admin/rest/reference/online-store/asset)
+```php
+array getAssets(array $args = []);
+array getAsset(array $args = []);
+array createAsset(array $args = []);
+array updateAsset(array $args = []);
+array deleteAsset(array $args = []);
+```
 
-**COLLECT RELATED METHODS:**
-* array getCollects(array $args = [])
-* int getCollectCount(array $args = [])
-* array getCollect(array $args = [])
-* array createCollect(array $args = [])
-* array deleteCollect(array $args = [])
+### [Blog](https://shopify.dev/api/admin/rest/reference/online-store/blog)
+```php
+array getBlogs(array $args = []);
+int countBlogs(array $args = []);
+array getBlog(array $args = []);
+array createBlog(array $args = []);
+array updateBlog(array $args = []);
+array deleteBlog(array $args = []);
+```
 
-**COLLECTION RELATED METHODS:**
-* array getCollection(array $args = [])
-* array getCollectionProducts(array $args = [])
-* array getCollectionMetafields(array $args = [])
+### [CarrierService](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/carrierservice)
+```php
+array createCarrierService(array $args = []);
+array updateCarrierService(array $args = []);
+array getCarrierServices(array $args = []);
+array getCarrierService(array $args = []);
+array deleteCarrierService(array $args = []);
+```
 
-**CUSTOM COLLECTION RELATED METHODS:**
-* array getCustomCollections(array $args = [])
-* int getCustomCollectionCount(array $args = [])
-* array getCustomCollection(array $args = [])
-* array createCustomCollection(array $args = [])
-* array updateCustomCollection(array $args = [])
-* array deleteCustomCollection(array $args = [])
+### [Collect](https://shopify.dev/api/admin/rest/reference/products/collect)
+```php
+array createCollect(array $args = []);
+array deleteCollect(array $args = []);
+array getCollects(array $args = []);
+int countCollects(array $args = []);
+array getCollect(array $args = []);
+```
 
-**CUSTOMER ADDRESS RELATED METHODS:**
-* array getCustomerAddresses(array $args = [])
-* array getCustomerAddress(array $args = [])
-* array createCustomerAddress(array $args = [])
-* array updateCustomerAddress(array $args = [])
-* array deleteCustomerAddress(array $args = [])
-* array setDefaultCustomerAddress(array $args = [])
+### [Collection](https://shopify.dev/api/admin/rest/reference/products/collection)
+```php
+array getCollection(array $args = []);
+array getCollectionProducts(array $args = []);
+```
 
-**CUSTOMER RELATED METHODS:**
-* array getCustomers(array $args = [])
-* int getCustomerCount(array $args = [])
-* array searchCustomers(array $args = [])
-* array getCustomer(array $args = [])
-* array getCustomerMetafields(array $args = [])
-* array createCustomer(array $args = [])
-* array updateCustomer(array $args = [])
-* array deleteCustomer(array $args = [])
-* array createCustomerInvite(array $args = [])
+### [CollectionListing](https://shopify.dev/api/admin/rest/reference/sales-channels/collectionlisting)
+```php
+array getCollectionListings(array $args = []);
+array getCollectionListingProductIds(array $args = []);
+array getCollectionListing(array $args = []);
+array createCollectionListing(array $args = []);
+array getCollectionListing(array $args = []);
+```
 
-**DISCOUNT CODE RELATED METHODS:**
-* array getDiscountCodes(array $args = [])
-* array getDiscountCode(array $args = [])
-* array lookupDiscountCode(array $args = [])
-* array createDiscountCode(array $args = [])
-* array deleteDiscountCode(array $args = [])
-* array createDiscountCodeBatch(array $args = [])
-* array getDiscountCodeBatch(array $args = [])
-* array getDiscountCodeBatchDiscountCodes(array $args = [])
+### [CustomCollection](https://shopify.dev/api/admin/rest/reference/online-store/customcollection)
+```php
+array getCustomCollections(array $args = []);
+int countCustomCollections(array $args = []);
+array getCustomCollection(array $args = []);
+array createCustomCollection(array $args = []);
+array updateCustomCollection(array $args = []);
+array deleteCustomCollection(array $args = []);
+```
 
-**DRAFT ORDER RELATED METHODS:**
-* array getDraftOrders(array $args = [])
-* array getDraftOrderMetafields(array $args = [])
-* int getDraftOrderCount(array $args = [])
-* array createDraftOrder(array $args = [])
-* array updateDraftOrder(array $args = [])
-* array getDraftOrder(array $args = [])
-* array sendDraftOrderInvoice(array $args = [])
-* array completeDraftOrder(array $args = [])
-* array deleteDraftOrder(array $args = [])
+### [Customer](https://shopify.dev/api/admin/rest/reference/online-store/customer)
+```php
+array getCustomers(array $args = []);
+array searchCustomers(array $args = []);
+array getCustomer(array $args = []);
+array createCustomer(array $args = []);
+array updateCustomer(array $args = []);
+array sendCustomerActivationUrl(array $args = []);
+array sendCustomerInvite(array $args = []);
+array deleteCustomer(array $args = []);
+int countCustomers(array $args = []);
+array getCustomerOrders(array $args = []);
+```
 
-**EVENT RELATED METHODS:**
-* array getEvents(array $args = [])
-* int getEventCount(array $args = [])
-* array getEvent(array $args = [])
+### [Customer Address](https://shopify.dev/docs/admin-api/rest/reference/customers/customer-address)
+```php
+array getCustomerAddresses(array $args = []);
+array getCustomerAddress(array $args = []);
+array createCustomerAddress(array $args = []);
+array updateCustomerAddress(array $args = []);
+array deleteCustomerAddress(array $args = []);
+array updateCustomerAddresses(array $args = []);
+array setDefaultCustomerAddress(array $args = []);
+```
 
-**FULFILLMENT RELATED METHODS:**
-* array getFulfillments(array $args = [])
-* int getFulfillmentCount(array $args = [])
-* array getFulfillment(array $args = [])
-* array createFulfillment(array $args = [])
-* array updateFilfillment(array $args = [])
-* array completeFulfillment(array $args = [])
-* array cancelFulfillment(array $args = [])
+### [CustomerSavedSearch](https://shopify.dev/api/admin/rest/reference/customers/customersavedsearch)
+```php
+array getCustomerSavedSearches(array $args = []);
+int countCustomerSavedSearches(array $args = []);
+array getCustomerSavedSearch(array $args = []);
+array getCustomerSavedSearchCustomers(array $args = []);
+array createCustomerSavedSearch(array $args = []);
+array updateCustomerSavedSearch(array $args = []);
+array deleteCustomerSavedSearch(array $args = []);
+```
 
-**FULFILLMENT ORDER RELATED METHODS:**
-* array getFulfillmentOrders(array $args = [])
-* array getFulfillmentOrder(array $args = [])
-* array cancelFulfillmentOrder(array $args = [])
-* array closeFulfillmentOrder(array $args = [])
-* array moveFulfillmentOrder(array $args = [])
-* array openFulfillmentOrder(array $args = [])
-* array rescheduleFulfillmentOrder(array $args = [])
+### [Deprecated API Calls](https://shopify.dev/api/admin/rest/reference/deprecated_api_calls)
+```php
+array getDeprecatedApiCalls(array $args = []);
+```
 
-**GIFT CARD RELATED METHODS:**
-* array getGiftCards(array $args = [])
-* int getGiftCardCount(array $args = [])
-* array getGiftCard(array $args = [])
-* array createGiftCard(array $args = [])
-* array updateGiftCard(array $args = [])
-* array disableGiftCard(array $args = [])
+### [DiscountCode](https://shopify.dev/api/admin/rest/reference/discounts/discountcode)
+```php
+array createDiscountCode(array $args = []);
+array updateDiscountCode(array $args = []);
+array getDiscountCodes(array $args = []);
+array getDiscountCode(array $args = []);
+array lookupDiscountCode(array $args = []);
+int countDiscountCodes(array $args = []);
+array deleteDiscountCode(array $args = []);
+array createDiscountCodeBatch(array $args = []);
+array getDiscountCodeBatch(array $args = []);
+array getDiscountCodeBatchDiscountCodes(array $args = []);
+```
 
-**INVENTORY ITEM RELATED METHODS:**
-* array getInventoryItems(array $args = [])
-* array getInventoryItem(array $args = [])
-* array updateInventoryItem(array $args = [])
+### [DraftOrder](https://shopify.dev/api/admin/rest/reference/orders/draftorder)
+```php
+array createDraftOrder(array $args = []);
+array updateDraftOrder(array $args = []);
+array getDraftOrders(array $args = []);
+array getDraftOrder(array $args = []);
+int countDraftOrders(array $args = []);
+array sendDraftOrderInvoice(array $args = []);
+array deleteDraftOrder(array $args = []);
+array completeDraftOrder(array $args = []);
+```
 
-**INVENTORY LEVEL RELATED METHODS:**
-* array getInventoryLevels(array $args = [])
-* array adjustInventoryLevel(array $args = [])
-* array deleteInventoryLevel(array $args = [])
-* array connectInventoryLevel(array $args = [])
-* array setInventoryLevel(array $args = [])
+### [Event](https://shopify.dev/api/admin/rest/reference/online-store/events)
+```php
+array getEvents(array $args = []);
+array getEvent(array $args = []);
+int countEvents(array $args = []);
+```
 
-**LOCATION RELATED METHODS:**
-* array getLocations(array $args = [])
-* array getLocation(array $args = [])
-* int getLocationCount(array $args = [])
-* array getLocationInventoryLevels(array $args = [])
+### [Fulfillment](https://shopify.dev/api/admin/rest/reference/online-store/reference/fulfillment)
+```php
+array getFulfillments(array $args = []);
+array getFulfillmentOrderFulfillments(array $args = []);
+int countFulfillments(array $args = []);
+array getFulfullment(array $args = []);
+array createFulfillment(array $args = []);
+array createFulfillmentOrderFulfillment(array $args = []);
+array updateFulfillment(array $args = []);
+array updateFulfillmentOrderFulfillment(array $args = []);
+array completeFulfillment(array $args = []);
+array openFulfillment(array $args = []);
+array cancelFulfillment(array $args = []);
+array cancelFulfillmentOrderFulfillment(array $args = []);
+```
 
-**METAFIELD RELATED METHODS:**
-* array getMetafields(array $args = [])
-* array getMetafield(array $args = [])
-* array createMetafield(array $args = [])
-* array updateMetafield(array $args = [])
-* array deleteMetafield(array $args = [])
+### [FulfillmentOrder](https://shopify.dev/docs/admin-api/rest/reference/shipping-and-fulfillment/fulfillmentorder)
+```php
+array getFulfillmentOrders(array $args = []);
+array getFulfillmentOrder(array $args = []);
+int cancelFulfillmentOrder(array $args = []);
+array closeFulfillmentOrder(array $args = []);
+array moveFulfillmentOrder(array $args = []);
+array openFulfillmentOrder(array $args = []);
+array rescheduleFulfillmentOrder(array $args = []);
+```
 
-**ORDER RELATED METHODS:**
-* array getOrders(array $args = [])
-* int getOrderCount(array $args = [])
-* array getOrder(array $args = [])
-* array getOrderMetafields(array $args = [])
-* array createOrder(array $args = [])
-* array updateOrder(array $args = [])
-* array closeOrder(array $args = [])
-* array openOrder(array $args = [])
-* array cancelOrder(array $args = [])
+### [GiftCard](https://shopify.dev/api/admin/rest/reference/online-store/reference/gift_card)
+```php
+array getGiftCards(array $args = []);
+array getGiftCard(array $args = []);
+int countGiftCards(array $args = []);
+array createGiftCard(array $args = []);
+array updateGiftCard(array $args = []);
+array disableGiftCard(array $args = []);
+array searchGiftCards(array $args = [])
+```
 
-**PAGE RELATED METHODS:**
-* array getPages(array $args = [])
-* int getPageCount(array $args = [])
-* array getPage(array $args = [])
-* array getPageMetafields(array $args = [])
-* array createPage(array $args = [])
-* array updatePage(array $args = [])
-* array deletePage(array $args = [])
+### [InventoryItem](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventoryitem)
+```php
+array getInventoryItems(array $args = []);
+array getInventoryItem(array $args = []);
+array updateInventoryItem(array $args = []);
+```
 
-**PRICE RULE RELATED METHODS:**
-* array getPriceRules(array $args = [])
-* array getPriceRule(array $args = [])
-* array createPriceRule(array $args = [])
-* array updatePriceRule(array $args = [])
-* array deletePriceRule(array $args = [])
+### [InventoryLevel](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventorylevel)
+```php
+array getInventoryLevels(array $args = []);
+array adjustInventoryLevel(array $args = []);
+array deleteInventoryLevel(array $args = []);
+array connectInventoryLevel(array $args = []);
+array setInventoryLevel(array $args = []);
+```
 
-**PRODUCT IMAGE RELATED METHODS:**
-* array getProductImages(array $args = [])
-* int getProductImageCount(array $args = [])
-* array getProductImage(array $args = [])
-* array createProductImage(array $args = [])
-* array updateProductImage(array $args = [])
-* array deleteProductImage(array $args = [])
+### [Location](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/location)
+```php
+array getLocations(array $args = []);
+array getLocation(array $args = []);
+int countLocations(array $args = []);
+array getLocationInventoryLevels(array $args = []);
+```
 
-**PRODUCT RELATED METHODS:**
-* array getProducts(array $args = [])
-* int getProductCount(array $args = [])
-* array getProduct(array $args = [])
-* array getProductMetafields(array $args = [])
-* array createProduct(array $args = [])
-* array updateProduct(array $args = [])
-* array deleteProduct(array $args = [])
+### [MarketingEvent](https://shopify.dev/api/admin/rest/reference/marketingevent)
+```php
+array getMarketingEvents(array $args = []);
+int countMarketingEvents(array $args = []);
+array getMarketingEvent(array $args = []);
+array createMarketingEvent(array $args = []);
+array updateMarketingEvent(array $args = []);
+array deleteMarketingEvent(array $args = []);
+array createMarketingEventEngagements(array $args = []);
+```
 
-**PRODUCT VARIANT RELATED METHODS:**
-* array getProductVariants(array $args = [])
-* int getProductVariantCount(array $args = [])
-* array getProductVariant(array $args = [])
-* array getProductVariantMetafields(array $args = [])
-* array createProductVariant(array $args = [])
-* array updateProductVariant(array $args = [])
-* array deleteProductVariant(array $args = [])
+### [Metafield](https://shopify.dev/api/admin/rest/reference/online-store/metafield)
+```php
+array getMetafields(array $args = []);
+array getMetafield(array $args = []);
+array createMetafield(array $args = []);
+array updateMetafield(array $args = []);
+array deleteMetafield(array $args = []);
+```
 
-**RECURRING APPLICATION CHARGE RELATED METHODS:**
-* array getRecurringApplicationCharges(array $args = [])
-* array getRecurringApplicationCharge(array $args = [])
-* array createRecurringApplicationCharge(array $args = [])
-* array activateRecurringApplicationCharge(array $args = [])
-* array deleteRecurringApplicationCharge(array $args = [])
+### [Order](https://shopify.dev/api/admin/rest/reference/online-store/order)
+```php
+array getOrders(array $args = []);
+int countOrders(array $args = []);
+array getOrder(array $args = []);
+array getOrderMetafields(array $args = []);
+array createOrder(array $args = []);
+array updateOrder(array $args = []);
+array closeOrder(array $args = []);
+array openOrder(array $args = []);
+array cancelOrder(array $args = []);
+```
 
-**REDIRECT RELATED METHODS:**
-* array getRedirects(array $args = [])
-* int getRedirectCount(array $args = [])
-* array getRedirect(array $args = [])
-* array createRedirect(array $args = [])
-* array updateRedirect(array $args = [])
-* array deleteRedirect(array $args = [])
+### [Page](https://shopify.dev/api/admin/rest/reference/online-store/page)
+```php
+array getPages(array $args = []);
+int countPages(array $args = []);
+array getPage(array $args = []);
+array getPageMetafields(array $args = []);
+array createPage(array $args = []);
+array updatePage(array $args = []);
+array deletePage(array $args = []);
+```
 
-**REFUND RELATED METHODS:**
-* array getRefunds(array $args = [])
-* array getRefund(array $args = [])
-* array calculateRefund(array $args = [])
-* array createRefund(array $args = [])
+### [PriceRule](https://shopify.dev/api/admin/rest/reference/discounts/pricerule)
+```php
+array getPriceRules(array $args = []);
+array getPriceRule(array $args = []);
+array createPriceRule(array $args = []);
+array updatePriceRule(array $args = []);
+array deletePriceRule(array $args = []);
+```
 
-**REPORT RELATED METHODS:**
-* array getReports(array $args = [])
-* array getReport(array $args = [])
-* array createReport(array $args = [])
-* array updateReport(array $args = [])
-* array deleteReport(array $args = [])
+### [Product](https://shopify.dev/api/admin/rest/reference/online-store/product)
+```php
+array getProducts(array $args = []);
+int countProducts(array $args = []);
+array getProduct(array $args = []);
+array getProductMetafields(array $args = []);
+array createProduct(array $args = []);
+array updateProduct(array $args = []);
+array deleteProduct(array $args = []);
+```
 
-**SCRIPT TAG RELATED METHODS:**
-* array getScriptTags(array $args = [])
-* int getScriptTagCount(array $args = [])
-* array getScriptTag(array $args = [])
-* array createScriptTag(array $args = [])
-* array updateScriptTag(array $args = [])
-* array deleteScriptTag(array $args = [])
+### [ProductImage](https://shopify.dev/api/admin/rest/reference/online-store/product_image)
+```php
+array getProductImages(array $args = []);
+int countProductImages(array $args = []);
+array getProductImage(array $args = []);
+array createProductImage(array $args = []);
+array updateProductImage(array $args = []);
+array deleteProductImage(array $args = []);
+```
 
-**SHIPPING ZONE RELATED METHODS:**
-* array getShippingZones(array $args = [])
+### [ProductVariant](https://shopify.dev/api/admin/rest/reference/online-store/product_variant)
+```php
+array getProductVariants(array $args = []);
+int countProductVariants(array $args = []);
+array getProductVariant(array $args = []);
+array getProductVariantMetafields(array $args = []);
+array createProductVariant(array $args = []);
+array updateProductVariant(array $args = []);
+array deleteProductVariant(array $args = []);
+```
 
-**SHOP RELATED METHODS:**
-* array getShop(array $args = [])
+### [RecurringApplicationCharge](https://shopify.dev/api/admin/rest/reference/online-store/recurringapplicationcharge)
+```php
+array getRecurringApplicationCharges(array $args = []);
+array getRecurringApplicationCharge(array $args = []);
+array createRecurringApplicationCharge(array $args = []);
+array updateRecurringApplicationCharge(array $args = []);
+array deleteRecurringApplicationCharge(array $args = []);
+```
 
-**SMART COLLECTION RELATED METHODS:**
-* array getSmartCollections(array $args = [])
-* int getSmartCollectionCount(array $args = [])
-* array getSmartCollection(array $args = [])
-* array createSmartCollection(array $args = [])
-* array updateSmartCollection(array $args = [])
-* array deleteSmartCollection(array $args = [])
+### [Redirect](https://shopify.dev/api/admin/rest/reference/online-store/redirect)
+```php
+array getRedirects(array $args = []);
+int countRedirects(array $args = []);
+array getRedirect(array $args = []);
+array createRedirect(array $args = []);
+array updateRedirect(array $args = []);
+array deleteRedirect(array $args = []);
+```
 
-**STOREFRONT ACCESS TOKEN RELATED METHODS:**
-* array getStorefrontAccessTokens(array $args = [])
-* array createStorefrontAccessToken(array $args = [])
-* array deleteStorefrontAccessToken(array $args = [])
+### [Refund](https://shopify.dev/api/admin/rest/reference/online-store/refund)
+```php
+array getRefunds(array $args = []);
+array getRefund(array $args = []);
+array calculateRefund(array $args = []);
+array createRefund(array $args = []);
+```
 
-**THEME RELATED METHODS:**
-* array getThemes(array $args = [])
-* array getTheme(array $args = [])
-* array createTheme(array $args = [])
-* array updateTheme(array $args = [])
-* array deleteTheme(array $args = [])
+### [Report](https://shopify.dev/api/admin/rest/reference/analytics/report)
+```php
+array getReports(array $args = []);
+array getReport(array $args = []);
+array createReport(array $args = []);
+array updateReport(array $args = []);
+array deleteReport(array $args = []);
+```
 
-**TRANSACTION RELATED METHODS:**
-* array getTransactions(array $args = [])
-* int getTransactionCount(array $args = [])
-* array getTransaction(array $args = [])
-* array createTransaction(array $args = [])
+### [ScriptTag](https://shopify.dev/api/admin/rest/reference/online-store/scripttag)
+```php
+array getScriptTags(array $args = []);
+int countScriptTags(array $args = []);
+array getScriptTag(array $args = []);
+array createScriptTag(array $args = []);
+array updateScriptTag(array $args = []);
+array deleteScriptTag(array $args = []);
+```
 
-**USAGE CHARGE RELATED METHODS:**
-* array getUsageCharges(array $args = [])
-* array getUsageCharge(array $args = [])
-* array createUsageCharge(array $args = [])
+### [ShippingZone](https://shopify.dev/docs/admin-api/rest/reference/store-properties/shippingzone)
+```php
+array getShippingZones(array $args = []);
+```
 
-**WEBHOOK RELATED METHODS:**
-* array getWebhooks(array $args = [])
-* int getWebhookCount(array $args = [])
-* array getWebhook(array $args = [])
-* array createWebhook(array $args = [])
-* array updateWebhook(array $args = [])
-* array deleteWebhook(array $args = [])
+### [Shop](https://shopify.dev/api/admin/rest/reference/online-store/shop)
+```php
+array getShop(array $args = []);
+```
 
-**OTHER METHODS:**
-* array createDelegateAccessToken(array $args = [])
+### [SmartCollection](https://shopify.dev/api/admin/rest/reference/online-store/smartcollection)
+```php
+array getSmartCollections(array $args = []);
+int countSmartCollections(array $args = []);
+array getSmartCollection(array $args = []);
+array createSmartCollection(array $args = []);
+array updateSmartCollection(array $args = []);
+array deleteSmartCollection(array $args = []);
+```
 
-**ITERATOR METHODS:**
-* Traversable createDelegateAccessToken(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getBlogArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getProductImagesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getRecurringApplicationChargesIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = [])
-* Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = [])
+### [Storefront](https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken)
+```php
+array getStorefrontAccessTokens(array $args = []);
+array createStorefrontAccessToken(array $args = []);
+array deleteStorefrontAccessToken(array $args = []);
+```
+
+### [Theme](https://shopify.dev/api/admin/rest/reference/online-store/theme)
+```php
+array getThemes(array $args = []);
+array getTheme(array $args = []);
+array createTheme(array $args = []);
+array updateTheme(array $args = []);
+array deleteTheme(array $args = []);
+```
+
+### [Transaction](https://shopify.dev/api/admin/rest/reference/online-store/transaction)
+```php
+array getTransactions(array $args = []);
+int countTransactions(array $args = []);
+array getTransaction(array $args = []);
+array createTransaction(array $args = []);
+```
+
+### [UsageCharge](https://shopify.dev/api/admin/rest/reference/online-store/usagecharge)
+```php
+array getUsageCharges(array $args = []);
+array getUsageCharge(array $args = []);
+array createUsageCharge(array $args = []);
+```
+
+### [Webhook](https://shopify.dev/api/admin/rest/reference/online-store/webhook)
+```php
+array getWebhooks(array $args = []);
+int countWebhooks(array $args = []);
+array getWebhook(array $args = []);
+array createWebhook(array $args = []);
+array updateWebhook(array $args = []);
+array deleteWebhook(array $args = []);
+```
+
+**Other Methods**
+```php
+array createDelegateAccessToken(array $args = []);
+```
+
+**Iterator Methods**
+```php
+Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getCustomerAddressesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getProductImagesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getRecurringApplicationChargesIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable searchCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
+```

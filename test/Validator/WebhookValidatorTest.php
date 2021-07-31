@@ -16,13 +16,14 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\Validator;
+namespace CbzShopifyTest\Validator;
 
 use Psr\Http\Message\ServerRequestInterface;
-use ZfrShopify\Exception\InvalidRequestException;
-use ZfrShopify\Validator\WebhookValidator;
+use CbzShopify\Exception\InvalidRequestException;
+use CbzShopify\Validator\WebhookValidator;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class WebhookValidatorTest extends \PHPUnit\Framework\TestCase

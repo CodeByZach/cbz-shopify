@@ -16,12 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\OAuth;
+namespace CbzShopify\OAuth;
 
 use GuzzleHttp\ClientInterface;
-use ZfrShopify\Exception\RuntimeException;
+use CbzShopify\Exception\RuntimeException;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class TokenExchanger

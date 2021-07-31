@@ -1,20 +1,21 @@
 <?php
 
-namespace ZfrShopify;
+namespace CbzShopify;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
-use ZfrShopify\Exception\GraphQLErrorException;
-use ZfrShopify\Exception\GraphQLUserErrorException;
-use ZfrShopify\Exception\RuntimeException;
+use CbzShopify\Exception\GraphQLErrorException;
+use CbzShopify\Exception\GraphQLUserErrorException;
+use CbzShopify\Exception\RuntimeException;
 
 /**
  * This minimal class allows to interact with the new GraphQL Admin API. It allows to do
  * both queries and mutations. Its implementation is pretty minimal, and let you the flexibility to write
  * your own request.
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class ShopifyGraphQLClient

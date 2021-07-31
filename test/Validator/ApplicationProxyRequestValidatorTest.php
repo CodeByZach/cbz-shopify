@@ -1,10 +1,10 @@
 <?php
 
-namespace ZfrShopifyTest\Validator;
+namespace CbzShopifyTest\Validator;
 
 use Psr\Http\Message\ServerRequestInterface;
-use ZfrShopify\Exception\InvalidApplicationProxyRequestException;
-use ZfrShopify\Validator\ApplicationProxyRequestValidator;
+use CbzShopify\Exception\InvalidApplicationProxyRequestException;
+use CbzShopify\Validator\ApplicationProxyRequestValidator;
 
 class ApplicationProxyRequestValidatorTest extends \PHPUnit\Framework\TestCase
 {

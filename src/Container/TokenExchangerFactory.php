@@ -16,13 +16,14 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Container;
+namespace CbzShopify\Container;
 
 use GuzzleHttp\Client as HttpClient;
 use Psr\Container\ContainerInterface;
-use ZfrShopify\OAuth\TokenExchanger;
+use CbzShopify\OAuth\TokenExchanger;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class TokenExchangerFactory

@@ -16,20 +16,20 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Container;
+namespace CbzShopify\Container;
 
 use Psr\Container\ContainerInterface;
-use ZfrShopify\Exception\RuntimeException;
-use ZfrShopify\ShopifyClient;
+use CbzShopify\Exception\RuntimeException;
+use CbzShopify\ShopifyClient;
 
 /**
  * Create and return an instance of the Shopify client.
  *
- * Register this factory for the `Zfr\Shopify\ShopifyClient` factory, and make sure to include the "config"
- * service (that must contains a "zfr_shopify" key). Supported configuration is:
+ * Register this factory for the `CbzShopify\ShopifyClient` factory, and make sure to include the "config"
+ * service (that must contains a "cbz_shopify" key). Supported configuration is:
  *
  * <code>
- *     'zfr_shopify' => [
+ *     'cbz_shopify' => [
  *         'shop'          => '', // a shop name, WITHOUT the ".myshopify.com" part (only required for private apps)
  *         'version'       => '', // a version for API
  *         'api_key'       => '', // an API key (only required for private apps)
@@ -39,6 +39,7 @@ use ZfrShopify\ShopifyClient;
  *     ]
  * </code>
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class ShopifyClientFactory
@@ -51,10 +52,10 @@ class ShopifyClientFactory
     {
         $config = $container->has('config') ? $container->get('config') : [];
 
-        if (!isset($config['zfr_shopify'])) {
-            throw new RuntimeException('Container config does not have a "zfr_shopify" key');
+        if (!isset($config['cbz_shopify'])) {
+            throw new RuntimeException('Container config does not have a "cbz_shopify" key');
         }
 
-        return new ShopifyClient($config['zfr_shopify']);
+        return new ShopifyClient($config['cbz_shopify']);
     }
 }

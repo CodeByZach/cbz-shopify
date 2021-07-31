@@ -16,13 +16,14 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\OAuth;
+namespace CbzShopify\OAuth;
 
 use Laminas\Diactoros\Response\RedirectResponse;
 
 /**
  * Create a redirection response to Shopify
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class AuthorizationRedirectResponse extends RedirectResponse

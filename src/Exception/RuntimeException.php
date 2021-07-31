@@ -16,11 +16,12 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Exception;
+namespace CbzShopify\Exception;
 
 use RuntimeException as BaseRuntimeException;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class RuntimeException extends BaseRuntimeException implements ExceptionInterface

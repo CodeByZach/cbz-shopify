@@ -16,10 +16,10 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\Model;
+namespace CbzShopifyTest\Model;
 
-use ZfrShopify\Exception\InvalidArgumentException;
-use ZfrShopify\Model\ShopDomain;
+use CbzShopify\Exception\InvalidArgumentException;
+use CbzShopify\Model\ShopDomain;
 use PHPUnit\Framework\TestCase;
 
 class ShopDomainTest extends TestCase

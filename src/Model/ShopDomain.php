@@ -16,14 +16,15 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Model;
+namespace CbzShopify\Model;
 
-use ZfrShopify\Exception;
+use CbzShopify\Exception;
 
 /**
  * Simple value object that can be re-used whenever you need to interact with a shop domain, by making sure the
  * shop domain is valid
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class ShopDomain

@@ -16,11 +16,12 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Exception;
+namespace CbzShopify\Exception;
 
 /**
  * This exception is thrown when a request is considered as invalid (not signed correctly)
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class InvalidRequestException extends RuntimeException implements ExceptionInterface

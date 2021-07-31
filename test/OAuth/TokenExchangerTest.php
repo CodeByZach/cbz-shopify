@@ -16,15 +16,16 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\OAuth;
+namespace CbzShopifyTest\OAuth;
 
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
-use ZfrShopify\Exception\RuntimeException;
-use ZfrShopify\OAuth\TokenExchanger;
+use CbzShopify\Exception\RuntimeException;
+use CbzShopify\OAuth\TokenExchanger;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class TokenExchangerTest extends TestCase

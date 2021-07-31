@@ -16,12 +16,13 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\OAuth;
+namespace CbzShopifyTest\OAuth;
 
-use ZfrShopify\OAuth\AuthorizationRedirectResponse;
+use CbzShopify\OAuth\AuthorizationRedirectResponse;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class AuthorizationRedirectResponseTest extends TestCase

@@ -16,14 +16,15 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Validator;
+namespace CbzShopify\Validator;
 
 use Psr\Http\Message\ServerRequestInterface;
-use ZfrShopify\Exception;
+use CbzShopify\Exception;
 
 /**
  * Validate an incoming webhook request coming from Shopify
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class WebhookValidator

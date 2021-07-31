@@ -16,14 +16,15 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest\Container;
+namespace CbzShopifyTest\Container;
 
 use Psr\Container\ContainerInterface;
-use ZfrShopify\Exception\RuntimeException;
-use ZfrShopify\Container\ShopifyClientFactory;
+use CbzShopify\Exception\RuntimeException;
+use CbzShopify\Container\ShopifyClientFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class ShopifyClientFactoryTest extends TestCase
@@ -45,9 +46,9 @@ class ShopifyClientFactoryTest extends TestCase
         $container = $this->prophesize(ContainerInterface::class);
         $container->has('config')->shouldBeCalled()->willReturn(true);
         $container->get('config')->shouldBeCalled()->willReturn([
-            'zfr_shopify' => [
+            'cbz_shopify' => [
                 'shop'          => 'example.myshopify.com',
-                'version'       => '2019-04',
+                'version'       => '2021-07',
                 'api_key'       => 'key',
                 'access_token'  => 'token',
                 'private_app'   => false

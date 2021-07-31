@@ -16,11 +16,12 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Exception;
+namespace CbzShopify\Exception;
 
 use InvalidArgumentException as BaseInvalidArgumentException;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class InvalidArgumentException extends BaseInvalidArgumentException implements ExceptionInterface

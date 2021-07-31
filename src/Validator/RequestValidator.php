@@ -16,15 +16,16 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Validator;
+namespace CbzShopify\Validator;
 
 use Psr\Http\Message\ServerRequestInterface;
-use ZfrShopify\Exception;
-use ZfrShopify\Model\ShopDomain;
+use CbzShopify\Exception;
+use CbzShopify\Model\ShopDomain;
 
 /**
  * Validate an incoming request coming from Shopify
  *
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class RequestValidator

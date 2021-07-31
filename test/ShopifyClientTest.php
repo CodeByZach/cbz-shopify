@@ -16,7 +16,7 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopifyTest;
+namespace CbzShopifyTest;
 
 use GuzzleHttp\Command\CommandInterface;
 use GuzzleHttp\Command\Guzzle\DescriptionInterface;
@@ -28,11 +28,12 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ServerException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ZfrShopify\Exception\RuntimeException;
-use ZfrShopify\ShopifyClient;
+use CbzShopify\Exception\RuntimeException;
+use CbzShopify\ShopifyClient;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 class ShopifyClientTest extends TestCase
@@ -63,7 +64,7 @@ class ShopifyClientTest extends TestCase
             [
                 [
                     'shop'        => 'test.myshopify.com',
-                    'version'     => '2019-04',
+                    'version'     => '2021-07',
                     'api_key'     => 'key_123',
                     'private_app' => true,
                     'password'    => 'pass_123'
@@ -73,7 +74,7 @@ class ShopifyClientTest extends TestCase
             [
                 [
                     'shop'         => 'test.myshopify.com',
-                    'version'      => '2019-04',
+                    'version'      => '2021-07',
                     'api_key'      => 'key_123',
                     'private_app'  => false,
                     'access_token' => 'token_123'
@@ -168,7 +169,7 @@ class ShopifyClientTest extends TestCase
 
         $serviceClient->getCommand('GetShop', [
             'fields'  => 'id',
-            'version' => '2019-04',
+            'version' => '2021-07',
             '@http'   => [
                 'headers' => [
                     'X-Shopify-Access-Token' => 'token_123'
@@ -186,7 +187,7 @@ class ShopifyClientTest extends TestCase
 
         $serviceClient->getCommand('GetShop', [
             'fields'  => 'id',
-            'version' => '2019-04',
+            'version' => '2021-07',
             '@http'   => [
                 'auth' => ['key', 'password_123']
             ]
@@ -202,7 +203,7 @@ class ShopifyClientTest extends TestCase
 
         $expectedArgs = [
             'fields'  => 'id,name',
-            'version' => '2019-04',
+            'version' => '2021-07',
             '@http'   => [
                 'headers' => [
                     'X-Shopify-Access-Token' => 'token_123'
@@ -239,7 +240,7 @@ class ShopifyClientTest extends TestCase
 
         $expectedArgs = [
             'fields'  => 'id,name',
-            'version' => '2019-04',
+            'version' => '2021-07',
             '@http'   => [
                 'auth' => ['key', 'password_123']
             ]
@@ -271,7 +272,7 @@ class ShopifyClientTest extends TestCase
     {
         $options = [
             'shop'         => 'test.myshopify.com',
-            'version'      => '2019-04',
+            'version'      => '2021-07',
             'private_app'  => false,
             'access_token' => 'token_123',
             'api_key'      => 'key'
@@ -284,7 +285,7 @@ class ShopifyClientTest extends TestCase
     {
         $options = [
             'shop'         => 'test.myshopify.com',
-            'version'      => '2019-04',
+            'version'      => '2021-07',
             'private_app'  => true,
             'password'     => 'password_123',
             'api_key'      => 'key'

@@ -16,9 +16,10 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrShopify\Exception;
+namespace CbzShopify\Exception;
 
 /**
+ * @author Zachary Miller
  * @author Michaël Gallego
  */
 interface ExceptionInterface
