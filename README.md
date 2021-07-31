@@ -451,6 +451,7 @@ try {
 - [Collect](#collect)
 - [Collection](#collection)
 - [CollectionListing](#collection-listing)
+- [Comment](#comment)
 - [CustomCollection](#custom-collection)
 - [Customer](#customer)
 - [Customer Address](#customer-address)
@@ -576,6 +577,20 @@ array getCollectionListingProductIds(array $args = []);
 array getCollectionListing(array $args = []);
 array createCollectionListing(array $args = []);
 array getCollectionListing(array $args = []);
+```
+
+### [Comment](https://shopify.dev/api/admin/rest/reference/online-store/comment)
+```php
+array getComments(array $args = []);
+int countComments(array $args = []);
+array getComment(array $args = []);
+array createComment(array $args = []);
+array updateComment(array $args = []);
+array spamComment(array $args = []);
+array unspamComment(array $args = []);
+array approveComment(array $args = []);
+array removeComment(array $args = []);
+array restoreComment(array $args = []);
 ```
 
 ### [CustomCollection](https://shopify.dev/api/admin/rest/reference/online-store/customcollection)

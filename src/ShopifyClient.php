@@ -116,7 +116,16 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getCollectionListing(array $args = []) { @command Shopify GetCollectionListing }
  *
  * Comment:
- * @method array getCollectionListings(array $args = []) { @command Shopify GetCollectionListings }
+ * @method array getComments(array $args = []) { @command Shopify GetComments }
+ * @method int countComments(array $args = []) { @command Shopify CountComments }
+ * @method array getComment(array $args = []) { @command Shopify GetComment }
+ * @method array createComment(array $args = []) { @command Shopify CreateComment }
+ * @method array updateComment(array $args = []) { @command Shopify UpdateComment }
+ * @method array spamComment(array $args = []) { @command Shopify SpamComment }
+ * @method array unspamComment(array $args = []) { @command Shopify UnspamComment }
+ * @method array approveComment(array $args = []) { @command Shopify ApproveComment }
+ * @method array removeComment(array $args = []) { @command Shopify RemoveComment }
+ * @method array restoreComment(array $args = []) { @command Shopify RestoreComment }
  *
  * CustomCollection:
  * @method array getCustomCollections(array $args = []) { @command Shopify GetCustomCollections }
@@ -395,7 +404,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method \Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollects }
  * @method \Traversable getCollectionProductsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollectionProducts }
  * @method \Traversable getCollectionListingProductIdsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollectionListingProductIds }
- * Comment
+ * @method \Traversable getCommentsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetComments }
  * @method \Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCustomCollections }
  * @method \Traversable getCustomerAddressesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCustomerAddresses }
  * @method \Traversable searchCustomersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify SearchCustomers }

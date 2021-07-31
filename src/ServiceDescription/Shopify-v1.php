@@ -1818,19 +1818,6 @@ return [
          * ---------------------------------------------------------------------------------------------
          * Comment
          * https://shopify.dev/api/admin/rest/reference/online-store/comment
-
-PUT /admin/api/2021-07/comments/{comment_id}.json
-
-POST /admin/api/2021-07/comments/{comment_id}/spam.json
-Marks a comment as spam
-POST /admin/api/2021-07/comments/{comment_id}/not_spam.json
-Marks a comment as not spam
-POST /admin/api/2021-07/comments/{comment_id}/approve.json
-Approves a comment
-POST /admin/api/2021-07/comments/{comment_id}/remove.json
-Removes a comment
-POST /admin/api/2021-07/comments/{comment_id}/restore.json
-Restores a previously removed comment
          * ---------------------------------------------------------------------------------------------
          */
         'GetComments' => [
@@ -2046,7 +2033,7 @@ Restores a previously removed comment
             'uri'           => 'admin/api/{version}/comments.json',
             'responseModel' => 'GenericModel',
             'summary'       => 'Creates a comment for an article.',
-            'data'          => [ 'root_key' => 'comments' ],
+            'data'          => [ 'root_key' => 'comment' ],
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -2111,12 +2098,150 @@ Restores a previously removed comment
             'uri'           => 'admin/api/{version}/comments/{id}.json',
             'responseModel' => 'GenericModel',
             'summary'       => 'Updates a comment of an article.',
-            'data'          => [ 'root_key' => 'comments' ],
+            'data'          => [ 'root_key' => 'comment' ],
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'author' => [
+                    'description' => 'The name of the author of the comment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'body' => [
+                    'description' => 'The basic Textile markup of a comment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'The email address of the author of the comment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'body_html' => [
+                    'description' => 'The text of the comment, complete with HTML markup.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'SpamComment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/comments/{id}/spam.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Marks a comment as spam.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'UnspamComment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/comments/{id}/not_spam.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Marks a comment as not spam.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'ApproveComment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/comments/{id}/approve.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Approves a comment.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'RemoveComment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/comments/{id}/remove.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Removes a comment.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'RestoreComment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/comments/{id}/restore.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Restores a previously removed comment.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Comment ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
                     'required'    => true
                 ]
             ]
@@ -5057,7 +5182,6 @@ Restores a previously removed comment
          * https://shopify.dev/docs/admin-api/rest/reference/shipping-and-fulfillment/fulfillmentorder
          * ---------------------------------------------------------------------------------------------
          */
-
         'GetFulfillmentOrders' => [
             'httpMethod'       => 'GET',
             'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillment_orders.json',
