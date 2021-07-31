@@ -448,6 +448,7 @@ try {
 - [Asset](#asset)
 - [Blog](#blog)
 - [CarrierService](#carrierservice)
+- [Checkout](#checkout)
 - [Collect](#collect)
 - [Collection](#collection)
 - [CollectionListing](#collectionlisting)
@@ -469,24 +470,32 @@ try {
 - [Location](#location)
 - [MarketingEvent](#marketingevent)
 - [Metafield](#metafield)
+- [MobilePlatformApplication](#mobileplatformapplication)
+- [Multipass](#multipass)
 - [Order](#order)
+- [Order Risk](#order-risk)
 - [Page](#page)
+- [Payment](#payment)
 - [PriceRule](#pricerule)
 - [Product](#product)
-- [ProductImage](#productimage)
-- [ProductVariant](#productvariant)
+- [Product Image](#product-image)
+- [Product ResourceFeedback](#product-resourcefeedback)
+- [Product Variant](#product-variant)
+- [ProductListing](#productlisting)
 - [RecurringApplicationCharge](#recurringapplicationcharge)
 - [Redirect](#redirect)
 - [Refund](#refund)
 - [Report](#report)
+- [ResourceFeedback](#resourcefeedback)
 - [ScriptTag](#scripttag)
 - [ShippingZone](#shippingzone)
 - [Shop](#shop)
 - [SmartCollection](#smartcollection)
-- [Storefront](#storefront)
+- [StorefrontAccessToken](#storefrontaccesstoken)
 - [Theme](#theme)
 - [Transaction](#transaction)
 - [UsageCharge](#usagecharge)
+- [User](#user)
 - [Webhook](#webhook)
 - [Other Methods](#other-methods)
 - [Iterator Methods](#iterator-methods)
@@ -554,6 +563,10 @@ array updateCarrierService(array $args = []);
 array getCarrierServices(array $args = []);
 array getCarrierService(array $args = []);
 array deleteCarrierService(array $args = []);
+```
+
+### [Checkout](https://shopify.dev/api/admin/rest/reference/sales-channels/checkout)
+```php
 ```
 
 ### [Collect](https://shopify.dev/api/admin/rest/reference/products/collect)
@@ -766,6 +779,14 @@ array updateMetafield(array $args = []);
 array deleteMetafield(array $args = []);
 ```
 
+### [MobilePlatformApplication](https://shopify.dev/api/admin/rest/reference/sales-channels/mobileplatformapplication)
+```php
+```
+
+### [Multipass](https://shopify.dev/api/admin/rest/reference/plus/multipass)
+```php
+```
+
 ### [Order](https://shopify.dev/api/admin/rest/reference/online-store/order)
 ```php
 array getOrders(array $args = []);
@@ -779,6 +800,10 @@ array openOrder(array $args = []);
 array cancelOrder(array $args = []);
 ```
 
+### [Order Risk](https://shopify.dev/api/admin/rest/reference/orders/order-risk)
+```php
+```
+
 ### [Page](https://shopify.dev/api/admin/rest/reference/online-store/page)
 ```php
 array getPages(array $args = []);
@@ -788,6 +813,10 @@ array getPageMetafields(array $args = []);
 array createPage(array $args = []);
 array updatePage(array $args = []);
 array deletePage(array $args = []);
+```
+
+### [Payment](https://shopify.dev/api/admin/rest/reference/sales-channels/payment)
+```php
 ```
 
 ### [PriceRule](https://shopify.dev/api/admin/rest/reference/discounts/pricerule)
@@ -810,7 +839,7 @@ array updateProduct(array $args = []);
 array deleteProduct(array $args = []);
 ```
 
-### [ProductImage](https://shopify.dev/api/admin/rest/reference/online-store/product_image)
+### [Product Image](https://shopify.dev/api/admin/rest/reference/products/product-image)
 ```php
 array getProductImages(array $args = []);
 int countProductImages(array $args = []);
@@ -820,7 +849,11 @@ array updateProductImage(array $args = []);
 array deleteProductImage(array $args = []);
 ```
 
-### [ProductVariant](https://shopify.dev/api/admin/rest/reference/online-store/product_variant)
+### [Product ResourceFeedback](https://shopify.dev/api/admin/rest/reference/sales-channels/productresourcefeedback)
+```php
+```
+
+### [Product Variant](https://shopify.dev/api/admin/rest/reference/products/product-variant)
 ```php
 array getProductVariants(array $args = []);
 int countProductVariants(array $args = []);
@@ -829,6 +862,10 @@ array getProductVariantMetafields(array $args = []);
 array createProductVariant(array $args = []);
 array updateProductVariant(array $args = []);
 array deleteProductVariant(array $args = []);
+```
+
+### [ProductListing](https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting)
+```php
 ```
 
 ### [RecurringApplicationCharge](https://shopify.dev/api/admin/rest/reference/online-store/recurringapplicationcharge)
@@ -867,6 +904,10 @@ array updateReport(array $args = []);
 array deleteReport(array $args = []);
 ```
 
+### [ResourceFeedback](https://shopify.dev/api/admin/rest/reference/sales-channels/resourcefeedback)
+```php
+```
+
 ### [ScriptTag](https://shopify.dev/api/admin/rest/reference/online-store/scripttag)
 ```php
 array getScriptTags(array $args = []);
@@ -897,7 +938,7 @@ array updateSmartCollection(array $args = []);
 array deleteSmartCollection(array $args = []);
 ```
 
-### [Storefront](https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken)
+### [StorefrontAccessToken](https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken)
 ```php
 array getStorefrontAccessTokens(array $args = []);
 array createStorefrontAccessToken(array $args = []);
@@ -926,6 +967,10 @@ array createTransaction(array $args = []);
 array getUsageCharges(array $args = []);
 array getUsageCharge(array $args = []);
 array createUsageCharge(array $args = []);
+```
+
+### [User](https://shopify.dev/api/admin/rest/reference/plus/user)
+```php
 ```
 
 ### [Webhook](https://shopify.dev/api/admin/rest/reference/online-store/webhook)

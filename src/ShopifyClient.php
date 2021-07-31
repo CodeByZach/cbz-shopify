@@ -97,6 +97,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getCarrierService(array $args = []) { @command Shopify GetCarrierService }
  * @method array deleteCarrierService(array $args = []) { @command Shopify DeleteCarrierService }
  *
+ * Checkout:
+ *
  * Collect:
  * @method array createCollect(array $args = []) { @command Shopify CreateCollect }
  * @method array deleteCollect(array $args = []) { @command Shopify DeleteCollect }
@@ -265,6 +267,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateMetafield(array $args = []) { @command Shopify UpdateMetafield }
  * @method array deleteMetafield(array $args = []) { @command Shopify DeleteMetafield }
  *
+ * MobilePlatformApplication:
+ *
+ * Multipass:
+ *
  * Order:
  * @method array getOrders(array $args = []) { @command Shopify GetOrders }
  * @method int countOrders(array $args = []) { @command Shopify CountOrders }
@@ -276,6 +282,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array openOrder(array $args = []) { @command Shopify OpenOrder }
  * @method array cancelOrder(array $args = []) { @command Shopify CancelOrder }
  *
+ * Order Risk:
+ *
  * Page:
  * @method array getPages(array $args = []) { @command Shopify GetPages }
  * @method int countPages(array $args = []) { @command Shopify CountPages }
@@ -284,6 +292,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array createPage(array $args = []) { @command Shopify CreatePage }
  * @method array updatePage(array $args = []) { @command Shopify UpdatePage }
  * @method array deletePage(array $args = []) { @command Shopify DeletePage }
+ *
+ * Payment:
  *
  * PriceRule:
  * @method array getPriceRules(array $args = []) { @command Shopify GetPriceRules }
@@ -301,7 +311,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateProduct(array $args = []) { @command Shopify UpdateProduct }
  * @method array deleteProduct(array $args = []) { @command Shopify DeleteProduct }
  *
- * ProductImage:
+ * Product Image:
  * @method array getProductImages(array $args = []) { @command Shopify GetProductImages }
  * @method int countProductImages(array $args = []) { @command Shopify CountProductImages }
  * @method array getProductImage(array $args = []) { @command Shopify GetProductImage }
@@ -309,7 +319,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateProductImage(array $args = []) { @command Shopify UpdateProductImage }
  * @method array deleteProductImage(array $args = []) { @command Shopify DeleteProductImage }
  *
- * ProductVariant:
+ * Product ResourceFeedback:
+ *
+ * Product Variant:
  * @method array getProductVariants(array $args = []) { @command Shopify GetProductVariants }
  * @method int countProductVariants(array $args = []) { @command Shopify CountProductVariants }
  * @method array getProductVariant(array $args = []) { @command Shopify GetProductVariant }
@@ -317,6 +329,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array createProductVariant(array $args = []) { @command Shopify CreateProductVariant }
  * @method array updateProductVariant(array $args = []) { @command Shopify UpdateProductVariant }
  * @method array deleteProductVariant(array $args = []) { @command Shopify DeleteProductVariant }
+ *
+ * ProductListing:
  *
  * RecurringApplicationCharge:
  * @method array getRecurringApplicationCharges(array $args = []) { @command Shopify GetRecurringApplicationCharges }
@@ -338,6 +352,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getRefund(array $args = []) { @command Shopify GetRefund }
  * @method array calculateRefund(array $args = []) { @command Shopify CalculateRefund }
  * @method array createRefund(array $args = []) { @command Shopify CreateRefund }
+ *
+ * ResourceFeedback:
  *
  * Report:
  * @method array getReports(array $args = []) { @command Shopify GetReports }
@@ -368,7 +384,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateSmartCollection(array $args = []) { @command Shopify UpdateSmartCollection }
  * @method array deleteSmartCollection(array $args = []) { @command Shopify DeleteSmartCollection }
  *
- * Storefront:
+ * StorefrontAccessToken:
  * @method array getStorefrontAccessTokens(array $args = []) { @command Shopify GetStorefrontAccessTokens }
  * @method array createStorefrontAccessToken(array $args = []) { @command Shopify CreateStorefrontAccessToken }
  * @method array deleteStorefrontAccessToken(array $args = []) { @command Shopify DeleteStorefrontAccessToken }
@@ -390,6 +406,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getUsageCharges(array $args = []) { @command Shopify GetUsageCharges }
  * @method array getUsageCharge(array $args = []) { @command Shopify GetUsageCharge }
  * @method array createUsageCharge(array $args = []) { @command Shopify CreateUsageCharge }
+ *
+ * User:
  *
  * Webhook:
  * @method array getWebhooks(array $args = []) { @command Shopify GetWebhooks }
@@ -423,11 +441,11 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method \Traversable searchGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify SearchGiftCards }
  * @method \Traversable getInventoryItemsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetInventoryItems }
  * @method \Traversable getInventoryLevelsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetInventoryLevels }
- * LocationLevels
+ * @method \Traversable getLocationInventoryLevelsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetLocationInventoryLevels }
  * @method \Traversable getMarketingEventsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMarketingEvents }
  * @method \Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMetafields }
- * OrderRisks
  * @method \Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrders }
+ * Order Risk
  * @method \Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPages }
  * Payouts
  * @method \Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPriceRules }
