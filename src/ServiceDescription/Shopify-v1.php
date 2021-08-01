@@ -2307,7 +2307,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * CustomCollection
-         * https://shopify.dev/api/admin/rest/reference/online-store/customcollection
+         * https://shopify.dev/api/admin/rest/reference/products/customcollection
          * ---------------------------------------------------------------------------------------------
          */
         'GetCustomCollections' => [
@@ -2650,7 +2650,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Customer
-         * https://shopify.dev/api/admin/rest/reference/online-store/customer
+         * https://shopify.dev/api/admin/rest/reference/customers/customer
          * ---------------------------------------------------------------------------------------------
          */
         'GetCustomers' => [
@@ -4684,7 +4684,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Event
-         * https://shopify.dev/api/admin/rest/reference/online-store/events
+         * https://shopify.dev/api/admin/rest/reference/events/event
          * ---------------------------------------------------------------------------------------------
          */
         'GetEvents' => [
@@ -4810,7 +4810,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Fulfillment
-         * https://shopify.dev/api/admin/rest/reference/online-store/reference/fulfillment
+         * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillment
          * ---------------------------------------------------------------------------------------------
          */
         'GetFulfillments' => [
@@ -5509,7 +5509,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * GiftCard
-         * https://shopify.dev/api/admin/rest/reference/online-store/reference/gift_card
+         * https://shopify.dev/api/admin/rest/reference/plus/giftcard
          * ---------------------------------------------------------------------------------------------
          */
         'GetGiftCards' => [
@@ -5767,7 +5767,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * InventoryItem
-         * https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventoryitem
+         * https://shopify.dev/api/admin/rest/reference/inventory/inventoryitem
          * ---------------------------------------------------------------------------------------------
          */
         'GetInventoryItems' => [
@@ -5860,7 +5860,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * InventoryLevel
-         * https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventorylevel
+         * https://shopify.dev/api/admin/rest/reference/inventory/inventorylevel
          * ---------------------------------------------------------------------------------------------
          */
         'GetInventoryLevels' => [
@@ -6040,7 +6040,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Location
-         * https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/location
+         * https://shopify.dev/api/admin/rest/reference/inventory/location
          * ---------------------------------------------------------------------------------------------
          */
         'GetLocations' => [
@@ -6414,7 +6414,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Metafield
-         * https://shopify.dev/api/admin/rest/reference/online-store/metafield
+         * https://shopify.dev/api/admin/rest/reference/metafield
          * ---------------------------------------------------------------------------------------------
          */
         'GetMetafields' => [
@@ -6571,7 +6571,7 @@ return [
          * @method HAS METAFIELDS
          * ---------------------------------------------------------------------------------------------
          * Order
-         * https://shopify.dev/api/admin/rest/reference/online-store/order
+         * https://shopify.dev/api/admin/rest/reference/orders/order
          * ---------------------------------------------------------------------------------------------
          */
         'GetOrders' => [
@@ -7159,7 +7159,7 @@ return [
          * @method HAS METAFIELDS
          * ---------------------------------------------------------------------------------------------
          * Product
-         * https://shopify.dev/api/admin/rest/reference/online-store/product
+         * https://shopify.dev/api/admin/rest/reference/products/product
          * ---------------------------------------------------------------------------------------------
          */
         'GetProducts' => [
@@ -7703,7 +7703,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * RecurringApplicationCharge
-         * https://shopify.dev/api/admin/rest/reference/online-store/recurringapplicationcharge
+         * https://shopify.dev/api/admin/rest/reference/billing/recurringapplicationcharge
          * ---------------------------------------------------------------------------------------------
          */
         'GetRecurringApplicationCharges' => [
@@ -8005,7 +8005,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Refund
-         * https://shopify.dev/api/admin/rest/reference/online-store/refund
+         * https://shopify.dev/api/admin/rest/reference/orders/refund
          * ---------------------------------------------------------------------------------------------
          */
         'GetRefunds' => [
@@ -8505,7 +8505,7 @@ return [
          * @method HAS METAFIELDS
          * ---------------------------------------------------------------------------------------------
          * Shop
-         * https://shopify.dev/api/admin/rest/reference/online-store/shop
+         * https://shopify.dev/api/admin/rest/reference/store-properties/shop
          * ---------------------------------------------------------------------------------------------
          */
         'GetShop' => [
@@ -8532,7 +8532,7 @@ return [
          * @method HAS METAFIELDS
          * ---------------------------------------------------------------------------------------------
          * SmartCollection
-         * https://shopify.dev/api/admin/rest/reference/online-store/smartcollection
+         * https://shopify.dev/api/admin/rest/reference/products/smartcollection
          * ---------------------------------------------------------------------------------------------
          */
         'GetSmartCollections' => [
@@ -9005,7 +9005,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * UsageCharge
-         * https://shopify.dev/api/admin/rest/reference/online-store/usagecharge
+         * https://shopify.dev/api/admin/rest/reference/billing/usagecharge
          * ---------------------------------------------------------------------------------------------
          */
         'GetUsageCharges' => [
@@ -9122,7 +9122,7 @@ return [
         /**
          * ---------------------------------------------------------------------------------------------
          * Webhook
-         * https://shopify.dev/api/admin/rest/reference/online-store/webhook
+         * https://shopify.dev/api/admin/rest/reference/events/webhook
          * ---------------------------------------------------------------------------------------------
          */
         'GetWebhooks' => [

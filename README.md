@@ -645,7 +645,7 @@ array restoreComment(array $args = []);
 ```php
 ```
 
-### [CustomCollection](https://shopify.dev/api/admin/rest/reference/online-store/customcollection)
+### [CustomCollection](https://shopify.dev/api/admin/rest/reference/products/customcollection)
 ```php
 array getCustomCollections(array $args = []);
 int countCustomCollections(array $args = []);
@@ -655,7 +655,7 @@ array updateCustomCollection(array $args = []);
 array deleteCustomCollection(array $args = []);
 ```
 
-### [Customer](https://shopify.dev/api/admin/rest/reference/online-store/customer)
+### [Customer](https://shopify.dev/api/admin/rest/reference/customers/customer)
 ```php
 array getCustomers(array $args = []);
 array searchCustomers(array $args = []);
@@ -728,14 +728,14 @@ array deleteDraftOrder(array $args = []);
 array completeDraftOrder(array $args = []);
 ```
 
-### [Event](https://shopify.dev/api/admin/rest/reference/online-store/events)
+### [Event](https://shopify.dev/api/admin/rest/reference/events/event)
 ```php
 array getEvents(array $args = []);
 array getEvent(array $args = []);
 int countEvents(array $args = []);
 ```
 
-### [Fulfillment](https://shopify.dev/api/admin/rest/reference/online-store/reference/fulfillment)
+### [Fulfillment](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillment)
 ```php
 array getFulfillments(array $args = []);
 array getFulfillmentOrderFulfillments(array $args = []);
@@ -774,7 +774,7 @@ array rescheduleFulfillmentOrder(array $args = []);
 ```php
 ```
 
-### [GiftCard](https://shopify.dev/api/admin/rest/reference/online-store/reference/gift_card)
+### [GiftCard](https://shopify.dev/api/admin/rest/reference/plus/giftcard)
 ```php
 array getGiftCards(array $args = []);
 array getGiftCard(array $args = []);
@@ -785,14 +785,14 @@ array disableGiftCard(array $args = []);
 array searchGiftCards(array $args = [])
 ```
 
-### [InventoryItem](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventoryitem)
+### [InventoryItem](https://shopify.dev/api/admin/rest/reference/inventory/inventoryitem)
 ```php
 array getInventoryItems(array $args = []);
 array getInventoryItem(array $args = []);
 array updateInventoryItem(array $args = []);
 ```
 
-### [InventoryLevel](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/inventorylevel)
+### [InventoryLevel](https://shopify.dev/api/admin/rest/reference/inventory/inventorylevel)
 ```php
 array getInventoryLevels(array $args = []);
 array adjustInventoryLevel(array $args = []);
@@ -801,7 +801,7 @@ array connectInventoryLevel(array $args = []);
 array setInventoryLevel(array $args = []);
 ```
 
-### [Location](https://shopify.dev/api/admin/rest/reference/online-store/reference/inventory/location)
+### [Location](https://shopify.dev/api/admin/rest/reference/inventory/location)
 ```php
 array getLocations(array $args = []);
 array getLocation(array $args = []);
@@ -824,7 +824,7 @@ array deleteMarketingEvent(array $args = []);
 array createMarketingEventEngagements(array $args = []);
 ```
 
-### [Metafield](https://shopify.dev/api/admin/rest/reference/online-store/metafield)
+### [Metafield](https://shopify.dev/api/admin/rest/reference/metafield)
 ```php
 array getMetafields(array $args = []);
 array getMetafield(array $args = []);
@@ -841,7 +841,7 @@ array deleteMetafield(array $args = []);
 ```php
 ```
 
-### [Order](https://shopify.dev/api/admin/rest/reference/online-store/order)
+### [Order](https://shopify.dev/api/admin/rest/reference/orders/order)
 ```php
 array getOrders(array $args = []);
 int countOrders(array $args = []);
@@ -890,7 +890,7 @@ array updatePriceRule(array $args = []);
 array deletePriceRule(array $args = []);
 ```
 
-### [Product](https://shopify.dev/api/admin/rest/reference/online-store/product)
+### [Product](https://shopify.dev/api/admin/rest/reference/products/product)
 ```php
 array getProducts(array $args = []);
 int countProducts(array $args = []);
@@ -934,7 +934,7 @@ array deleteProductVariant(array $args = []);
 ```php
 ```
 
-### [RecurringApplicationCharge](https://shopify.dev/api/admin/rest/reference/online-store/recurringapplicationcharge)
+### [RecurringApplicationCharge](https://shopify.dev/api/admin/rest/reference/billing/recurringapplicationcharge)
 ```php
 array getRecurringApplicationCharges(array $args = []);
 array getRecurringApplicationCharge(array $args = []);
@@ -953,7 +953,7 @@ array updateRedirect(array $args = []);
 array deleteRedirect(array $args = []);
 ```
 
-### [Refund](https://shopify.dev/api/admin/rest/reference/online-store/refund)
+### [Refund](https://shopify.dev/api/admin/rest/reference/orders/refund)
 ```php
 array getRefunds(array $args = []);
 array getRefund(array $args = []);
@@ -989,12 +989,12 @@ array deleteScriptTag(array $args = []);
 array getShippingZones(array $args = []);
 ```
 
-### [Shop](https://shopify.dev/api/admin/rest/reference/online-store/shop)
+### [Shop](https://shopify.dev/api/admin/rest/reference/store-properties/shop)
 ```php
 array getShop(array $args = []);
 ```
 
-### [SmartCollection](https://shopify.dev/api/admin/rest/reference/online-store/smartcollection)
+### [SmartCollection](https://shopify.dev/api/admin/rest/reference/products/smartcollection)
 ```php
 array getSmartCollections(array $args = []);
 int countSmartCollections(array $args = []);
@@ -1032,7 +1032,7 @@ array getTransaction(array $args = []);
 array createTransaction(array $args = []);
 ```
 
-### [UsageCharge](https://shopify.dev/api/admin/rest/reference/online-store/usagecharge)
+### [UsageCharge](https://shopify.dev/api/admin/rest/reference/billing/usagecharge)
 ```php
 array getUsageCharges(array $args = []);
 array getUsageCharge(array $args = []);
@@ -1043,7 +1043,7 @@ array createUsageCharge(array $args = []);
 ```php
 ```
 
-### [Webhook](https://shopify.dev/api/admin/rest/reference/online-store/webhook)
+### [Webhook](https://shopify.dev/api/admin/rest/reference/events/webhook)
 ```php
 array getWebhooks(array $args = []);
 int countWebhooks(array $args = []);
