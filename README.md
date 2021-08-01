@@ -206,10 +206,10 @@ When reading Shopify API doc, make sure you remove the top key when exploiting r
 Similarily, when you use one of the `count` endpoint, CbzShopify will automatically extract the value from Shopify's response, so you do not need
 to manually access the count property:
 
-``php
-$count = $shopify_client->CountOrders();
+```php
+$count = $shopify_client->countOrders();
 // $count is already an integer
-``
+```
 
 ### Using iterators
 
