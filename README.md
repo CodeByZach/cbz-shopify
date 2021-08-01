@@ -1053,12 +1053,12 @@ array updateWebhook(array $args = []);
 array deleteWebhook(array $args = []);
 ```
 
-**Other Methods**
+### Other Methods
 ```php
 array createDelegateAccessToken(array $args = []);
 ```
 
-**Iterator Methods**
+### Iterator Methods
 ```php
 Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
 Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = [])
