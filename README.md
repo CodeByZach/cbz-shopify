@@ -7,16 +7,16 @@ CbzShopify is a modern PHP library based on Guzzle for [Shopify](https://www.sho
 
 ## Dependencies
 
-* PHP 7
-* [Guzzle Services](https://github.com/guzzle/guzzle-services): ^1.0
-* [Laminas Diactoros](https://github.com/laminas/laminas-diactoros): ^2.0
+* [PHP](https://www.php.net): ^7.3
+* [Guzzle Services](https://github.com/guzzle/guzzle-services): ^1.2
+* [Laminas Diactoros](https://github.com/laminas/laminas-diactoros): ^2.6
 
 ## Installation
 
 Installation of CbzShopify is only officially supported using Composer:
 
 ```sh
-php composer.phar require 'codebyzach/cbz-shopify'
+composer require 'codebyzach/cbz-shopify'
 ```
 
 ## REST API
@@ -143,11 +143,11 @@ use CbzShopify\OAuth\AuthorizationRedirectResponse;
 
 $api_key         = 'app_123';
 $shop_domain     = 'shop_to_authorize.myshopify.com';
-$scopes         = ['read_orders', 'read_products'];
-$redirectionUri = 'https://myapp.test.com/oauth/redirect';
-$nonce          = 'strong_nonce';
+$scopes          = ['read_orders', 'read_products'];
+$redirection_uri = 'https://myapp.test.com/oauth/redirect';
+$nonce           = 'strong_nonce';
 
-$response = new AuthorizationRedirectResponse($api_key, $shop_domain, $scopes, $redirectionUri, $nonce);
+$response = new AuthorizationRedirectResponse($api_key, $shop_domain, $scopes, $redirection_uri, $nonce);
 ```
 
 While the `nonce` parameter is required, CbzShopify does not make any assumption about how to save the nonce and check it when
@@ -1060,24 +1060,44 @@ array createDelegateAccessToken(array $args = []);
 
 ### Iterator Methods
 ```php
-Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getCustomerAddressesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getProductImagesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getRecurringApplicationChargesIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = [])
-Traversable searchCustomersIterator(array $commandArgs = [], array $iteratorArgs = [])
+Traversable getAbandonedCheckoutsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCollectionProductsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCollectionListingProductIdsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCommentsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCustomCollectionsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCustomerAddressesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable searchCustomersIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCustomersIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getCustomerSavedSearchesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getDiscountCodesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getDisputesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getDraftOrdersIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getEventsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getFulfillmentsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable searchGiftCardsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getInventoryItemsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getInventoryLevelsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getLocationInventoryLevelsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getMarketingEventsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getOrderRisksIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getPayoutsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getProductListingsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getRedirectsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getRefundsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getReportsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getScriptTagsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getTenderTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getUsersIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = []);
 ```

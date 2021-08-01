@@ -473,23 +473,21 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method \Traversable getMarketingEventsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMarketingEvents }
  * @method \Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMetafields }
  * @method \Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrders }
- * Order Risk
+ * @method \Traversable getOrderRisksIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrderRisks }
  * @method \Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPages }
- * Payouts
+ * @method \Traversable getPayoutsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPayouts }
  * @method \Traversable getPriceRulesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPriceRules }
  * @method \Traversable getProductsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProducts }
- * ProductIds
- * ProductListing
+ * @method \Traversable getProductListingsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProductListings }
  * @method \Traversable getProductVariantsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProductVariants }
- * ProductVariants (index)
- * Redirects
- * Refunds
+ * @method \Traversable getRedirectsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetRedirects }
+ * @method \Traversable getRefundsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetRefunds }
  * @method \Traversable getReportsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetReports }
- * ScriptTags
+ * @method \Traversable getScriptTagsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetScriptTags }
  * @method \Traversable getSmartCollectionsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetSmartCollections }
- * TenderTransactions
+ * @method \Traversable getTenderTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetTenderTransactions }
  * @method \Traversable getTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetTransactions }
- * User
+ * @method \Traversable getUsersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetUsers }
  * @method \Traversable getWebhooksIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetWebhooks }
  */
 class ShopifyClient
