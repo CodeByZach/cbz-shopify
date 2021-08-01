@@ -83,10 +83,13 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteAsset(array $args = []) { @command Shopify DeleteAsset }
  *
  * AssignedFulfillmentOrder:
+ * @method array getAssignedFulfillmentOrders(array $args = []) { @command Shopify GetAssignedFulfillmentOrders }
  *
  * Balance:
+ * @method array getBalance(array $args = []) { @command Shopify GetBalance }
  *
  * Balance Transaction:
+ * @method array getBalanceTransactions(array $args = []) { @command Shopify GetBalanceTransactions }
  *
  * Blog:
  * @method array getBlogs(array $args = []) { @command Shopify GetBlogs }
@@ -97,6 +100,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteBlog(array $args = []) { @command Shopify DeleteBlog }
  *
  * CancellationRequest:
+ * @method array sendCancellationRequest(array $args = []) { @command Shopify SendCancellationRequest }
+ * @method array acceptCancellationRequest(array $args = []) { @command Shopify AcceptCancellationRequest }
+ * @method array rejectCancellationRequest(array $args = []) { @command Shopify RejectCancellationRequest }
  *
  * CarrierService:
  * @method array createCarrierService(array $args = []) { @command Shopify CreateCarrierService }
@@ -106,6 +112,11 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteCarrierService(array $args = []) { @command Shopify DeleteCarrierService }
  *
  * Checkout:
+ * @method array createCheckout(array $args = []) { @command Shopify CreateCheckout }
+ * @method array completeCheckout(array $args = []) { @command Shopify CompleteCheckout }
+ * @method array getCheckout(array $args = []) { @command Shopify GetCheckout }
+ * @method array updateCheckout(array $args = []) { @command Shopify UpdateCheckout }
+ * @method array getCheckoutShippingRates(array $args = []) { @command Shopify GetCheckoutShippingRates }
  *
  * Collect:
  * @method array createCollect(array $args = []) { @command Shopify CreateCollect }
@@ -451,6 +462,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * Iterator Methods:
  * @method \Traversable getAbandonedCheckoutsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetAbandonedCheckouts }
  * @method \Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetArticles }
+ * @method \Traversable getBalanceTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetBalanceTransactions }
  * @method \Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollects }
  * @method \Traversable getCollectionProductsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollectionProducts }
  * @method \Traversable getCollectionListingProductIdsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollectionListingProductIds }

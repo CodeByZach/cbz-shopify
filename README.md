@@ -562,14 +562,17 @@ array deleteAsset(array $args = []);
 
 ### [AssignedFulfillmentOrder](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/assignedfulfillmentorder)
 ```php
+array getAssignedFulfillmentOrders(array $args = []);
 ```
 
 ### [Balance](https://shopify.dev/api/admin/rest/reference/shopify_payments/balance)
 ```php
+array getBalance(array $args = []);
 ```
 
 ### [Balance Transaction](https://shopify.dev/api/admin/rest/reference/shopify_payments/transaction)
 ```php
+array getBalanceTransactions(array $args = []);
 ```
 
 ### [Blog](https://shopify.dev/api/admin/rest/reference/online-store/blog)
@@ -584,6 +587,9 @@ array deleteBlog(array $args = []);
 
 ### [CancellationRequest](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/cancellationrequest)
 ```php
+array sendCancellationRequest(array $args = []);
+array acceptCancellationRequest(array $args = []);
+array rejectCancellationRequest(array $args = []);
 ```
 
 ### [CarrierService](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/carrierservice)
@@ -597,6 +603,11 @@ array deleteCarrierService(array $args = []);
 
 ### [Checkout](https://shopify.dev/api/admin/rest/reference/sales-channels/checkout)
 ```php
+array createCheckout(array $args = []);
+array completeCheckout(array $args = []);
+array getCheckout(array $args = []);
+array updateCheckout(array $args = []);
+array getCheckoutShippingRates(array $args = []);
 ```
 
 ### [Collect](https://shopify.dev/api/admin/rest/reference/products/collect)
@@ -1062,6 +1073,7 @@ array createDelegateAccessToken(array $args = []);
 ```php
 Traversable getAbandonedCheckoutsIterator(array $commandArgs = [], array $iteratorArgs = []);
 Traversable getArticlesIterator(array $commandArgs = [], array $iteratorArgs = []);
+Traversable getBalanceTransactionsIterator(array $commandArgs = [], array $iteratorArgs = []);
 Traversable getCollectsIterator(array $commandArgs = [], array $iteratorArgs = []);
 Traversable getCollectionProductsIterator(array $commandArgs = [], array $iteratorArgs = []);
 Traversable getCollectionListingProductIdsIterator(array $commandArgs = [], array $iteratorArgs = []);

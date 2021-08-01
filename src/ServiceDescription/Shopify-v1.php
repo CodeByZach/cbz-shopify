@@ -199,7 +199,7 @@ return [
                     'description' => 'URL where Shopify must return once the charge has been accepted',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
                 ],
                 'test' => [
                     'description' => 'Use to create a test charge',
@@ -1026,6 +1026,34 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/assignedfulfillmentorder
          * ---------------------------------------------------------------------------------------------
          */
+        'GetAssignedFulfillmentOrders' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/assigned_fulfillment_orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of assets for a given theme',
+            'data'          => [ 'root_key' => 'fulfillment_orders' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'assignment_status' => [
+                    'description' => 'Retrieves a list of fulfillment orders on a shop for a specific app.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'cancellation_requested', 'fulfillment_requested', 'fulfillment_accepted' ],
+                    'required'    => false
+                ],
+                'location_ids' => [
+                    'description' => 'The IDs of the assigned locations of the fulfillment orders that should be returned.',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
@@ -1034,6 +1062,21 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shopify_payments/balance
          * ---------------------------------------------------------------------------------------------
          */
+        'GetBalance' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/balance.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves the account\'s current balance.',
+            'data'          => [ 'root_key' => 'balance' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
@@ -1042,6 +1085,52 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shopify_payments/transaction
          * ---------------------------------------------------------------------------------------------
          */
+        'GetBalanceTransactions' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/transactions.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Return a list of all balance transactions.',
+            'data'          => [ 'root_key' => 'transactions' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Filter response to transactions exclusively after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'last_id' => [
+                    'description' => 'Filter response to transactions exclusively before the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'test' => [
+                    'description' => 'Filter response to transactions placed in test mode.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'payout_id' => [
+                    'description' => 'Filter response to transactions paid out in the specified payout.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'payout_status' => [
+                    'description' => 'Filter response to transactions with the specified payout status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'paid', 'scheduled', 'pending' ],
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
@@ -1311,6 +1400,98 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/cancellationrequest
          * ---------------------------------------------------------------------------------------------
          */
+        'SendCancellationRequest' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/cancellation_request.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Sends a cancellation request to the fulfillment service of a fulfillment order.',
+            'data'          => [
+                'root_key_request'  => 'cancellation_request',
+                'root_key_response' => 'fulfillment_order'
+            ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'int',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional reason for the cancellation request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'AcceptCancellationRequest' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/cancellation_request/accept.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Accepts a cancellation request sent to a fulfillment service for a fulfillment order.',
+            'data'          => [
+                'root_key_request'  => 'cancellation_request',
+                'root_key_response' => 'fulfillment_order'
+            ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'int',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional reason for the cancellation request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'RejectCancellationRequest' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/cancellation_request/reject.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Rejects a cancellation request sent to a fulfillment service for a fulfillment order.',
+            'data'          => [
+                'root_key_request'  => 'cancellation_request',
+                'root_key_response' => 'fulfillment_order'
+            ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'int',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional reason for the cancellation request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
@@ -1531,6 +1712,283 @@ return [
          * https://shopify.dev/api/admin/rest/reference/sales-channels/checkout
          * ---------------------------------------------------------------------------------------------
          */
+        'CreateCheckout' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/checkouts.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a checkout.',
+            'data'          => [ 'root_key' => 'checkout' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'line_items' => [
+                    'description' => 'A list of line item objects, each containing information about an item in the checkout.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'billing_address' => [
+                    'description' => 'The mailing address associated with the payment method.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'applied_discount' => [
+                    'description' => 'A cart-level discount applied to the checkout. Apply a discount by specifying values for amount, title, description, value, and value_type.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'buyer_accepts_marketing' => [
+                    'description' => 'Whether the customer has consented to receive marketing material via email.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'currency' => [
+                    'description' => 'The three-letter code (ISO 4217 format) of the shop\'s default currency at the time of checkout.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'customer_id' => [
+                    'description' => 'The ID of the customer associated with this checkout.',
+                    'location'    => 'json',
+                    'type'        => 'int',
+                    'required'    => false
+                ],
+                'discount_code' => [
+                    'description' => 'The discount code that is applied to the checkout. This populates applied_discount with the appropriate metadata for that discount code.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'The customer\'s email address.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'gift_cards' => [
+                    'description' => 'A list of gift card objects, each containing information about a gift card applied to this checkout.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'phone' => [
+                    'description' => 'The customer\'s phone number for receiving SMS notifications.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'requires_shipping' => [
+                    'description' => 'Whether the checkout requires shipping. If true, then shipping_line must be set before creating a payment.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'shipping_address' => [
+                    'description' => 'The mailing address to where the checkout will be shipped.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'shipping_line' => [
+                    'description' => 'The selected shipping rate. A new shipping rate can be selected by updating the value for handle. A shipping line is required when requires_shipping is true.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'source_name' => [
+                    'description' => 'The source of the checkout. Apart from the reserved values of web, pos, iphone, and android, you can set this value to whatever you like.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'tax_lines' => [
+                    'description' => 'An array of tax_line objects, each of which represents a tax rate applicable to the checkout.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'taxes_included' => [
+                    'description' => 'Whether taxes are included in the subtotal price.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'CompleteCheckout' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/complete.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Complete a checkout.',
+            'data'          => [ 'root_key' => 'checkout' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetCheckout' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/checkouts/{token}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a checkout.',
+            'data'          => [ 'root_key' => 'checkout' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'UpdateCheckout' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/checkouts/{token}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Modifies an existing checkout.',
+            'data'          => [ 'root_key' => 'checkout' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'line_items' => [
+                    'description' => 'A list of line item objects, each containing information about an item in the checkout.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'billing_address' => [
+                    'description' => 'The mailing address associated with the payment method.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'applied_discount' => [
+                    'description' => 'A cart-level discount applied to the checkout. Apply a discount by specifying values for amount, title, description, value, and value_type.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'buyer_accepts_marketing' => [
+                    'description' => 'Whether the customer has consented to receive marketing material via email.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'customer_id' => [
+                    'description' => 'The ID of the customer associated with this checkout.',
+                    'location'    => 'json',
+                    'type'        => 'int',
+                    'required'    => false
+                ],
+                'discount_code' => [
+                    'description' => 'The discount code that is applied to the checkout. This populates applied_discount with the appropriate metadata for that discount code.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'The customer\'s email address.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'gift_cards' => [
+                    'description' => 'A list of gift card objects, each containing information about a gift card applied to this checkout.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'phone' => [
+                    'description' => 'The customer\'s phone number for receiving SMS notifications.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shipping_address' => [
+                    'description' => 'The mailing address to where the checkout will be shipped.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'shipping_line' => [
+                    'description' => 'The selected shipping rate. A new shipping rate can be selected by updating the value for handle. A shipping line is required when requires_shipping is true.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'source_name' => [
+                    'description' => 'The source of the checkout. Apart from the reserved values of web, pos, iphone, and android, you can set this value to whatever you like.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'GetCheckoutShippingRates' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/shipping_rates.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of available shipping rates for the specified checkout. Implementers need to poll this endpoint until rates become available. Each shipping rate contains the checkout\'s new subtotal price, total tax, and total price in the event that this shipping rate is selected. This can be used to update the UI without performing further API requests.',
+            'data'          => [ 'root_key' => 'shipping_rates' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
@@ -1612,10 +2070,27 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to show.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -3306,7 +3781,7 @@ return [
             'responseModel' => 'GenericModel',
             'summary'       => 'Creates a new address for a customer',
             'data'          => [
-                'root_key'          => 'address',
+                'root_key_request'  => 'address',
                 'root_key_response' => 'customer_address'
             ],
             'parameters'    => [
@@ -3403,7 +3878,7 @@ return [
             'responseModel' => 'GenericModel',
             'summary'       => 'Update an existing address for a customer',
             'data'          => [
-                'root_key'          => 'address',
+                'root_key_request'  => 'address',
                 'root_key_response' => 'customer_address'
             ],
             'parameters'    => [
