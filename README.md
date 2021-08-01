@@ -446,13 +446,19 @@ try {
 - [ApplicationCredit](#applicationcredit)
 - [Article](#article)
 - [Asset](#asset)
+- [AssignedFulfillmentOrder](#assignedfulfillmentorder)
+- [Balance](#balance)
+- [Balance Transaction](#balance-transaction)
 - [Blog](#blog)
+- [CancellationRequest](#cancellationrequest)
 - [CarrierService](#carrierservice)
 - [Checkout](#checkout)
 - [Collect](#collect)
 - [Collection](#collection)
 - [CollectionListing](#collectionlisting)
 - [Comment](#comment)
+- [Country](#country)
+- [Currency](#currency)
 - [CustomCollection](#customcollection)
 - [Customer](#customer)
 - [Customer Address](#customer-address)
@@ -463,11 +469,15 @@ try {
 - [DraftOrder](#draftorder)
 - [Event](#event)
 - [Fulfillment](#fulfillment)
+- [FulfillmentEvent](#fulfillmentevent)
 - [FulfillmentOrder](#fulfillmentorder)
+- [FulfillmentRequest](#fulfillmentrequest)
+- [FulfillmentService](#fulfillmentservice)
 - [GiftCard](#giftcard)
 - [InventoryItem](#inventoryitem)
 - [InventoryLevel](#inventorylevel)
 - [Location](#location)
+- [LocationsForMove](#locationsformove)
 - [MarketingEvent](#marketingevent)
 - [Metafield](#metafield)
 - [MobilePlatformApplication](#mobileplatformapplication)
@@ -476,12 +486,15 @@ try {
 - [Order Risk](#order-risk)
 - [Page](#page)
 - [Payment](#payment)
+- [Payout](#payout)
+- [Policy](#policy)
 - [PriceRule](#pricerule)
 - [Product](#product)
 - [Product Image](#product-image)
 - [Product ResourceFeedback](#product-resourcefeedback)
 - [Product Variant](#product-variant)
 - [ProductListing](#productlisting)
+- [Province](#province)
 - [RecurringApplicationCharge](#recurringapplicationcharge)
 - [Redirect](#redirect)
 - [Refund](#refund)
@@ -492,6 +505,7 @@ try {
 - [Shop](#shop)
 - [SmartCollection](#smartcollection)
 - [StorefrontAccessToken](#storefrontaccesstoken)
+- [TenderTransaction](#tendertransaction)
 - [Theme](#theme)
 - [Transaction](#transaction)
 - [UsageCharge](#usagecharge)
@@ -546,6 +560,18 @@ array updateAsset(array $args = []);
 array deleteAsset(array $args = []);
 ```
 
+### [AssignedFulfillmentOrder](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/assignedfulfillmentorder)
+```php
+```
+
+### [Balance](https://shopify.dev/api/admin/rest/reference/shopify_payments/balance)
+```php
+```
+
+### [Balance Transaction](https://shopify.dev/api/admin/rest/reference/shopify_payments/transaction)
+```php
+```
+
 ### [Blog](https://shopify.dev/api/admin/rest/reference/online-store/blog)
 ```php
 array getBlogs(array $args = []);
@@ -554,6 +580,10 @@ array getBlog(array $args = []);
 array createBlog(array $args = []);
 array updateBlog(array $args = []);
 array deleteBlog(array $args = []);
+```
+
+### [CancellationRequest](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/cancellationrequest)
+```php
 ```
 
 ### [CarrierService](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/carrierservice)
@@ -607,6 +637,14 @@ array removeComment(array $args = []);
 array restoreComment(array $args = []);
 ```
 
+### [Country](https://shopify.dev/api/admin/rest/reference/store-properties/country)
+```php
+```
+
+### [Currency](https://shopify.dev/api/admin/rest/reference/store-properties/currency)
+```php
+```
+
 ### [CustomCollection](https://shopify.dev/api/admin/rest/reference/online-store/customcollection)
 ```php
 array getCustomCollections(array $args = []);
@@ -631,7 +669,7 @@ int countCustomers(array $args = []);
 array getCustomerOrders(array $args = []);
 ```
 
-### [Customer Address](https://shopify.dev/docs/admin-api/rest/reference/customers/customer-address)
+### [Customer Address](https://shopify.dev/api/admin/rest/reference/customers/customer-address)
 ```php
 array getCustomerAddresses(array $args = []);
 array getCustomerAddress(array $args = []);
@@ -713,7 +751,11 @@ array cancelFulfillment(array $args = []);
 array cancelFulfillmentOrderFulfillment(array $args = []);
 ```
 
-### [FulfillmentOrder](https://shopify.dev/docs/admin-api/rest/reference/shipping-and-fulfillment/fulfillmentorder)
+### [FulfillmentEvent](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentevent)
+```php
+```
+
+### [FulfillmentOrder](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentorder)
 ```php
 array getFulfillmentOrders(array $args = []);
 array getFulfillmentOrder(array $args = []);
@@ -722,6 +764,14 @@ array closeFulfillmentOrder(array $args = []);
 array moveFulfillmentOrder(array $args = []);
 array openFulfillmentOrder(array $args = []);
 array rescheduleFulfillmentOrder(array $args = []);
+```
+
+### [FulfillmentRequest](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentrequest)
+```php
+```
+
+### [FulfillmentService](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentservice)
+```php
 ```
 
 ### [GiftCard](https://shopify.dev/api/admin/rest/reference/online-store/reference/gift_card)
@@ -757,6 +807,10 @@ array getLocations(array $args = []);
 array getLocation(array $args = []);
 int countLocations(array $args = []);
 array getLocationInventoryLevels(array $args = []);
+```
+
+### [LocationsForMove](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/locationsformove)
+```php
 ```
 
 ### [MarketingEvent](https://shopify.dev/api/admin/rest/reference/marketingevent)
@@ -819,6 +873,14 @@ array deletePage(array $args = []);
 ```php
 ```
 
+### [Payout](https://shopify.dev/api/admin/rest/reference/shopify_payments/payout)
+```php
+```
+
+### [Policy](https://shopify.dev/api/admin/rest/reference/store-properties/policy)
+```php
+```
+
 ### [PriceRule](https://shopify.dev/api/admin/rest/reference/discounts/pricerule)
 ```php
 array getPriceRules(array $args = []);
@@ -865,6 +927,10 @@ array deleteProductVariant(array $args = []);
 ```
 
 ### [ProductListing](https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting)
+```php
+```
+
+### [Province](https://shopify.dev/api/admin/rest/reference/store-properties/province)
 ```php
 ```
 
@@ -918,7 +984,7 @@ array updateScriptTag(array $args = []);
 array deleteScriptTag(array $args = []);
 ```
 
-### [ShippingZone](https://shopify.dev/docs/admin-api/rest/reference/store-properties/shippingzone)
+### [ShippingZone](https://shopify.dev/api/admin/rest/reference/store-properties/shippingzone)
 ```php
 array getShippingZones(array $args = []);
 ```
@@ -938,11 +1004,15 @@ array updateSmartCollection(array $args = []);
 array deleteSmartCollection(array $args = []);
 ```
 
-### [StorefrontAccessToken](https://shopify.dev/docs/admin-api/rest/reference/access/storefrontaccesstoken)
+### [StorefrontAccessToken](https://shopify.dev/api/admin/rest/reference/access/storefrontaccesstoken)
 ```php
 array getStorefrontAccessTokens(array $args = []);
 array createStorefrontAccessToken(array $args = []);
 array deleteStorefrontAccessToken(array $args = []);
+```
+
+### [TenderTransaction](https://shopify.dev/api/admin/rest/reference/tendertransaction)
+```php
 ```
 
 ### [Theme](https://shopify.dev/api/admin/rest/reference/online-store/theme)
@@ -954,7 +1024,7 @@ array updateTheme(array $args = []);
 array deleteTheme(array $args = []);
 ```
 
-### [Transaction](https://shopify.dev/api/admin/rest/reference/online-store/transaction)
+### [Transaction](https://shopify.dev/api/admin/rest/reference/orders/transaction)
 ```php
 array getTransactions(array $args = []);
 int countTransactions(array $args = []);

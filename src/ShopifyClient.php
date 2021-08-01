@@ -82,6 +82,12 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateAsset(array $args = []) { @command Shopify UpdateAsset }
  * @method array deleteAsset(array $args = []) { @command Shopify DeleteAsset }
  *
+ * AssignedFulfillmentOrder:
+ *
+ * Balance:
+ *
+ * Balance Transaction:
+ *
  * Blog:
  * @method array getBlogs(array $args = []) { @command Shopify GetBlogs }
  * @method int countBlogs(array $args = []) { @command Shopify CountBlogs }
@@ -89,6 +95,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array createBlog(array $args = []) { @command Shopify CreateBlog }
  * @method array updateBlog(array $args = []) { @command Shopify UpdateBlog }
  * @method array deleteBlog(array $args = []) { @command Shopify DeleteBlog }
+ *
+ * CancellationRequest:
  *
  * CarrierService:
  * @method array createCarrierService(array $args = []) { @command Shopify CreateCarrierService }
@@ -128,6 +136,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array approveComment(array $args = []) { @command Shopify ApproveComment }
  * @method array removeComment(array $args = []) { @command Shopify RemoveComment }
  * @method array restoreComment(array $args = []) { @command Shopify RestoreComment }
+ *
+ * Country:
+ *
+ * Currency:
  *
  * CustomCollection:
  * @method array getCustomCollections(array $args = []) { @command Shopify GetCustomCollections }
@@ -215,6 +227,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array cancelFulfillment(array $args = []) { @command Shopify CancelFulfillment }
  * @method array cancelFulfillmentOrderFulfillment(array $args = []) { @command Shopify CancelFulfillmentOrderFulfillment }
  *
+ * FulfillmentEvent:
+ *
  * FulfillmentOrder:
  * @method array getFulfillmentOrders(array $args = []) { @command Shopify GetFulfillmentOrders }
  * @method array getFulfillmentOrder(array $args = []) { @command Shopify GetFulfillmentOrder }
@@ -223,6 +237,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array moveFulfillmentOrder(array $args = []) { @command Shopify MoveFulfillmentOrder }
  * @method array openFulfillmentOrder(array $args = []) { @command Shopify OpenFulfillmentOrder }
  * @method array rescheduleFulfillmentOrder(array $args = []) { @command Shopify RescheduleFulfillmentOrder }
+ *
+ * FulfillmentRequest:
+ *
+ * FulfillmentService:
  *
  * GiftCard:
  * @method array getGiftCards(array $args = []) { @command Shopify GetGiftCards }
@@ -250,6 +268,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getLocation(array $args = []) { @command Shopify GetLocation }
  * @method int countLocations(array $args = []) { @command Shopify CountLocations }
  * @method array getLocationInventoryLevels(array $args = []) { @command Shopify GetLocationInventoryLevels }
+ *
+ * LocationsForMove:
  *
  * MarketingEvent:
  * @method array getMarketingEvents(array $args = []) { @command Shopify GetMarketingEvents }
@@ -295,6 +315,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  *
  * Payment:
  *
+ * Payout:
+ *
+ * Policy:
+ *
  * PriceRule:
  * @method array getPriceRules(array $args = []) { @command Shopify GetPriceRules }
  * @method int getPriceRule(array $args = []) { @command Shopify GetPriceRule }
@@ -331,6 +355,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteProductVariant(array $args = []) { @command Shopify DeleteProductVariant }
  *
  * ProductListing:
+ *
+ * Province:
  *
  * RecurringApplicationCharge:
  * @method array getRecurringApplicationCharges(array $args = []) { @command Shopify GetRecurringApplicationCharges }
@@ -388,6 +414,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getStorefrontAccessTokens(array $args = []) { @command Shopify GetStorefrontAccessTokens }
  * @method array createStorefrontAccessToken(array $args = []) { @command Shopify CreateStorefrontAccessToken }
  * @method array deleteStorefrontAccessToken(array $args = []) { @command Shopify DeleteStorefrontAccessToken }
+ *
+ * TenderTransaction:
  *
  * Theme:
  * @method array getThemes(array $args = []) { @command Shopify GetThemes }
