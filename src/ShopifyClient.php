@@ -149,8 +149,15 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array restoreComment(array $args = []) { @command Shopify RestoreComment }
  *
  * Country:
+ * @method array getCountries(array $args = []) { @command Shopify GetCountries }
+ * @method int countCountries(array $args = []) { @command Shopify CountCountries }
+ * @method array getCountry(array $args = []) { @command Shopify GetCountry }
+ * @method array createCountry(array $args = []) { @command Shopify CreateCountry }
+ * @method array updateCountry(array $args = []) { @command Shopify UpdateCountry }
+ * @method array deleteCountry(array $args = []) { @command Shopify DeleteCountry }
  *
  * Currency:
+ * @method array getCurrencies(array $args = []) { @command Shopify GetCurrencies }
  *
  * CustomCollection:
  * @method array getCustomCollections(array $args = []) { @command Shopify GetCustomCollections }

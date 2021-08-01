@@ -650,10 +650,17 @@ array restoreComment(array $args = []);
 
 ### [Country](https://shopify.dev/api/admin/rest/reference/store-properties/country)
 ```php
+array getCountries(array $args = []);
+int countCountries(array $args = []);
+array getCountry(array $args = []);
+array createCountry(array $args = []);
+array updateCountry(array $args = []);
+array deleteCountry(array $args = []);
 ```
 
 ### [Currency](https://shopify.dev/api/admin/rest/reference/store-properties/currency)
 ```php
+array getCurrencies(array $args = []);
 ```
 
 ### [CustomCollection](https://shopify.dev/api/admin/rest/reference/products/customcollection)

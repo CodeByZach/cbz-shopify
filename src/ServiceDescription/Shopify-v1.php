@@ -2769,6 +2769,171 @@ return [
          * https://shopify.dev/api/admin/rest/reference/store-properties/country
          * ---------------------------------------------------------------------------------------------
          */
+        'GetCountries' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of countries.',
+            'data'          => [ 'root_key' => 'countries' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CountCountries' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of countries.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetCountry' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a specific county.',
+            'data'          => [ 'root_key' => 'country' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Country ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateCountry' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/countries.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a country.',
+            'data'          => [ 'root_key' => 'country' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'code' => [
+                    'description' => 'The two-letter country code (ISO 3166-1 alpha-2 format).',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'The full name of the country in English.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'provinces' => [
+                    'description' => 'The sub-regions of a country, such as its provinces or states.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateCountry' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/countries/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates an existing country.',
+            'data'          => [ 'root_key' => 'country' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Country ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'code' => [
+                    'description' => 'The two-letter country code (ISO 3166-1 alpha-2 format).',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'The full name of the country in English.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'provinces' => [
+                    'description' => 'The sub-regions of a country, such as its provinces or states.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteCountry' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/countries/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a country.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Country ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
@@ -2777,6 +2942,21 @@ return [
          * https://shopify.dev/api/admin/rest/reference/store-properties/currency
          * ---------------------------------------------------------------------------------------------
          */
+        'GetCurrencies' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/currencies.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of currencies enabled on a shop.',
+            'data'          => [ 'root_key' => 'currencies' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
