@@ -4772,8 +4772,8 @@ return [
 
         /**
          * ---------------------------------------------------------------------------------------------
-         * DiscountCode
-         * https://shopify.dev/api/admin/rest/reference/discounts/discountcode
+         * Dispute
+         * https://shopify.dev/api/admin/rest/reference/shopify_payments/dispute
          * ---------------------------------------------------------------------------------------------
          */
         'GetDisputes' => [
@@ -5964,6 +5964,217 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentevent
          * ---------------------------------------------------------------------------------------------
          */
+        'GetFulfillmentEvents' => [
+            'httpMethod'       => 'GET',
+            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{fulfillment_id}/events.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Retrieves a list of fulfillment events for a specific fulfillment',
+            'data'             => [ 'root_key' => 'fulfillment_events' ],
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fulfillment_id' => [
+                    'description' => 'The ID of the fulfillment that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetFulfillmentEvent' => [
+            'httpMethod'       => 'GET',
+            'uri'              => 'admin/api/{version}/orders/{order_id}/fulfillments/{fulfillment_id}/events/{id}.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Retrieves a specific fulfillment event',
+            'data'             => [ 'root_key' => 'fulfillment_event' ],
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fulfillment_id' => [
+                    'description' => 'The ID of the fulfillment that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'The ID of the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CreateFulfillmentEvent' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{fulfillment_id}/events.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a fulfillment event',
+            'data'          => [
+                'root_key_request'  => 'event',
+                'root_key_response' => 'fulfillment_event'
+            ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fulfillment_id' => [
+                    'description' => 'The ID of the fulfillment that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'address1' => [
+                    'description' => 'The street address where the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'city' => [
+                    'description' => 'The city where the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'country' => [
+                    'description' => 'The country where the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'latitude' => [
+                    'description' => 'A geographic coordinate specifying the latitude of the fulfillment event.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'longitude' => [
+                    'description' => 'A geographic coordinate specifying the longitude of the fulfillment event.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'province' => [
+                    'description' => 'The province where the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'zip' => [
+                    'description' => 'The zip code of the location where the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'estimated_delivery_at' => [
+                    'description' => 'The estimated delivery date based on the fulfillment\'s tracking number, as long as it\'s provided by one of the following carriers: USPS, FedEx, UPS, or Canada Post (Canada only).',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'happened_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when the fulfillment event occurred.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'message' => [
+                    'description' => 'An arbitrary message describing the status. Can be provided by a shipping carrier.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shop_id' => [
+                    'description' => 'An ID for the shop that\'s associated with the fulfillment event.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'The status of the fulfillment event.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'label_printed',
+                        'label_purchased',
+                        'attempted_delivery',
+                        'ready_for_pickup',
+                        'picked_up',
+                        'confirmed',
+                        'in_transit',
+                        'out_for_delivery',
+                        'delivered',
+                        'failure'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteFulfillmentEvent' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/fulfillments/{fulfillment_id}/events/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a fulfillment event',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fulfillment_id' => [
+                    'description' => 'The ID of the fulfillment that\'s associated with the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'The ID of the fulfillment event.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
@@ -6136,7 +6347,7 @@ return [
                     'required'    => true
                 ],
                 'new_fulfill_at' => [
-                    'description' => 'Fulfillment Order ID',
+                    'description' => 'Fulfillment Order date',
                     'location'    => 'json',
                     'type'        => 'string',
                     'format'      => 'date-time',
@@ -6147,6 +6358,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * FulfillmentRequest
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentrequest
@@ -6155,11 +6367,13 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * FulfillmentService
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentservice
          * ---------------------------------------------------------------------------------------------
          */
+
 
         /**
          * ---------------------------------------------------------------------------------------------
@@ -6597,6 +6811,7 @@ return [
             'httpMethod'    => 'DELETE',
             'uri'           => 'admin/api/{version}/inventory_levels.json',
             'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes an inventory level',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -6711,9 +6926,6 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -6736,9 +6948,6 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -6754,9 +6963,6 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -6779,9 +6985,6 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -6792,6 +6995,27 @@ return [
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/locationsformove
          * ---------------------------------------------------------------------------------------------
          */
+        'GetLocationsForMove' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/locations_for_move.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of locations that a fulfillment order can potentially move to.',
+            'data'          => [ 'root_key' => 'locations_for_move' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
@@ -7061,12 +7285,104 @@ return [
                     'type'        => 'string',
                     'format'      => 'date-time',
                     'required'    => false
+                ],
+                'utm_campaign' => [
+                    'description' => 'The UTM parameters used in the links provided in the marketing event. Values must be unique and should not be url-encoded.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'utm_source' => [
+                    'description' => 'The UTM parameters used in the links provided in the marketing event. Values must be unique and should not be url-encoded.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'utm_medium' => [
+                    'description' => 'The UTM parameters used in the links provided in the marketing event. Values must be unique and should not be url-encoded.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'description' => [
+                    'description' => 'A description of the marketing event.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'manage_url' => [
+                    'description' => 'A link to manage the marketing event. In most cases, this links to the app that created the event.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'preview_url' => [
+                    'description' => 'A link to the live version of the event, or to a rendered preview in the app that created it.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'marketed_resources' => [
+                    'description' => 'A list of the items that were marketed in the marketing event. Includes the type and id of each item.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteMarketingEvent' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/marketing_events/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a marketing event',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Marketing Event ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CreateMarketingEventEngagements' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/marketing_events/{id}/engagements.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates marketing engagements on a marketing event',
+            'data'          => [ 'root_key_response' => 'engagements' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Marketing Event ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'engagements' => [
+                    'description' => 'Engagement objects to be created.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
                 ]
             ]
         ],
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Metafield
          * https://shopify.dev/api/admin/rest/reference/metafield
@@ -7207,6 +7523,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * MobilePlatformApplication
          * https://shopify.dev/api/admin/rest/reference/sales-channels/mobileplatformapplication
@@ -7215,6 +7532,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Multipass
          * https://shopify.dev/api/admin/rest/reference/plus/multipass
@@ -7224,6 +7542,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Order
          * https://shopify.dev/api/admin/rest/reference/orders/order
@@ -7437,6 +7756,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Order Risk
          * https://shopify.dev/api/admin/rest/reference/orders/order-risk
@@ -7446,6 +7766,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Page
          * https://shopify.dev/api/admin/rest/reference/online-store/page
@@ -7617,6 +7938,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Payment
          * https://shopify.dev/api/admin/rest/reference/sales-channels/payment
@@ -7625,6 +7947,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Payout
          * https://shopify.dev/api/admin/rest/reference/shopify_payments/payout
@@ -7633,6 +7956,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Policy
          * https://shopify.dev/api/admin/rest/reference/store-properties/policy
@@ -7641,6 +7965,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * PriceRule
          * https://shopify.dev/api/admin/rest/reference/discounts/pricerule
@@ -7812,6 +8137,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product
          * https://shopify.dev/api/admin/rest/reference/products/product
@@ -7978,6 +8304,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product Image
          * https://shopify.dev/api/admin/rest/reference/products/product-image
@@ -8148,6 +8475,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product ResourceFeedback
          * https://shopify.dev/api/admin/rest/reference/sales-channels/productresourcefeedback
@@ -8157,6 +8485,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product Variant
          * https://shopify.dev/api/admin/rest/reference/products/product-variant
@@ -8340,6 +8669,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ProductListing
          * https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting
@@ -8348,6 +8678,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Province
          * https://shopify.dev/api/admin/rest/reference/store-properties/province
@@ -8356,6 +8687,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * RecurringApplicationCharge
          * https://shopify.dev/api/admin/rest/reference/billing/recurringapplicationcharge
@@ -8512,6 +8844,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Redirect
          * https://shopify.dev/api/admin/rest/reference/online-store/redirect
@@ -8658,6 +8991,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Refund
          * https://shopify.dev/api/admin/rest/reference/orders/refund
@@ -8771,6 +9105,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Report
          * https://shopify.dev/api/admin/rest/reference/analytics/report
@@ -8963,6 +9298,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ResourceFeedback
          * https://shopify.dev/api/admin/rest/reference/sales-channels/resourcefeedback
@@ -8971,6 +9307,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ScriptTag
          * https://shopify.dev/api/admin/rest/reference/online-store/scripttag
@@ -9131,6 +9468,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ShippingZone
          * https://shopify.dev/api/admin/rest/reference/store-properties/shippingzone
@@ -9158,6 +9496,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Shop
          * https://shopify.dev/api/admin/rest/reference/store-properties/shop
@@ -9185,6 +9524,7 @@ return [
 
         /**
          * @method HAS METAFIELDS
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * SmartCollection
          * https://shopify.dev/api/admin/rest/reference/products/smartcollection
@@ -9325,6 +9665,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * StorefrontAccessToken
          * https://shopify.dev/api/admin/rest/reference/access/storefrontaccesstoken
@@ -9397,6 +9738,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * TenderTransaction
          * https://shopify.dev/api/admin/rest/reference/tendertransaction
@@ -9405,6 +9747,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Theme
          * https://shopify.dev/api/admin/rest/reference/online-store/theme
@@ -9539,6 +9882,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Transaction
          * https://shopify.dev/api/admin/rest/reference/online-store/transaction
@@ -9658,6 +10002,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * UsageCharge
          * https://shopify.dev/api/admin/rest/reference/billing/usagecharge
@@ -9767,6 +10112,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * User
          * https://shopify.dev/api/admin/rest/reference/plus/user
@@ -9775,6 +10121,7 @@ return [
 
 
         /**
+         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Webhook
          * https://shopify.dev/api/admin/rest/reference/events/webhook
@@ -10015,18 +10362,27 @@ return [
                     'required'    => true
                 ],
                 'delegate_access_scope' => [
-                    'description' => 'New scopes that are granted to the delegate access token',
+                    'description' => 'The list of scopes that will be delegated to the new access token',
                     'location'    => 'json',
                     'type'        => 'array',
                     'required'    => true
+                ],
+                'expires_in' => [
+                    'description' => 'The amount of time, in seconds, after which the delegate access token is no longer valid.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
     ],
 
+
+    /**
+     * ~~~~~~~~~~~~~~~~~~~~~~~~
+     *          Models
+     * ~~~~~~~~~~~~~~~~~~~~~~~~
+     */
     'models' => [
         'GenericModel' => [
             'type'       => 'object',

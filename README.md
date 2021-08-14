@@ -771,6 +771,10 @@ array cancelFulfillmentOrderFulfillment(array $args = []);
 
 ### [FulfillmentEvent](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentevent)
 ```php
+array getFulfillmentEvents(array $args = []);
+array getFulfillmentEvent(array $args = []);
+array createFulfillmentEvent(array $args = []);
+array deleteFulfillmentEvent(array $args = []);
 ```
 
 ### [FulfillmentOrder](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentorder)
@@ -829,6 +833,7 @@ array getLocationInventoryLevels(array $args = []);
 
 ### [LocationsForMove](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/locationsformove)
 ```php
+array getLocationsForMove(array $args = []);
 ```
 
 ### [MarketingEvent](https://shopify.dev/api/admin/rest/reference/marketingevent)

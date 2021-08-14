@@ -246,6 +246,10 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array cancelFulfillmentOrderFulfillment(array $args = []) { @command Shopify CancelFulfillmentOrderFulfillment }
  *
  * FulfillmentEvent:
+ * @method array getFulfillmentEvents(array $args = []) { @command Shopify GetFulfillmentEvents }
+ * @method array getFulfillmentEvent(array $args = []) { @command Shopify GetFulfillmentEvent }
+ * @method array createFulfillmentEvent(array $args = []) { @command Shopify CreateFulfillmentEvent }
+ * @method array deleteFulfillmentEvent(array $args = []) { @command Shopify DeleteFulfillmentEvent }
  *
  * FulfillmentOrder:
  * @method array getFulfillmentOrders(array $args = []) { @command Shopify GetFulfillmentOrders }
@@ -288,6 +292,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getLocationInventoryLevels(array $args = []) { @command Shopify GetLocationInventoryLevels }
  *
  * LocationsForMove:
+ * @method array getLocationsForMove(array $args = []) { @command Shopify GetLocationsForMove }
  *
  * MarketingEvent:
  * @method array getMarketingEvents(array $args = []) { @command Shopify GetMarketingEvents }
