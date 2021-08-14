@@ -312,11 +312,71 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array createMarketingEventEngagements(array $args = []) { @command Shopify CreateMarketingEventEngagements }
  *
  * Metafield:
- * @method array getMetafields(array $args = []) { @command Shopify GetMetafields }
- * @method array getMetafield(array $args = []) { @command Shopify GetMetafield }
- * @method array createMetafield(array $args = []) { @command Shopify CreateMetafield }
- * @method array updateMetafield(array $args = []) { @command Shopify UpdateMetafield }
- * @method array deleteMetafield(array $args = []) { @command Shopify DeleteMetafield }
+ * @method array getArticleMetafields(array $args = []) { @command Shopify GetArticleMetafields }
+ * @method array getBlogMetafields(array $args = []) { @command Shopify GetBlogMetafields }
+ * @method array getCollectionMetafields(array $args = []) { @command Shopify GetCollectionMetafields }
+ * @method array getCustomerMetafields(array $args = []) { @command Shopify GetCustomerMetafields }
+ * @method array getDraftOrderMetafields(array $args = []) { @command Shopify GetDraftOrderMetafields }
+ * @method array getOrderMetafields(array $args = []) { @command Shopify GetOrderMetafields }
+ * @method array getPageMetafields(array $args = []) { @command Shopify GetPageMetafields }
+ * @method array getProductMetafields(array $args = []) { @command Shopify GetProductMetafields }
+ * @method array getProductVariantMetafields(array $args = []) { @command Shopify GetProductVariantMetafields }
+ * @method array getProductImageMetafields(array $args = []) { @command Shopify GetProductImageMetafields }
+ * @method array getShopMetafields(array $args = []) { @command Shopify GetShopMetafields }
+ * @method int countArticleMetafields(array $args = []) { @command Shopify CountArticleMetafields }
+ * @method int countBlogMetafields(array $args = []) { @command Shopify CountBlogMetafields }
+ * @method int countCollectionMetafields(array $args = []) { @command Shopify CountCollectionMetafields }
+ * @method int countCustomerMetafields(array $args = []) { @command Shopify CountCustomerMetafields }
+ * @method int countDraftOrderMetafields(array $args = []) { @command Shopify CountDraftOrderMetafields }
+ * @method int countOrderMetafields(array $args = []) { @command Shopify CountOrderMetafields }
+ * @method int countPageMetafields(array $args = []) { @command Shopify CountPageMetafields }
+ * @method int countProductMetafields(array $args = []) { @command Shopify CountProductMetafields }
+ * @method int countProductVariantMetafields(array $args = []) { @command Shopify CountProductVariantMetafields }
+ * @method int countProductImageMetafields(array $args = []) { @command Shopify CountProductImageMetafields }
+ * @method int countShopMetafields(array $args = []) { @command Shopify CountShopMetafields }
+ * @method array getArticleMetafield(array $args = []) { @command Shopify GetArticleMetafield }
+ * @method array getBlogMetafield(array $args = []) { @command Shopify GetBlogMetafield }
+ * @method array getCollectionMetafield(array $args = []) { @command Shopify GetCollectionMetafield }
+ * @method array getCustomerMetafield(array $args = []) { @command Shopify GetCustomerMetafield }
+ * @method array getDraftOrderMetafield(array $args = []) { @command Shopify GetDraftOrderMetafield }
+ * @method array getOrderMetafield(array $args = []) { @command Shopify GetOrderMetafield }
+ * @method array getPageMetafield(array $args = []) { @command Shopify GetPageMetafield }
+ * @method array getProductMetafield(array $args = []) { @command Shopify GetProductMetafield }
+ * @method array getProductVariantMetafield(array $args = []) { @command Shopify GetProductVariantMetafield }
+ * @method array getProductImageMetafield(array $args = []) { @command Shopify GetProductImageMetafield }
+ * @method array getShopMetafield(array $args = []) { @command Shopify GetShopMetafield }
+ * @method array createArticleMetafield(array $args = []) { @command Shopify CreateArticleMetafield }
+ * @method array createBlogMetafield(array $args = []) { @command Shopify CreateBlogMetafield }
+ * @method array createCollectionMetafield(array $args = []) { @command Shopify CreateCollectionMetafield }
+ * @method array createCustomerMetafield(array $args = []) { @command Shopify CreateCustomerMetafield }
+ * @method array createDraftOrderMetafield(array $args = []) { @command Shopify CreateDraftOrderMetafield }
+ * @method array createOrderMetafield(array $args = []) { @command Shopify CreateOrderMetafield }
+ * @method array createPageMetafield(array $args = []) { @command Shopify CreatePageMetafield }
+ * @method array createProductMetafield(array $args = []) { @command Shopify CreateProductMetafield }
+ * @method array createProductVariantMetafield(array $args = []) { @command Shopify CreateProductVariantMetafield }
+ * @method array createProductImageMetafield(array $args = []) { @command Shopify CreateProductImageMetafield }
+ * @method array createShopMetafield(array $args = []) { @command Shopify CreateShopMetafield }
+ * @method array updateArticleMetafield(array $args = []) { @command Shopify UpdateArticleMetafield }
+ * @method array updateBlogMetafield(array $args = []) { @command Shopify UpdateBlogMetafield }
+ * @method array updateCollectionMetafield(array $args = []) { @command Shopify UpdateCollectionMetafield }
+ * @method array updateCustomerMetafield(array $args = []) { @command Shopify UpdateCustomerMetafield }
+ * @method array updateDraftOrderMetafield(array $args = []) { @command Shopify UpdateDraftOrderMetafield }
+ * @method array updateOrderMetafield(array $args = []) { @command Shopify UpdateOrderMetafield }
+ * @method array updatePageMetafield(array $args = []) { @command Shopify UpdatePageMetafield }
+ * @method array updateProductMetafield(array $args = []) { @command Shopify UpdateProductMetafield }
+ * @method array updateProductVariantMetafield(array $args = []) { @command Shopify UpdateProductVariantMetafield }
+ * @method array updateProductImageMetafield(array $args = []) { @command Shopify UpdateProductImageMetafield }
+ * @method array updateShopMetafield(array $args = []) { @command Shopify UpdateShopMetafield }
+ * @method array deleteArticleMetafield(array $args = []) { @command Shopify DeleteArticleMetafield }
+ * @method array deleteBlogMetafield(array $args = []) { @command Shopify DeleteBlogMetafield }
+ * @method array deleteCollectionMetafield(array $args = []) { @command Shopify DeleteCollectionMetafield }
+ * @method array deleteCustomerMetafield(array $args = []) { @command Shopify DeleteCustomerMetafield }
+ * @method array deleteDraftOrderMetafield(array $args = []) { @command Shopify DeleteDraftOrderMetafield }
+ * @method array deleteOrderMetafield(array $args = []) { @command Shopify DeleteOrderMetafield }
+ * @method array deletePageMetafield(array $args = []) { @command Shopify DeletePageMetafield }
+ * @method array deleteProductMetafield(array $args = []) { @command Shopify DeleteProductMetafield }
+ * @method array deleteProductVariantMetafield(array $args = []) { @command Shopify DeleteProductVariantMetafield }
+ * @method array deleteProductImageMetafield(array $args = []) { @command Shopify DeleteProductImageMetafield }
  *
  * MobilePlatformApplication:
  *
@@ -504,6 +564,17 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method \Traversable getLocationInventoryLevelsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetLocationInventoryLevels }
  * @method \Traversable getMarketingEventsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMarketingEvents }
  * @method \Traversable getMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetMetafields }
+ * @method \Traversable getArticleMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetArticleMetafields }
+ * @method \Traversable getBlogMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetBlogMetafields }
+ * @method \Traversable getCollectionMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCollectionMetafields }
+ * @method \Traversable getCustomerMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetCustomerMetafields }
+ * @method \Traversable getDraftOrderMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetDraftOrderMetafields }
+ * @method \Traversable getOrderMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrderMetafields }
+ * @method \Traversable getPageMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPageMetafields }
+ * @method \Traversable getProductMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProductMetafields }
+ * @method \Traversable getProductVariantMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProductVariantMetafields }
+ * @method \Traversable getProductImageMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetProductImageMetafields }
+ * @method \Traversable getShopMetafieldsIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetShopMetafields }
  * @method \Traversable getOrdersIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrders }
  * @method \Traversable getOrderRisksIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetOrderRisks }
  * @method \Traversable getPagesIterator(array $commandArgs = [], array $iteratorArgs = []) { @command Shopify GetPages }

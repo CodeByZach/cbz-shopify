@@ -7679,17 +7679,16 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Metafield
          * https://shopify.dev/api/admin/rest/reference/metafield
          * ---------------------------------------------------------------------------------------------
          */
-        'GetMetafields' => [
+        'GetArticleMetafields' => [
             'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/metafields.json',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields',
+            'summary'       => 'Retrieve metafields that belong to an Article resource',
             'data'          => [ 'root_key' => 'metafields' ],
             'parameters'    => [
                 'version' => [
@@ -7697,18 +7696,1806 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
-        'GetMetafield' => [
+        'GetBlogMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Blog resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetCollectionMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Custom or Smart Collection resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetCustomerMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Customer resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetDraftOrderMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Draft Order resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetOrderMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to an Order resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetPageMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Page resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Product resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductVariantMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Product Variant resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductImageMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of metafields that belong to a Product Image resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetShopMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve metafields that belong to a Shop resource',
+            'data'          => [ 'root_key' => 'metafields' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show metafields created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show metafields created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show metafields last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show metafields last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'namespace' => [
+                    'description' => 'Show metafields with given namespace',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'key' => [
+                    'description' => 'Show metafields with given key',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CountArticleMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to an Article resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountBlogMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Blog resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountCollectionMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Custom or Smart Collection resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountCustomerMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Customer resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountDraftOrderMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Draft Order resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountOrderMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to an Order resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountPageMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Page resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountProductMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Product resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountProductVariantMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Product Variant resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountProductImageMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count ofs a list of metafields that belong to a Product Image resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountShopMetafields' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of metafields that belong to a Shop resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetArticleMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to an Article',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetBlogMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Blog',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetCollectionMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Collection',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetCustomerMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Customer',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetDraftOrderMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a DraftOrder',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetOrderMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to am Order',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetPageMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Page',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Product',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductVariantMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a ProductVariant',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductImageMetafield' => [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/metafields/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve specific metafield',
+            'summary'       => 'Retrieves a single metafield that belongs to a ProductImage',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetShopMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single metafield that belongs to a Shop',
             'data'          => [ 'root_key' => 'metafield' ],
             'parameters'    => [
                 'version' => [
@@ -7722,18 +9509,21 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
-        'CreateMetafield' => [
-            'httpMethod'    => 'POST',
-            'uri'           => 'admin/api/{version}/metafields.json',
+        'CreateArticleMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Create a new metafield',
+            'summary'       => 'Creates a new metafield for an Article resource',
             'data'          => [ 'root_key' => 'metafield' ],
             'parameters'    => [
                 'version' => [
@@ -7742,35 +9532,1982 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
                 'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
                     'description' => 'Namespace to use',
                     'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateBlogMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Blog resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateCollectionMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Custom or Smart Collection resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateCustomerMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Customer resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateDraftOrderMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Draft Order resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateOrderMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for an Order resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreatePageMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Page resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateProductMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Product resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateProductVariantMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Product Variant resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateProductImageMetafield' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for an Product Image resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateShopMetafield' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/metafields.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new metafield for a Shop resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ],
                 'key' => [
-                    'description' => 'Key to use',
+                    'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
                     'required'    => true
                 ],
                 'value' => [
-                    'description' => 'Value type',
+                    'description' => 'The information to be stored as metadata.',
                     'location'    => 'json',
-                    'type'        => ['string', 'integer'],
+                    'type'        => [ 'string', 'integer' ],
                     'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
-        'UpdateMetafield' => [
+        'UpdateArticleMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for an Article resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateBlogMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Blog resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateCollectionMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Custom or Smart Collection resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateCustomerMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Customer resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateDraftOrderMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Draft Order resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateOrderMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for an Order resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdatePageMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Page resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateProductMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Product resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateProductVariantMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Product Variant resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateProductImageMetafield' => [
             'httpMethod'    => 'PUT',
             'uri'           => 'admin/api/{version}/metafields/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Update a specific metafield',
+            'summary'       => 'Updates a metafield for an Product Image resource',
+            'data'          => [ 'root_key' => 'metafield' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'key' => [
+                    'description' => 'The name of the metafield.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
+                    'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateShopMetafield' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates a metafield for a Shop resource',
             'data'          => [ 'root_key' => 'metafield' ],
             'parameters'    => [
                 'version' => [
@@ -7785,23 +11522,372 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'value' => [
-                    'description' => 'Value type',
+                'key' => [
+                    'description' => 'The name of the metafield.',
                     'location'    => 'json',
-                    'type'        => ['string', 'integer'],
+                    'type'        => 'string',
+                    'min'         => 3,
+                    'max'         => 30,
                     'required'    => true
+                ],
+                'namespace' => [
+                    'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'min'         => 2,
+                    'max'         => 20,
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'The information to be stored as metadata.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'integer' ],
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Namespace to use',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => false
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => false
+                ],
+                'type' => [
+                    'description' => 'The metafield\'s information type.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'single_line_text_field',
+                        'multi_line_text_field',
+                        'page_reference',
+                        'product_reference',
+                        'variant_reference',
+                        'file_reference',
+                        'number_integer',
+                        'number_decimal',
+                        'date',
+                        'date_time',
+                        'url',
+                        'json',
+                        'boolean',
+                        'color',
+                        'weight',
+                        'volume',
+                        'dimension',
+                        'rating'
+                    ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
-        'DeleteMetafield' => [
+        'DeleteArticleMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/articles/{article_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for an Article resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'article_id' => [
+                    'description' => 'Article ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteBlogMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/blogs/{blog_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Blog resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'blog_id' => [
+                    'description' => 'Blog ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteCollectionMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/collections/{collection_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Custom or Smart Collection resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'collection_id' => [
+                    'description' => 'Collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteCustomerMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/customers/{customer_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Customer resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'customer_id' => [
+                    'description' => 'Customer ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteDraftOrderMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/draft_orders/{draft_order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Draft Order resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'draft_order_id' => [
+                    'description' => 'Draft Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteOrderMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/customers/{order_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for an Order resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeletePageMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/pages/{page_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Page resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'page_id' => [
+                    'description' => 'Page ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteProductMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/products/{product_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Product resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteProductVariantMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/products/{product_id}/variants/{product_variant_id}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Product Variant resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_variant_id' => [
+                    'description' => 'Product Variant ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteProductImageMetafield' => [
             'httpMethod'    => 'DELETE',
             'uri'           => 'admin/api/{version}/metafields/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Delete specific metafield',
+            'summary'       => 'Deletes a metafield for an Product Image resource',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'owner_id' => [
+                    'description' => 'Owner ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'sentAs'      => 'metafield[owner_id]',
+                    'required'    => true
+                ],
+                'owner_resource' => [
+                    'description' => 'Owner resource',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'sentAs'      => 'metafield[owner_resource]',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Metafield ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteShopMetafield' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/metafields/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes a metafield for a Shop resource',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
