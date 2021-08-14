@@ -790,10 +790,18 @@ array rescheduleFulfillmentOrder(array $args = []);
 
 ### [FulfillmentRequest](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentrequest)
 ```php
+array sendFulfillmentRequest(array $args = []);
+array acceptFulfillmentRequest(array $args = []);
+array rejectFulfillmentRequest(array $args = []);
 ```
 
 ### [FulfillmentService](https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentservice)
 ```php
+array getFulfillmentServices(array $args = []);
+array createFulfillmentService(array $args = []);
+array getFulfillmentService(array $args = []);
+array updateFulfillmentService(array $args = []);
+array deleteFulfillmentService(array $args = []);
 ```
 
 ### [GiftCard](https://shopify.dev/api/admin/rest/reference/plus/giftcard)

@@ -6358,21 +6358,318 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * FulfillmentRequest
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentrequest
          * ---------------------------------------------------------------------------------------------
          */
+        'SendFulfillmentRequest' => [
+            'httpMethod'       => 'POST',
+            'uri'              => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/fulfillment_request.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Sends a fulfillment request to the fulfillment service of a fulfillment order.',
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional message for the fulfillment request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'fulfillment_order_line_items' => [
+                    'description' => 'The fulfillment order line items to be requested for fulfillment. If left blank, all line items of the fulfillment order are requested for fulfillment.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'AcceptFulfillmentRequest' => [
+            'httpMethod'       => 'POST',
+            'uri'              => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/fulfillment_request/accept.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Accepts a fulfillment request sent to a fulfillment service for a fulfillment order.',
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional message for the fulfillment request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'RejectFulfillmentRequest' => [
+            'httpMethod'       => 'POST',
+            'uri'              => 'admin/api/{version}/fulfillment_orders/{fulfillment_order_id}/fulfillment_request/accept.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Rejects a fulfillment request sent to a fulfillment service for a fulfillment order.',
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fulfillment_order_id' => [
+                    'description' => 'The ID of the fulfillment order.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'message' => [
+                    'description' => 'An optional message for the fulfillment request.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * FulfillmentService
          * https://shopify.dev/api/admin/rest/reference/shipping-and-fulfillment/fulfillmentservice
          * ---------------------------------------------------------------------------------------------
          */
+        'GetFulfillmentServices' => [
+            'httpMethod'       => 'GET',
+            'uri'              => 'admin/api/{version}/fulfillment_services.json',
+            'responseModel'    => 'GenericModel',
+            'summary'          => 'Receive a list of all FulfillmentServices.',
+            'data'             => [ 'root_key' => 'fulfillment_services' ],
+            'parameters'       => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'scope' => [
+                    'description' => 'Defines what should be returned.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'current_client', 'all' ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CreateFulfillmentService' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/fulfillment_services.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new FulfillmentService.',
+            'data'          => [ 'root_key' => 'fulfillment_service' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'callback_url' => [
+                    'description' => 'States the URL endpoint that Shopify needs to retrieve inventory and tracking updates.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'format' => [
+                    'description' => 'Specifies the format of the API output.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'json', 'xml' ],
+                    'required'    => false
+                ],
+                'fulfillment_orders_opt_in' => [
+                    'description' => 'Whether the fulfillment service wants to register for APIs related to fulfillment orders.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A human-friendly unique string for the fulfillment service generated from its title.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'location_id' => [
+                    'description' => 'The unique identifier of the location tied to the fulfillment service',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'name' => [
+                    'description' => 'The name of the fulfillment service as seen by merchants and their customers.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'provider_id' => [
+                    'description' => 'A unique identifier for the fulfillment service provider.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'requires_shipping_method' => [
+                    'description' => 'States if the fulfillment service requires products to be physically shipped.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'tracking_support' => [
+                    'description' => 'States if the fulfillment service provides tracking numbers for packages.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetFulfillmentService' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/fulfillment_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Receive a single FulfillmentService.',
+            'data'          => [ 'root_key' => 'fulfillment_service' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Fulfillment service ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'UpdateFulfillmentService' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/fulfillment_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Modify an existing FulfillmentService.',
+            'data'          => [ 'root_key' => 'fulfillment_service' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Fulfillment service ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'callback_url' => [
+                    'description' => 'States the URL endpoint that Shopify needs to retrieve inventory and tracking updates.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'format' => [
+                    'description' => 'Specifies the format of the API output.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'json', 'xml' ],
+                    'required'    => false
+                ],
+                'fulfillment_orders_opt_in' => [
+                    'description' => 'Whether the fulfillment service wants to register for APIs related to fulfillment orders.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A human-friendly unique string for the fulfillment service generated from its title.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'location_id' => [
+                    'description' => 'The unique identifier of the location tied to the fulfillment service',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'name' => [
+                    'description' => 'The name of the fulfillment service as seen by merchants and their customers.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'provider_id' => [
+                    'description' => 'A unique identifier for the fulfillment service provider.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'requires_shipping_method' => [
+                    'description' => 'States if the fulfillment service requires products to be physically shipped.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'tracking_support' => [
+                    'description' => 'States if the fulfillment service provides tracking numbers for packages.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteFulfillmentService' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/fulfillment_services/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Remove an existing FulfillmentService.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Fulfillment service ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**

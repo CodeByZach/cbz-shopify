@@ -261,8 +261,16 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array rescheduleFulfillmentOrder(array $args = []) { @command Shopify RescheduleFulfillmentOrder }
  *
  * FulfillmentRequest:
+ * @method array sendFulfillmentRequest(array $args = []) { @command Shopify SendFulfillmentRequest }
+ * @method array acceptFulfillmentRequest(array $args = []) { @command Shopify AcceptFulfillmentRequest }
+ * @method array rejectFulfillmentRequest(array $args = []) { @command Shopify RejectFulfillmentRequest }
  *
  * FulfillmentService:
+ * @method array getFulfillmentServices(array $args = []) { @command Shopify GetFulfillmentServices }
+ * @method array createFulfillmentService(array $args = []) { @command Shopify CreateFulfillmentService }
+ * @method array getFulfillmentService(array $args = []) { @command Shopify GetFulfillmentService }
+ * @method array updateFulfillmentService(array $args = []) { @command Shopify UpdateFulfillmentService }
+ * @method array deleteFulfillmentService(array $args = []) { @command Shopify DeleteFulfillmentService }
  *
  * GiftCard:
  * @method array getGiftCards(array $args = []) { @command Shopify GetGiftCards }
