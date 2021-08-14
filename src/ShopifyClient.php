@@ -379,6 +379,11 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteProductImageMetafield(array $args = []) { @command Shopify DeleteProductImageMetafield }
  *
  * MobilePlatformApplication:
+ * @method array getMobilePlatformApplications(array $args = []) { @command Shopify GetMobilePlatformApplications }
+ * @method array createMobilePlatformApplication(array $args = []) { @command Shopify CreateMobilePlatformApplication }
+ * @method array getMobilePlatformApplication(array $args = []) { @command Shopify GetMobilePlatformApplication }
+ * @method array updateMobilePlatformApplication(array $args = []) { @command Shopify UpdateMobilePlatformApplication }
+ * @method array deleteMobilePlatformApplication(array $args = []) { @command Shopify DeleteMobilePlatformApplication }
  *
  * Multipass:
  *

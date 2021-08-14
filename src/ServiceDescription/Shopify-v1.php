@@ -11906,12 +11906,161 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * MobilePlatformApplication
          * https://shopify.dev/api/admin/rest/reference/sales-channels/mobileplatformapplication
          * ---------------------------------------------------------------------------------------------
          */
+        'GetMobilePlatformApplications' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/mobile_platform_applications.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'List all of the mobile platform applications associated with the app',
+            'data'          => [ 'root_key' => 'mobile_platform_applications' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CreateMobilePlatformApplication' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/mobile_platform_applications.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a mobile platform application',
+            'data'          => [ 'root_key' => 'mobile_platform_application' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'application_id' => [
+                    'description' => 'iOS App ID or Android application ID of the application.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'platform' => [
+                    'description' => 'The platform of the application.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'sha256_cert_fingerprints' => [
+                    'description' => 'The SHA256 fingerprints of the app’s signing certificate. (Android only)',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'enabled_universal_or_app_links' => [
+                    'description' => 'Whether the application supports iOS universal links and Android App Links. If true, then URLs can be set up to link directly to the application. If false, then URLs can\'t link directly to the application.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'enabled_shared_webcredentials' => [
+                    'description' => 'Whether the application supports iOS shared web credentials.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetMobilePlatformApplication' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/mobile_platform_applications/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Get a mobile platform application',
+            'data'          => [ 'root_key' => 'mobile_platform_application' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Unique numeric identifier for the mobile platform application.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'UpdateMobilePlatformApplication' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/mobile_platform_applications/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a mobile platform application',
+            'data'          => [ 'root_key' => 'mobile_platform_application' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'application_id' => [
+                    'description' => 'iOS App ID or Android application ID of the application.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'platform' => [
+                    'description' => 'The platform of the application.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'sha256_cert_fingerprints' => [
+                    'description' => 'The SHA256 fingerprints of the app’s signing certificate. (Android only)',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'enabled_universal_or_app_links' => [
+                    'description' => 'Whether the application supports iOS universal links and Android App Links. If true, then URLs can be set up to link directly to the application. If false, then URLs can\'t link directly to the application.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'enabled_shared_webcredentials' => [
+                    'description' => 'Whether the application supports iOS shared web credentials.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteMobilePlatformApplication' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/mobile_platform_applications/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a mobile platform application',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Unique numeric identifier for the mobile platform application.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
