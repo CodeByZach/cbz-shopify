@@ -481,7 +481,6 @@ try {
 - [MarketingEvent](#marketingevent)
 - [Metafield](#metafield)
 - [MobilePlatformApplication](#mobileplatformapplication)
-- [Multipass](#multipass)
 - [Order](#order)
 - [Order Risk](#order-risk)
 - [Page](#page)
@@ -931,10 +930,6 @@ array createMobilePlatformApplication(array $args = []);
 array getMobilePlatformApplication(array $args = []);
 array updateMobilePlatformApplication(array $args = []);
 array deleteMobilePlatformApplication(array $args = []);
-```
-
-### [Multipass](https://shopify.dev/api/admin/rest/reference/plus/multipass)
-```php
 ```
 
 ### [Order](https://shopify.dev/api/admin/rest/reference/orders/order)

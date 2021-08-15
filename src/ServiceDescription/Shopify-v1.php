@@ -2989,7 +2989,7 @@ return [
                 'ids' => [
                     'description' => 'Show only collections specified by a comma-separated list of IDs.',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ],
                 'since_id' => [
@@ -3324,7 +3324,7 @@ return [
                 'ids' => [
                     'description' => 'Show only collections specified by a comma-separated list of IDs.',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ],
                 'since_id' => [
@@ -3795,7 +3795,7 @@ return [
                 'ids' => [
                     'description' => 'Retrieve only orders specified by a comma-separated list of order IDs.',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ],
                 'limit' => [
@@ -5145,7 +5145,7 @@ return [
                 'ids' => [
                     'description' => 'Filter by list of IDs.',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ],
                 'status' => [
@@ -12064,15 +12064,6 @@ return [
 
 
         /**
-         * @method INCOMPLETE
-         * ---------------------------------------------------------------------------------------------
-         * Multipass
-         * https://shopify.dev/api/admin/rest/reference/plus/multipass
-         * ---------------------------------------------------------------------------------------------
-         */
-
-
-        /**
          * @method HAS METAFIELDS
          * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
@@ -12092,28 +12083,102 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'CountOrders' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/orders/count.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve the number of orders',
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
+                ],
+                'ids' => [
+                    'description' => 'Retrieve only orders specified by a comma-separated list of order IDs.',
+                    'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to show on a page.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Show orders after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show orders last created at or after date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show orders last created at or before date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show orders last updated at or after date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show orders last updated at or before date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'processed_at_min' => [
+                    'description' => 'Show orders imported at or after date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'processed_at_max' => [
+                    'description' => 'Show orders imported at or before date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'attribution_app_id' => [
+                    'description' => 'Show orders attributed to a certain app, specified by the app ID. Set as current to show orders for the app currently consuming the API.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'Filter orders by their status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ]
+                ],
+                'financial_status' => [
+                    'description' => 'Filter orders by their financial status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                ],
+                'fulfillment_status' => [
+                    'description' => 'Filter orders by their fulfillment status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                ],
+                'fields' => [
+                    'description' => 'Retrieve only certain fields, specified by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -12142,12 +12207,11 @@ return [
             ]
         ],
 
-        'GetOrderMetafields' => [
+        'CountOrders' => [
             'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/orders/{id}/metafields.json',
+            'uri'           => 'admin/api/{version}/orders/count.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for an order',
-            'data'          => [ 'root_key' => 'metafields' ],
+            'summary'       => 'Retrieve the total number of orders that meet the specified criteria.',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -12155,40 +12219,55 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
-                'id' => [
-                    'description' => 'Order ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'CreateOrder' => [
-            'httpMethod'    => 'POST',
-            'uri'           => 'admin/api/{version}/orders.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Create a new order',
-            'data'          => [ 'root_key' => 'order' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
+                'created_at_min' => [
+                    'description' => 'Show orders last created at or after date.',
+                    'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => true
+                    'format'      => 'date-time',
+                    'required'    => false
                 ],
-                'line_items' => [
-                    'description' => 'The order line items',
-                    'location'    => 'json',
-                    'type'        => 'array',
-                    'required'    => true
+                'created_at_max' => [
+                    'description' => 'Show orders last created at or before date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show orders last updated at or after date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show orders last updated at or before date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'Filter orders by their status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ]
+                ],
+                'financial_status' => [
+                    'description' => 'Filter orders by their financial status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                ],
+                'fulfillment_status' => [
+                    'description' => 'Filter orders by their fulfillment status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -12236,6 +12315,56 @@ return [
             ]
         ],
 
+        'CancelOrder' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{id}/cancel.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Cancel a given order',
+            'data'          => [ 'root_key' => 'order' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Order ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
+        'CreateOrder' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new order',
+            'data'          => [ 'root_key' => 'order' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'line_items' => [
+                    'description' => 'The order line items',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'json'
+            ]
+        ],
+
         'UpdateOrder' => [
             'httpMethod'    => 'PUT',
             'uri'           => 'admin/api/{version}/orders/{id}.json',
@@ -12261,12 +12390,11 @@ return [
             ]
         ],
 
-        'CancelOrder' => [
-            'httpMethod'    => 'POST',
-            'uri'           => 'admin/api/{version}/orders/{id}/cancel.json',
+        'DeleteOrder' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/orders/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Cancel a given order',
-            'data'          => [ 'root_key' => 'order' ],
+            'summary'       => 'Delete an order',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -12280,9 +12408,6 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 

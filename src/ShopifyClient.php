@@ -385,8 +385,6 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array updateMobilePlatformApplication(array $args = []) { @command Shopify UpdateMobilePlatformApplication }
  * @method array deleteMobilePlatformApplication(array $args = []) { @command Shopify DeleteMobilePlatformApplication }
  *
- * Multipass:
- *
  * Order:
  * @method array getOrders(array $args = []) { @command Shopify GetOrders }
  * @method int countOrders(array $args = []) { @command Shopify CountOrders }
