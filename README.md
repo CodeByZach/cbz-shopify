@@ -13,7 +13,7 @@ CbzShopify is a modern PHP library based on Guzzle for [Shopify](https://www.sho
 
 ## Installation
 
-Installation of CbzShopify is only officially supported using Composer:
+Installation of CbzShopify is officially supported using Composer:
 
 ```sh
 composer require 'codebyzach/cbz-shopify'
