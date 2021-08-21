@@ -935,14 +935,14 @@ array deleteMobilePlatformApplication(array $args = []);
 ### [Order](https://shopify.dev/api/admin/rest/reference/orders/order)
 ```php
 array getOrders(array $args = []);
-int countOrders(array $args = []);
 array getOrder(array $args = []);
-array getOrderMetafields(array $args = []);
-array createOrder(array $args = []);
-array updateOrder(array $args = []);
+int countOrders(array $args = []);
 array closeOrder(array $args = []);
 array openOrder(array $args = []);
 array cancelOrder(array $args = []);
+array createOrder(array $args = []);
+array updateOrder(array $args = []);
+array deleteOrder(array $args = []);
 ```
 
 ### [Order Risk](https://shopify.dev/api/admin/rest/reference/orders/order-risk)

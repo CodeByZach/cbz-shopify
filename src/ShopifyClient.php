@@ -387,14 +387,14 @@ use Psr\Http\Client\ClientExceptionInterface;
  *
  * Order:
  * @method array getOrders(array $args = []) { @command Shopify GetOrders }
- * @method int countOrders(array $args = []) { @command Shopify CountOrders }
- * @method array createOrder(array $args = []) { @command Shopify CreateOrder }
- * @method array updateOrder(array $args = []) { @command Shopify UpdateOrder }
  * @method array getOrder(array $args = []) { @command Shopify GetOrder }
- * @method array getOrderMetafields(array $args = []) { @command Shopify GetOrderMetafields }
+ * @method int countOrders(array $args = []) { @command Shopify CountOrders }
  * @method array closeOrder(array $args = []) { @command Shopify CloseOrder }
  * @method array openOrder(array $args = []) { @command Shopify OpenOrder }
  * @method array cancelOrder(array $args = []) { @command Shopify CancelOrder }
+ * @method array createOrder(array $args = []) { @command Shopify CreateOrder }
+ * @method array updateOrder(array $args = []) { @command Shopify UpdateOrder }
+ * @method array deleteOrder(array $args = []) { @command Shopify DeleteOrder }
  *
  * Order Risk:
  *

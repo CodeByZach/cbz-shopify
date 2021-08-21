@@ -12064,8 +12064,6 @@ return [
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Order
          * https://shopify.dev/api/admin/rest/reference/orders/order
@@ -12200,10 +12198,13 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Retrieve only certain fields, specified by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -12333,10 +12334,38 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'amount' => [
+                    'description' => 'The amount to refund. If set, Shopify attempts to void or refund the payment, depending on its status. Shopify refunds through a manual gateway in cases where the original transaction was not made in Shopify. Refunds through a manual gateway are recorded as a refund on Shopify, but the customer is not refunded.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'currency' => [
+                    'description' => 'The currency of the refund that\'s issued when the order is canceled. Required for multi-currency orders whenever the amount property is provided.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'reason' => [
+                    'description' => 'The reason for the order cancellation.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'customer', 'inventory', 'fraud', 'declined', 'other' ],
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'Whether to send an email to the customer notifying them of the cancellation.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'refund' => [
+                    'description' => 'The refund transactions to perform. Required for some more complex refund situations.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -12354,10 +12383,263 @@ return [
                     'required'    => true
                 ],
                 'line_items' => [
-                    'description' => 'The order line items',
+                    'description' => 'A list of line item objects, each containing information about an item in the order.',
                     'location'    => 'json',
                     'type'        => 'array',
                     'required'    => true
+                ],
+                'billing_address' => [
+                    'description' => 'The mailing address associated with the payment method. This address is an optional field that won\'t be available on orders that do not require a payment method.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'buyer_accepts_marketing' => [
+                    'description' => 'Whether the customer consented to receive email updates from the shop.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'customer' => [
+                    'description' => 'Information about the customer. The order might not have a customer and apps should not depend on the existence of a customer object. This value might be null if the order was created through Shopify POS.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'discount_codes' => [
+                    'description' => 'A list of discounts applied to the order.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'The customer\'s email address.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'estimated_taxes' => [
+                    'description' => 'Whether taxes on the order are estimated. Many factors can change between the time a customer places an order and the time the order is shipped, which could affect the calculation of taxes. This property returns false when taxes on the order are finalized and aren\'t subject to any changes.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'financial_status' => [
+                    'description' => 'The status of payments associated with the order. Can only be set when the order is created.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                ],
+                'fulfillments' => [
+                    'description' => 'An array of fulfillments associated with the order.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'fulfillment_status' => [
+                    'description' => 'The order\'s status in terms of fulfilled line items.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                ],
+                'location_id' => [
+                    'description' => 'The ID of the physical location where the order was processed.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'note' => [
+                    'description' => 'An optional note that a shop owner can attach to the order.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'note_attributes' => [
+                    'description' => 'Extra information that is added to the order. Appears in the Additional details section of an order details page. Each array entry must contain a hash with name and value keys.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'phone' => [
+                    'description' => 'The customer\'s phone number for receiving SMS notifications.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'presentment_currency' => [
+                    'description' => 'The presentment currency that was used to display prices to the customer.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'processed_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when an order was processed. This value is the date that appears on your orders and that\'s used in the analytic reports. If you\'re importing orders from an app or another platform, then you can set processed_at to a date and time in the past to match when the original order was created.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'referring_site' => [
+                    'description' => 'The website where the customer clicked a link to the shop.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shipping_address' => [
+                    'description' => 'The mailing address to where the order will be shipped. This address is optional and will not be available on orders that do not require shipping.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'shipping_lines' => [
+                    'description' => 'An array of objects, each of which details a shipping method used.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'source_name' => [
+                    'description' => 'Where the order originated. Can be set only during order creation, and is not writeable afterwards.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                    'enum'        => [ 'web', 'pos', 'shopify_draft_order', 'iphone', 'android' ]
+                ],
+                'subtotal_price' => [
+                    'description' => 'The price of the order in the shop currency after discounts but before shipping, duties, taxes, and tips.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'subtotal_price_set' => [
+                    'description' => 'The price of the order in the shop currency after discounts but before shipping, duties, taxes, and tips.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'tags' => [
+                    'description' => 'Tags attached to the order, formatted as a string of comma-separated values. Tags are additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'tax_lines' => [
+                    'description' => 'An array of tax line objects, each of which details a tax applicable to the order.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'taxes_included' => [
+                    'description' => 'Whether taxes are included in the order subtotal.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'test' => [
+                    'description' => 'Whether this is a test order.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'total_discounts' => [
+                    'description' => 'The total discounts applied to the price of the order in the shop currency.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'total_discounts_set' => [
+                    'description' => 'The total discounts applied to the price of the order in shop and presentment currencies.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'total_line_items_price' => [
+                    'description' => 'The sum of all line item prices in the shop currency.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'total_line_items_price_set' => [
+                    'description' => 'The total of all line item prices in shop and presentment currencies.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'total_outstanding' => [
+                    'description' => 'The total outstanding amount of the order in the shop currency.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'total_price' => [
+                    'description' => 'The sum of all line item prices, discounts, shipping, taxes, and tips in the shop currency. Must be positive.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'min'         => 0,
+                    'required'    => false
+                ],
+                'total_price_set' => [
+                    'description' => 'The total price of the order in shop and presentment currencies.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'total_shipping_price_set' => [
+                    'description' => 'The total shipping price of the order, excluding discounts and returns, in shop and presentment currencies. If taxes_included is set to true, then total_shipping_price_set includes taxes.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'total_tax' => [
+                    'description' => 'The sum of all the taxes applied to the order in the shop currency. Must be positive.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'min'         => 0,
+                    'required'    => false
+                ],
+                'total_tax_set' => [
+                    'description' => 'The total tax applied to the order in shop and presentment currencies.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'total_weight' => [
+                    'description' => 'The sum of all line item weights in grams. The sum is not adjusted as items are removed from the order.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'user_id' => [
+                    'description' => 'The ID of the user logged into Shopify POS who processed the order, if applicable.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'inventory_behaviour' => [
+                    'description' => 'The behaviour to use when updating inventory.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                    'enum'        => [ 'bypass', 'decrement_ignoring_policy', 'decrement_obeying_policy' ]
+                ],
+                'send_receipt' => [
+                    'description' => 'The behaviour to use when updating inventory.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'send_fulfillment_receipt' => [
+                    'description' => 'Whether to send a shipping confirmation to the customer.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
             ],
             'additionalParameters' => [
@@ -12383,6 +12665,79 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'buyer_accepts_marketing' => [
+                    'description' => 'Whether the customer consented to receive email updates from the shop.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'email' => [
+                    'description' => 'The customer\'s email address.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'fulfillments' => [
+                    'description' => 'An array of fulfillments associated with the order.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'fulfillment_status' => [
+                    'description' => 'The order\'s status in terms of fulfilled line items.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                ],
+                'note' => [
+                    'description' => 'An optional note that a shop owner can attach to the order.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'note_attributes' => [
+                    'description' => 'Extra information that is added to the order. Appears in the Additional details section of an order details page. Each array entry must contain a hash with name and value keys.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'phone' => [
+                    'description' => 'The customer\'s phone number for receiving SMS notifications.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shipping_address' => [
+                    'description' => 'The mailing address to where the order will be shipped. This address is optional and will not be available on orders that do not require shipping.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'shipping_lines' => [
+                    'description' => 'An array of objects, each of which details a shipping method used.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'tags' => [
+                    'description' => 'Tags attached to the order, formatted as a string of comma-separated values. Tags are additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'send_fulfillment_receipt' => [
+                    'description' => 'Whether to send a shipping confirmation to the customer.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
             ],
             'additionalParameters' => [
