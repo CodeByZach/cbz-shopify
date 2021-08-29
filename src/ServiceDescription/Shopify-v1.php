@@ -17641,14 +17641,14 @@ return [
          * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Transaction
-         * https://shopify.dev/api/admin/rest/reference/online-store/transaction
+         * https://shopify.dev/api/admin/rest/reference/orders/transaction
          * ---------------------------------------------------------------------------------------------
          */
         'GetTransactions' => [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/orders/{order_id}/transactions.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of transactions for a given order',
+            'summary'       => 'Retrieves a list of transactions.',
             'data'          => [ 'root_key' => 'transactions' ],
             'parameters'    => [
                 'version' => [
@@ -17662,10 +17662,26 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Retrieve only transactions after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specifed by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'in_shop_currency' => [
+                    'description' => 'Show amounts in the shop currency.',
+                    'location'    => 'query',
+                    'type'        => 'boolean'
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17673,7 +17689,7 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/orders/{order_id}/transactions/count.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve the number of script tags',
+            'summary'       => 'Retrieves a count of an order\'s transactions.',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -17687,9 +17703,6 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17697,7 +17710,7 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/orders/{order_id}/transactions/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a specific transaction',
+            'summary'       => 'Retrieves a specific transaction.',
             'data'          => [ 'root_key' => 'transaction' ],
             'parameters'    => [
                 'version' => [
@@ -17717,10 +17730,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specifed by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'in_shop_currency' => [
+                    'description' => 'Show amounts in the shop currency.',
+                    'location'    => 'query',
+                    'type'        => 'boolean'
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17744,32 +17767,135 @@ return [
                     'required'    => true
                 ],
                 'kind' => [
-                    'description' => 'The kind of transaction',
+                    'description' => 'The transaction\'s type.',
                     'location'    => 'json',
                     'type'        => 'string',
                     'enum'        => [ 'authorization', 'capture', 'sale', 'void', 'refund' ],
                     'required'    => true
+                ],
+                'amount' => [
+                    'description' => 'The amount of money included in the transaction. If you don\'t provide a value for `amount`, then it defaults to the total cost of the order (even if a previous transaction has been made towards it).',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'authorization' => [
+                    'description' => 'The authorization code associated with the transaction.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'authorization_expires_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when the Shopify Payments authorization expires.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'currency' => [
+                    'description' => 'The three-letter code (ISO 4217 format) for the currency used for the payment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'extended_authorization_attributes' => [
+                    'description' => 'The attributes associated with a Shopify Payments extended authorization period.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'gateway' => [
+                    'description' => 'The name of the gateway the transaction was issued through.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'shopify_payments',
+                        'paypal',
+                        'stripe',
+                        'authorize_net',
+                        'afterpay_north_america',
+                        'afterpay',
+                        'gift_card',
+                        'amazon_payments',
+                        'buy_now_pay_later_with_klarna',
+                        'maksa_myöhemmin_klarna',
+                        'pilko_maksut_klarna',
+                        'få_först_betala_sen_klarna',
+                        'få_først_betal_senere_klarna',
+                        'checkout_finland',
+                        'sezzle',
+                        'payplug',
+                        'braintree',
+                        'sequrapart_payment',
+                        'vipps',
+                        'quadpay',
+                        'omisepayment_credit_debit_cards_',
+                        'Banküberweisung',
+                        'Cash on Delivery (COD)'
+                    ],
+                    'required'    => false
+                ],
+                'parent_id' => [
+                    'description' => 'The ID of an associated transaction.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'processed_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when a transaction was processed. This value is the date that\'s used in the analytic reports. By default, it matches the created_at value. If you\'re importing transactions from an app or another platform, then you can set processed_at to a date and time in the past to match when the original transaction was processed.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'The status of the transaction.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'pending', 'failure', 'success', 'error' ],
+                    'required'    => false
+                ],
+                'test' => [
+                    'description' => 'Whether the transaction is a test transaction.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'user_id' => [
+                    'description' => 'The ID for the user who was logged into the Shopify POS device when the order was processed, if applicable.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'currency_exchange_adjustment' => [
+                    'description' => 'An adjustment on the transaction showing the amount lost or gained due to fluctuations in the currency exchange rate.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'source' => [
+                    'description' => 'The origin of the transaction. Set to external to create a cash transaction for the associated order.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'external' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * UsageCharge
          * https://shopify.dev/api/admin/rest/reference/billing/usagecharge
          * ---------------------------------------------------------------------------------------------
          */
-        'GetUsageCharges' => [
-            'httpMethod'    => 'GET',
+        'CreateUsageCharge' => [
+            'httpMethod'    => 'POST',
             'uri'           => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of usage charges for the given recurring application charges',
-            'data'          => [ 'root_key' => 'usage_charges' ],
+            'summary'       => 'Creates a usage charge',
+            'data'          => [ 'root_key' => 'usage_charge' ],
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -17783,16 +17909,18 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'fields' => [
-                    'description' => 'A comma-separated list of fields to include in the response',
-                    'location'    => 'query',
-                    'type'        => [ 'string', 'array' ],
-                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
-                    'required'    => false
+                'description' => [
+                    'description' => 'Usage charge description',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'price' => [
+                    'description' => 'Price to charge',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17828,18 +17956,15 @@ return [
                     'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
-        'CreateUsageCharge' => [
-            'httpMethod'    => 'POST',
+        'GetUsageCharges' => [
+            'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/recurring_application_charges/{recurring_charge_id}/usage_charges.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Create a new usage charge',
-            'data'          => [ 'root_key' => 'usage_charge' ],
+            'summary'       => 'Retrieve a list of usage charges for the given recurring application charges',
+            'data'          => [ 'root_key' => 'usage_charges' ],
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -17853,17 +17978,12 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'description' => [
-                    'description' => 'Usage charge description',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'price' => [
-                    'description' => 'Price to charge',
-                    'location'    => 'json',
-                    'type'        => 'number',
-                    'required'    => true
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
             ]
         ],

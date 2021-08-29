@@ -552,9 +552,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array createTransaction(array $args = []) { @command Shopify CreateTransaction }
  *
  * UsageCharge:
- * @method array getUsageCharges(array $args = []) { @command Shopify GetUsageCharges }
- * @method array getUsageCharge(array $args = []) { @command Shopify GetUsageCharge }
  * @method array createUsageCharge(array $args = []) { @command Shopify CreateUsageCharge }
+ * @method array getUsageCharge(array $args = []) { @command Shopify GetUsageCharge }
+ * @method array getUsageCharges(array $args = []) { @command Shopify GetUsageCharges }
  *
  * User:
  *

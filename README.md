@@ -1152,9 +1152,9 @@ array createTransaction(array $args = []);
 
 ### [UsageCharge](https://shopify.dev/api/admin/rest/reference/billing/usagecharge)
 ```php
-array getUsageCharges(array $args = []);
-array getUsageCharge(array $args = []);
 array createUsageCharge(array $args = []);
+array getUsageCharge(array $args = []);
+array getUsageCharges(array $args = []);
 ```
 
 ### [User](https://shopify.dev/api/admin/rest/reference/plus/user)
