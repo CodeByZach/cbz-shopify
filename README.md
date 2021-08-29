@@ -1086,6 +1086,8 @@ array deleteReport(array $args = []);
 
 ### [ResourceFeedback](https://shopify.dev/api/admin/rest/reference/sales-channels/resourcefeedback)
 ```php
+createResourceFeedback(array $args = []);
+getResourceFeedbacks(array $args = []);
 ```
 
 ### [ScriptTag](https://shopify.dev/api/admin/rest/reference/online-store/scripttag)
@@ -1115,6 +1117,7 @@ int countSmartCollections(array $args = []);
 array getSmartCollection(array $args = []);
 array createSmartCollection(array $args = []);
 array updateSmartCollection(array $args = []);
+array opdateSmartCollectionProductOrdering(array $args = []);
 array deleteSmartCollection(array $args = []);
 ```
 

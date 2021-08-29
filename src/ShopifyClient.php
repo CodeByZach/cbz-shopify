@@ -504,6 +504,8 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteReport(array $args = []) { @command Shopify DeleteReport }
  *
  * ResourceFeedback:
+ * @method array createResourceFeedback(array $args = []) { @command Shopify CreateResourceFeedback }
+ * @method array getResourceFeedbacks(array $args = []) { @command Shopify GetResourceFeedbacks }
  *
  * ScriptTag:
  * @method array getScriptTags(array $args = []) { @command Shopify GetScriptTags }
@@ -525,6 +527,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getSmartCollection(array $args = []) { @command Shopify GetSmartCollection }
  * @method array createSmartCollection(array $args = []) { @command Shopify CreateSmartCollection }
  * @method array updateSmartCollection(array $args = []) { @command Shopify UpdateSmartCollection }
+ * @method array opdateSmartCollectionProductOrdering(array $args = []) { @command Shopify UpdateSmartCollectionProductOrdering }
  * @method array deleteSmartCollection(array $args = []) { @command Shopify DeleteSmartCollection }
  *
  * StorefrontAccessToken:

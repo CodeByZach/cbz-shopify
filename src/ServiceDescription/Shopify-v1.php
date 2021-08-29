@@ -16540,16 +16540,65 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ResourceFeedback
          * https://shopify.dev/api/admin/rest/reference/sales-channels/resourcefeedback
          * ---------------------------------------------------------------------------------------------
          */
+        'CreateResourceFeedback' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/resource_feedback.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a new ResourceFeedback',
+            'data'          => [ 'root_key' => 'resource_feedback' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'state' => [
+                    'description' => 'Indicates the state that the Shop or resource is in, from the perspective of your app.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'requires_action', 'success' ],
+                    'required'    => true
+                ],
+                'feedback_generated_at' => [
+                    'description' => 'The time at which the payload is constructed. Used to help determine whether incoming feedback is outdated compared to feedback already received, and if it should be ignored upon arrival. Type: ISO 8601 UTC datetime as string with year, month [or week], day, hour, minute, second, millisecond, and time zone.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => true
+                ],
+                'messages' => [
+                    'description' => 'A concise set of copy strings to be displayed to merchants, to guide them in resolving problems your app encounters when trying to make use of their Shop and its resources. Required only when state is requires_action. Disallowed when state is success.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetResourceFeedbacks' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/resource_feedback.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of all ResourceFeedbacks',
+            'data'          => [ 'root_key' => 'resource_feedback' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ScriptTag
          * https://shopify.dev/api/admin/rest/reference/online-store/scripttag
@@ -16559,7 +16608,7 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/script_tags.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of installed script tags',
+            'summary'       => 'Retrieves a list of all script tags',
             'data'          => [ 'root_key' => 'script_tags' ],
             'parameters'    => [
                 'version' => [
@@ -16567,10 +16616,62 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The number of results to return.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show script tags created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show script tags created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show script tags last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show script tags last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'src' => [
+                    'description' => 'Show script tags with this URL.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16578,17 +16679,20 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/script_tags/count.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve the number of script tags',
+            'summary'       => 'Retrieves a count of all script tags',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'src' => [
+                    'description' => 'Count only script tags with a given URL.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16610,10 +16714,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16642,10 +16750,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'display_scope' => [
+                    'description' => 'The page or pages on the online store where the script should be included.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'online_store', 'order_status', 'all' ],
+                    'required'    => false
+                ],
+                'cache' => [
+                    'description' => 'Whether the Shopify CDN can cache and serve the script tag.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -16673,17 +16791,27 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'enum'        => [ 'onload' ],
-                    'required'    => true
+                    'required'    => false
                 ],
                 'src' => [
                     'description' => 'URL of the script tag',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'display_scope' => [
+                    'description' => 'The page or pages on the online store where the script should be included.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'online_store', 'order_status', 'all' ],
+                    'required'    => false
+                ],
+                'cache' => [
+                    'description' => 'Whether the Shopify CDN can cache and serve the script tag.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -16710,7 +16838,6 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * ShippingZone
          * https://shopify.dev/api/admin/rest/reference/store-properties/shippingzone
@@ -16728,17 +16855,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Shop
          * https://shopify.dev/api/admin/rest/reference/store-properties/shop
@@ -16748,7 +16877,7 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/shop.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Get data about a single shop',
+            'summary'       => 'Retrieves the shop\'s configuration',
             'data'          => [ 'root_key' => 'shop' ],
             'parameters'    => [
                 'version' => [
@@ -16756,17 +16885,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * SmartCollection
          * https://shopify.dev/api/admin/rest/reference/products/smartcollection
@@ -16784,10 +16915,88 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'ids' => [
+                    'description' => 'Show only the smart collections specified by a comma-separated list of IDs.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'title' => [
+                    'description' => 'Show smart collections with the specified title.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'product_id' => [
+                    'description' => 'Show smart collections that includes the specified product.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'Filter results by smart collection handle.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show smart collections last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show smart collections last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Show smart collections published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Show smart collections published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Filter results based on the published status of smart collections.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16802,10 +17011,54 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Show smart collections with the specified title.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'product_id' => [
+                    'description' => 'Show smart collections that includes the specified product.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show smart collections last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show smart collections last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Show smart collections published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Show smart collections published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Filter results based on the published status of smart collections.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16827,10 +17080,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -16852,10 +17109,77 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'rules' => [
+                    'description' => 'The list of rules that define what products go into the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'body_html' => [
+                    'description' => 'The description of the smart collection. Includes HTML markup. Many shop themes display this on the smart collection page.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A human-friendly unique string for the smart collection. Automatically generated from the title. Used in shop themes by the Liquid templating language to refer to the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'maxLength'   => 255,
+                    'required'    => false
+                ],
+                'image' => [
+                    'description' => 'The image associated with the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'published' => [
+                    'description' => 'Whether the smart collection is visible.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'published_at' => [
+                    'description' => 'The date and time (ISO 8601 format) that the smart collection was published. Returns null when the collection is hidden.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_scope' => [
+                    'description' => 'Whether the smart collection is published to the Point of Sale channel.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'web', 'global' ],
+                    'required'    => false
+                ],
+                'disjunctive' => [
+                    'description' => 'Whether the product must match all the rules to be included in the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'sort_order' => [
+                    'description' => 'The order of the products in the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'alpha-asc', 'alpha-desc', 'best-selling', 'created', 'created-desc', 'manual', 'price-asc', 'price-desc' ],
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template that the shop uses. By default, the original template is called product.liquid, and additional templates are called product.suffix.liquid.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -16877,10 +17201,119 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Smart collection title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'rules' => [
+                    'description' => 'The list of rules that define what products go into the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'body_html' => [
+                    'description' => 'The description of the smart collection. Includes HTML markup. Many shop themes display this on the smart collection page.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A human-friendly unique string for the smart collection. Automatically generated from the title. Used in shop themes by the Liquid templating language to refer to the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'maxLength'   => 255,
+                    'required'    => false
+                ],
+                'image' => [
+                    'description' => 'The image associated with the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'published' => [
+                    'description' => 'Whether the smart collection is visible.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'published_at' => [
+                    'description' => 'The date and time (ISO 8601 format) that the smart collection was published. Returns null when the collection is hidden.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_scope' => [
+                    'description' => 'Whether the smart collection is published to the Point of Sale channel.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'web', 'global' ],
+                    'required'    => false
+                ],
+                'disjunctive' => [
+                    'description' => 'Whether the product must match all the rules to be included in the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'sort_order' => [
+                    'description' => 'The order of the products in the smart collection.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'alpha-asc', 'alpha-desc', 'best-selling', 'created', 'created-desc', 'manual', 'price-asc', 'price-desc' ],
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template that the shop uses. By default, the original template is called product.liquid, and additional templates are called product.suffix.liquid.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
+            ]
+        ],
+
+        'UpdateSmartCollectionProductOrdering' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/smart_collections/{id}/order.json.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates the ordering type of products in a smart collection',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Smart collection ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'product_ids' => [
+                    'description' => 'An array of product IDs, in the order that you want them to appear at the top of the collection. When products is specified but empty, any previously sorted products are cleared.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'sentAs'      => 'products[]',
+                    'required'    => true
+                ],
+                'sort_order' => [
+                    'description' => 'The order in which products in the custom collection appear.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'alpha-asc', 'alpha-desc', 'best-selling', 'created', 'created-desc', 'manual', 'price-asc', 'price-desc' ],
+                    'required'    => false
+                ]
             ]
         ],
 
