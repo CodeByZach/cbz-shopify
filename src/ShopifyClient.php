@@ -531,9 +531,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteSmartCollection(array $args = []) { @command Shopify DeleteSmartCollection }
  *
  * StorefrontAccessToken:
- * @method array getStorefrontAccessTokens(array $args = []) { @command Shopify GetStorefrontAccessTokens }
  * @method array createStorefrontAccessToken(array $args = []) { @command Shopify CreateStorefrontAccessToken }
  * @method array deleteStorefrontAccessToken(array $args = []) { @command Shopify DeleteStorefrontAccessToken }
+ * @method array getStorefrontAccessTokens(array $args = []) { @command Shopify GetStorefrontAccessTokens }
  *
  * TenderTransaction:
  *

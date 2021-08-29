@@ -17340,31 +17340,11 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * StorefrontAccessToken
          * https://shopify.dev/api/admin/rest/reference/access/storefrontaccesstoken
          * ---------------------------------------------------------------------------------------------
          */
-        'GetStorefrontAccessTokens' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/storefront_access_tokens.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of storefront access tokens',
-            'data'          => [ 'root_key' => 'storefront_access_tokens' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
         'CreateStorefrontAccessToken' => [
             'httpMethod'    => 'POST',
             'uri'           => 'admin/api/{version}/storefront_access_tokens.json',
@@ -17379,14 +17359,11 @@ return [
                     'required'    => true
                 ],
                 'title' => [
-                    'description' => 'StorefrontAccessToken title',
+                    'description' => 'An arbitrary title for each token determined by the developer/application, used for reference purposes.',
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17406,6 +17383,22 @@ return [
                     'description' => 'StorefrontAccessToken ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetStorefrontAccessTokens' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/storefront_access_tokens.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a list of storefront access tokens',
+            'data'          => [ 'root_key' => 'storefront_access_tokens' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
                     'required'    => true
                 ]
             ]

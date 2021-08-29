@@ -1123,9 +1123,9 @@ array deleteSmartCollection(array $args = []);
 
 ### [StorefrontAccessToken](https://shopify.dev/api/admin/rest/reference/access/storefrontaccesstoken)
 ```php
-array getStorefrontAccessTokens(array $args = []);
 array createStorefrontAccessToken(array $args = []);
 array deleteStorefrontAccessToken(array $args = []);
+array getStorefrontAccessTokens(array $args = []);
 ```
 
 ### [TenderTransaction](https://shopify.dev/api/admin/rest/reference/tendertransaction)
