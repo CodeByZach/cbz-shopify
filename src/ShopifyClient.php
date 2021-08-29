@@ -206,7 +206,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getDiscountCodes(array $args = []) { @command Shopify GetDiscountCodes }
  * @method array getDiscountCode(array $args = []) { @command Shopify GetDiscountCode }
  * @method array lookupDiscountCode(array $args = []) { @command Shopify LookupDiscountCode }
- * @method array countDiscountCodes(array $args = []) { @command Shopify CountDiscountCodes }
+ * @method int countDiscountCodes(array $args = []) { @command Shopify CountDiscountCodes }
  * @method array deleteDiscountCode(array $args = []) { @command Shopify DeleteDiscountCode }
  * @method array createDiscountCodeBatch(array $args = []) { @command Shopify CreateDiscountCodeBatch }
  * @method array getDiscountCodeBatch(array $args = []) { @command Shopify GetDiscountCodeBatch }
@@ -397,34 +397,46 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteOrder(array $args = []) { @command Shopify DeleteOrder }
  *
  * Order Risk:
+ * @method array createOrderRisk(array $args = []) { @command Shopify CreateOrderRisk }
+ * @method array getOrderRisks(array $args = []) { @command Shopify GetOrderRisks }
+ * @method array getOrderRisk(array $args = []) { @command Shopify GetOrderRisk }
+ * @method array updateOrderRisk(array $args = []) { @command Shopify UpdateOrderRisk }
+ * @method array deleteOrderRisk(array $args = []) { @command Shopify DeleteOrderRisk }
  *
  * Page:
  * @method array getPages(array $args = []) { @command Shopify GetPages }
  * @method int countPages(array $args = []) { @command Shopify CountPages }
  * @method array getPage(array $args = []) { @command Shopify GetPage }
- * @method array getPageMetafields(array $args = []) { @command Shopify GetPageMetafields }
  * @method array createPage(array $args = []) { @command Shopify CreatePage }
  * @method array updatePage(array $args = []) { @command Shopify UpdatePage }
  * @method array deletePage(array $args = []) { @command Shopify DeletePage }
  *
  * Payment:
+ * @method array storeCreditCard(array $args = []) { @command Shopify StoreCreditCard }
+ * @method array createPayment(array $args = []) { @command Shopify CreatePayment }
+ * @method array getPayments(array $args = []) { @command Shopify GetPayments }
+ * @method array getPayment(array $args = []) { @command Shopify GetPayment }
+ * @method int countPayments(array $args = []) { @command Shopify CountPayments }
  *
  * Payout:
+ * @method array getPayouts(array $args = []) { @command Shopify GetPayouts }
+ * @method array getPayout(array $args = []) { @command Shopify GetPayout }
  *
  * Policy:
+ * @method array getPolicies(array $args = []) { @command Shopify GetPolicies }
  *
  * PriceRule:
- * @method array getPriceRules(array $args = []) { @command Shopify GetPriceRules }
- * @method int getPriceRule(array $args = []) { @command Shopify GetPriceRule }
  * @method array createPriceRule(array $args = []) { @command Shopify CreatePriceRule }
  * @method array updatePriceRule(array $args = []) { @command Shopify UpdatePriceRule }
+ * @method array getPriceRules(array $args = []) { @command Shopify GetPriceRules }
+ * @method array getPriceRule(array $args = []) { @command Shopify GetPriceRule }
+ * @method int countPriceRules(array $args = []) { @command Shopify CountPriceRules }
  * @method array deletePriceRule(array $args = []) { @command Shopify DeletePriceRule }
  *
  * Product:
  * @method array getProducts(array $args = []) { @command Shopify GetProducts }
  * @method int countProducts(array $args = []) { @command Shopify CountProducts }
  * @method array getProduct(array $args = []) { @command Shopify GetProduct }
- * @method array getProductMetafields(array $args = []) { @command Shopify GetProductMetafields }
  * @method array createProduct(array $args = []) { @command Shopify CreateProduct }
  * @method array updateProduct(array $args = []) { @command Shopify UpdateProduct }
  * @method array deleteProduct(array $args = []) { @command Shopify DeleteProduct }
@@ -438,26 +450,37 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array deleteProductImage(array $args = []) { @command Shopify DeleteProductImage }
  *
  * Product ResourceFeedback:
+ * @method array createProductResourceFeedback(array $args = []) { @command Shopify CreateProductResourceFeedback }
+ * @method array getProductResourceFeedbacks(array $args = []) { @command Shopify GetProductResourceFeedbacks }
  *
  * Product Variant:
  * @method array getProductVariants(array $args = []) { @command Shopify GetProductVariants }
  * @method int countProductVariants(array $args = []) { @command Shopify CountProductVariants }
  * @method array getProductVariant(array $args = []) { @command Shopify GetProductVariant }
- * @method array getProductVariantMetafields(array $args = []) { @command Shopify GetProductVariantMetafields }
  * @method array createProductVariant(array $args = []) { @command Shopify CreateProductVariant }
  * @method array updateProductVariant(array $args = []) { @command Shopify UpdateProductVariant }
  * @method array deleteProductVariant(array $args = []) { @command Shopify DeleteProductVariant }
  *
  * ProductListing:
+ * @method array getProductListings(array $args = []) { @command Shopify GetProductListings }
+ * @method array getProductListingIds(array $args = []) { @command Shopify GetProductListingIds }
+ * @method int countProductListings(array $args = []) { @command Shopify CountProductListings }
+ * @method array getProductListing(array $args = []) { @command Shopify GetProductListing }
+ * @method array createProductListing(array $args = []) { @command Shopify CreateProductListing }
+ * @method array deleteProductListing(array $args = []) { @command Shopify DeleteProductListing }
  *
  * Province:
+ * @method array getProvinces(array $args = []) { @command Shopify GetProvinces }
+ * @method int countProvinces(array $args = []) { @command Shopify CountProvinces }
+ * @method array getProvince(array $args = []) { @command Shopify GetProvince }
+ * @method array updateProvince(array $args = []) { @command Shopify UpdateProvince }
  *
  * RecurringApplicationCharge:
- * @method array getRecurringApplicationCharges(array $args = []) { @command Shopify GetRecurringApplicationCharges }
- * @method array getRecurringApplicationCharge(array $args = []) { @command Shopify GetRecurringApplicationCharge }
  * @method array createRecurringApplicationCharge(array $args = []) { @command Shopify CreateRecurringApplicationCharge }
- * @method array updateRecurringApplicationCharge(array $args = []) { @command Shopify UpdateRecurringApplicationCharge }
+ * @method array getRecurringApplicationCharge(array $args = []) { @command Shopify GetRecurringApplicationCharge }
+ * @method array getRecurringApplicationCharges(array $args = []) { @command Shopify GetRecurringApplicationCharges }
  * @method array deleteRecurringApplicationCharge(array $args = []) { @command Shopify DeleteRecurringApplicationCharge }
+ * @method array updateRecurringApplicationCharge(array $args = []) { @command Shopify UpdateRecurringApplicationCharge }
  *
  * Redirect:
  * @method array getRedirects(array $args = []) { @command Shopify GetRedirects }
@@ -473,14 +496,14 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array calculateRefund(array $args = []) { @command Shopify CalculateRefund }
  * @method array createRefund(array $args = []) { @command Shopify CreateRefund }
  *
- * ResourceFeedback:
- *
  * Report:
  * @method array getReports(array $args = []) { @command Shopify GetReports }
  * @method array getReport(array $args = []) { @command Shopify GetReport }
  * @method array createReport(array $args = []) { @command Shopify CreateReport }
  * @method array updateReport(array $args = []) { @command Shopify UpdateReport }
  * @method array deleteReport(array $args = []) { @command Shopify DeleteReport }
+ *
+ * ResourceFeedback:
  *
  * ScriptTag:
  * @method array getScriptTags(array $args = []) { @command Shopify GetScriptTags }
@@ -722,7 +745,7 @@ class ShopifyClient
 
         if (($method === 'post' || $method === 'put') && $rootKey !== null) {
             $newBody = [$rootKey => json_decode($request->getBody()->getContents(), true)];
-            $request = $request->withBody(Psr7\stream_for(json_encode($newBody)));
+            $request = $request->withBody(Psr7\Utils::streamFor(json_encode($newBody)));
         }
 
         return $request;
@@ -810,8 +833,8 @@ class ShopifyClient
         }
 
         $httpClient = new Client([
-            'base_uri' => $baseUri,
-            'handler' => $handlerStack,
+            'base_uri'        => $baseUri,
+            'handler'         => $handlerStack,
             'allow_redirects' => [
                 'max'             => 5,
                 'strict'          => true,

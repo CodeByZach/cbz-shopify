@@ -947,6 +947,11 @@ array deleteOrder(array $args = []);
 
 ### [Order Risk](https://shopify.dev/api/admin/rest/reference/orders/order-risk)
 ```php
+array createOrderRisk(array $args = []);
+array getOrderRisks(array $args = []);
+array getOrderRisk(array $args = []);
+array updateOrderRisk(array $args = []);
+array deleteOrderRisk(array $args = []);
 ```
 
 ### [Page](https://shopify.dev/api/admin/rest/reference/online-store/page)
@@ -954,7 +959,6 @@ array deleteOrder(array $args = []);
 array getPages(array $args = []);
 int countPages(array $args = []);
 array getPage(array $args = []);
-array getPageMetafields(array $args = []);
 array createPage(array $args = []);
 array updatePage(array $args = []);
 array deletePage(array $args = []);
@@ -962,22 +966,31 @@ array deletePage(array $args = []);
 
 ### [Payment](https://shopify.dev/api/admin/rest/reference/sales-channels/payment)
 ```php
+array storeCreditCard(array $args = []);
+array createPayment(array $args = []);
+array getPayments(array $args = []);
+array getPayment(array $args = []);
+int countPayments(array $args = []);
 ```
 
 ### [Payout](https://shopify.dev/api/admin/rest/reference/shopify_payments/payout)
 ```php
+array getPayouts(array $args = []);
+array getPayout(array $args = []);
 ```
 
 ### [Policy](https://shopify.dev/api/admin/rest/reference/store-properties/policy)
 ```php
+array getPolicies(array $args = []);
 ```
 
 ### [PriceRule](https://shopify.dev/api/admin/rest/reference/discounts/pricerule)
 ```php
-array getPriceRules(array $args = []);
-array getPriceRule(array $args = []);
 array createPriceRule(array $args = []);
 array updatePriceRule(array $args = []);
+array getPriceRules(array $args = []);
+array getPriceRule(array $args = []);
+int countPriceRules(array $args = []);
 array deletePriceRule(array $args = []);
 ```
 
@@ -986,7 +999,6 @@ array deletePriceRule(array $args = []);
 array getProducts(array $args = []);
 int countProducts(array $args = []);
 array getProduct(array $args = []);
-array getProductMetafields(array $args = []);
 array createProduct(array $args = []);
 array updateProduct(array $args = []);
 array deleteProduct(array $args = []);
@@ -1004,6 +1016,8 @@ array deleteProductImage(array $args = []);
 
 ### [Product ResourceFeedback](https://shopify.dev/api/admin/rest/reference/sales-channels/productresourcefeedback)
 ```php
+array createProductResourceFeedback(array $args = []);
+array getProductResourceFeedbacks(array $args = []);
 ```
 
 ### [Product Variant](https://shopify.dev/api/admin/rest/reference/products/product-variant)
@@ -1011,7 +1025,6 @@ array deleteProductImage(array $args = []);
 array getProductVariants(array $args = []);
 int countProductVariants(array $args = []);
 array getProductVariant(array $args = []);
-array getProductVariantMetafields(array $args = []);
 array createProductVariant(array $args = []);
 array updateProductVariant(array $args = []);
 array deleteProductVariant(array $args = []);
@@ -1019,19 +1032,29 @@ array deleteProductVariant(array $args = []);
 
 ### [ProductListing](https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting)
 ```php
+array getProductListings(array $args = []);
+array getProductListingIds(array $args = []);
+int countProductListings(array $args = []);
+array getProductListing(array $args = []);
+array createProductListing(array $args = []);
+array deleteProductListing(array $args = []);
 ```
 
 ### [Province](https://shopify.dev/api/admin/rest/reference/store-properties/province)
 ```php
+array getProvinces(array $args = []);
+int countProvinces(array $args = []);
+array getProvince(array $args = []);
+array updateProvince(array $args = []);
 ```
 
 ### [RecurringApplicationCharge](https://shopify.dev/api/admin/rest/reference/billing/recurringapplicationcharge)
 ```php
-array getRecurringApplicationCharges(array $args = []);
-array getRecurringApplicationCharge(array $args = []);
 array createRecurringApplicationCharge(array $args = []);
-array updateRecurringApplicationCharge(array $args = []);
+array getRecurringApplicationCharge(array $args = []);
+array getRecurringApplicationCharges(array $args = []);
 array deleteRecurringApplicationCharge(array $args = []);
+array updateRecurringApplicationCharge(array $args = []);
 ```
 
 ### [Redirect](https://shopify.dev/api/admin/rest/reference/online-store/redirect)

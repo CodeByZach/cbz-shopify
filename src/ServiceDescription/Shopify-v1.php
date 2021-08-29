@@ -99,8 +99,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -192,7 +192,6 @@ return [
                     'description' => 'Price to charge',
                     'location'    => 'json',
                     'type'        => 'number',
-                    'min'         => 0.5,
                     'required'    => true
                 ],
                 'return_url' => [
@@ -235,7 +234,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -263,7 +263,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -332,7 +333,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -354,7 +356,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -390,8 +393,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -446,8 +449,8 @@ return [
                     'description' => 'Retrieve results based on their published status',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ],
                 'handle' => [
                     'description' => 'Retrieve an article with a specific handle',
@@ -470,7 +473,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -540,8 +544,8 @@ return [
                     'description' => 'Count articles with a given published status',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ]
             ]
         ],
@@ -574,7 +578,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -651,7 +656,8 @@ return [
                 'tags' => [
                     'description' => 'A comma-separated list of tags. Tags are additional short descriptors formatted as a string of comma-separated values',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'template_suffix' => [
@@ -740,7 +746,8 @@ return [
                 'tags' => [
                     'description' => 'A comma-separated list of tags. Tags are additional short descriptors formatted as a string of comma-separated values',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'template_suffix' => [
@@ -858,7 +865,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -893,7 +901,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -1156,8 +1165,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -1187,7 +1196,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -1230,7 +1240,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -1283,7 +1294,8 @@ return [
                 'tags' => [
                     'description' => 'Tags are additional short descriptors formatted as a string of comma-separated values. For example, if an article has three tags: tag1, tag2, tag3. Tags are limited to 255 characters',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'template_suffix' => [
@@ -1354,7 +1366,8 @@ return [
                 'tags' => [
                     'description' => 'Tags are additional short descriptors formatted as a string of comma-separated values. For example, if an article has three tags: tag1, tag2, tag3. Tags are limited to 255 characters',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'template_suffix' => [
@@ -1643,8 +1656,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -1656,7 +1669,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2075,8 +2089,8 @@ return [
                     'description' => 'The maximum number of results to show.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -2088,7 +2102,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2131,7 +2146,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2166,7 +2182,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2195,8 +2212,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ]
             ]
@@ -2226,8 +2243,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 1000,
+                    'minimum'     => 1,
+                    'maximum'     => 1000,
                     'required'    => false
                 ]
             ]
@@ -2256,8 +2273,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 1000,
+                    'minimum'     => 1,
+                    'maximum'     => 1000,
                     'required'    => false
                 ]
             ]
@@ -2364,8 +2381,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -2420,20 +2437,21 @@ return [
                     'description' => 'Filter results by their published status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ],
                 'status' => [
                     'description' => 'Filter results by their status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'pending', 'published', 'unapproved' ]
+                    'enum'        => [ 'pending', 'published', 'unapproved' ],
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2502,15 +2520,15 @@ return [
                     'description' => 'Filter results by their published status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ],
                 'status' => [
                     'description' => 'Filter results by their status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'pending', 'published', 'unapproved' ]
+                    'enum'        => [ 'pending', 'published', 'unapproved' ],
+                    'required'    => false
                 ]
             ]
         ],
@@ -2537,7 +2555,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2791,7 +2810,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2834,7 +2854,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -2982,14 +3003,15 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'ids' => [
                     'description' => 'Show only collections specified by a comma-separated list of IDs.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'since_id' => [
@@ -3048,13 +3070,14 @@ return [
                     'description' => 'Retrieve results based on their published status',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3110,8 +3133,8 @@ return [
                     'description' => 'Retrieve results based on their published status',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'published', 'unpublished', 'any' ]
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ]
             ]
         ],
@@ -3138,7 +3161,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3324,7 +3348,8 @@ return [
                 'ids' => [
                     'description' => 'Show only collections specified by a comma-separated list of IDs.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'since_id' => [
@@ -3365,14 +3390,15 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3407,14 +3433,15 @@ return [
                     'description' => 'The maximum number of results to show.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3442,7 +3469,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3526,7 +3554,8 @@ return [
                 'tags' => [
                     'description' => 'Tags that the shop owner has attached to the customer, formatted as a string of comma-separated values. A customer can have up to 250 tags. Each tag can have up to 255 characters.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'tax_exempt' => [
@@ -3640,7 +3669,8 @@ return [
                 'tags' => [
                     'description' => 'Tags that the shop owner has attached to the customer, formatted as a string of comma-separated values. A customer can have up to 250 tags. Each tag can have up to 255 characters.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'tax_exempt' => [
@@ -3795,15 +3825,16 @@ return [
                 'ids' => [
                     'description' => 'Retrieve only orders specified by a comma-separated list of order IDs.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'limit' => [
                     'description' => 'The maximum number of results to show on a page.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -3864,27 +3895,28 @@ return [
                     'description' => 'Filter orders by their status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ]
+                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ],
+                    'required'    => false
                 ],
                 'financial_status' => [
                     'description' => 'Filter orders by their financial status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ],
+                    'required'    => false
                 ],
                 'fulfillment_status' => [
                     'description' => 'Filter orders by their fulfillment status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ],
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'Retrieve only certain fields, specified by a comma-separated list of fields names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -3920,8 +3952,8 @@ return [
                     'description' => 'The maximum number of results to show on a page.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ]
             ]
@@ -4269,8 +4301,8 @@ return [
                     'description' => 'The maximum number of results to show.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -4282,7 +4314,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -4331,7 +4364,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -4366,14 +4400,15 @@ return [
                     'description' => 'The maximum number of results to show',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -4515,6 +4550,7 @@ return [
                     'description' => 'Code',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'maxLength'   => 255,
                     'required'    => true
                 ]
             ]
@@ -4549,6 +4585,7 @@ return [
                     'description' => 'Discount code',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'maxLength'   => 255,
                     'required'    => true
                 ]
             ]
@@ -4620,6 +4657,7 @@ return [
                     'description' => 'Code',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'maxLength'   => 255,
                     'required'    => true
                 ]
             ]
@@ -4805,8 +4843,8 @@ return [
                     'description' => 'Filter by draft order status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'needs_response', 'under_review', 'charge_refunded', 'accepted', 'won', 'lost' ]
+                    'enum'        => [ 'needs_response', 'under_review', 'charge_refunded', 'accepted', 'won', 'lost' ],
+                    'required'    => false
                 ],
                 'initiated_at' => [
                     'description' => 'Return only disputes with the specified initiated_at date (ISO 8601 format).',
@@ -4917,7 +4955,8 @@ return [
                 'tags' => [
                     'description' => 'A comma-seperated list of additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'tax_exempt' => [
@@ -5047,7 +5086,8 @@ return [
                 'tags' => [
                     'description' => 'A comma-seperated list of additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'tax_exempt' => [
@@ -5118,8 +5158,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -5152,13 +5192,14 @@ return [
                     'description' => 'Filter by draft order status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'open', 'invoice_sent', 'completed' ]
+                    'enum'        => [ 'open', 'invoice_sent', 'completed' ],
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -5186,7 +5227,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -5214,8 +5256,8 @@ return [
                     'description' => 'Filter by draft order status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'open', 'invoice_sent', 'completed' ]
+                    'enum'        => [ 'open', 'invoice_sent', 'completed' ],
+                    'required'    => false
                 ],
                 'updated_at_min' => [
                     'description' => 'Count orders last updated after date (format: 2014-04-25T16:15:47-04:00)',
@@ -5359,8 +5401,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -5398,7 +5440,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -5426,7 +5469,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -5491,8 +5535,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -5532,7 +5576,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -5637,7 +5682,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -6702,8 +6748,8 @@ return [
                     'description' => 'The maximum number of results to show.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -6715,7 +6761,8 @@ return [
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -6788,6 +6835,8 @@ return [
                     'description' => 'The gift card code, which is a string of alphanumeric characters. For security reasons, this is available only upon creation of the gift card. (minimum: 8 characters, maximum: 20 characters)',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'minLength'   => 8,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'currency' => [
@@ -6916,14 +6965,15 @@ return [
                     'description' => 'The maximum number of results to show.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'fields' => [
                     'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -6952,7 +7002,8 @@ return [
                 'ids' => [
                     'description' => 'Comma seperated list of IDs',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => true
                 ],
                 'page' => [
@@ -6965,8 +7016,8 @@ return [
                     'description' => 'Amount of results',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ]
             ]
@@ -7045,13 +7096,15 @@ return [
                 'inventory_item_ids' => [
                     'description' => 'Comma seperated list of inventory item IDs',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'location_ids' => [
                     'description' => 'Comma seperated list of location IDs',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'page' => [
@@ -7064,8 +7117,8 @@ return [
                     'description' => 'Amount of results',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ]
             ]
@@ -7338,8 +7391,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'offset' => [
@@ -7713,8 +7766,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -7755,6 +7808,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -7792,7 +7847,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -7821,8 +7877,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -7863,6 +7919,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -7900,7 +7958,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -7929,8 +7988,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -7971,6 +8030,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8008,7 +8069,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8037,8 +8099,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8079,6 +8141,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8116,7 +8180,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8145,8 +8210,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8187,6 +8252,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8224,7 +8291,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8253,8 +8321,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8295,6 +8363,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8332,7 +8402,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8361,8 +8432,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8403,6 +8474,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8440,7 +8513,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8469,8 +8543,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8511,6 +8585,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8548,7 +8624,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8583,8 +8660,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8625,6 +8702,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8662,7 +8741,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8699,8 +8779,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8741,6 +8821,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8778,7 +8860,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -8801,8 +8884,8 @@ return [
                     'description' => 'The maximum number of results to retrieve',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -8843,6 +8926,8 @@ return [
                     'description' => 'Show metafields with given namespace',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => false
                 ],
                 'key' => [
@@ -8880,7 +8965,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9165,7 +9251,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9199,7 +9286,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9233,7 +9321,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9267,7 +9356,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9301,7 +9391,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9335,7 +9426,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9369,7 +9461,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9403,7 +9496,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9443,7 +9537,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9485,7 +9580,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9513,7 +9609,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -9548,16 +9645,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -9638,16 +9735,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -9728,16 +9825,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -9818,16 +9915,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -9908,16 +10005,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -9998,16 +10095,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10088,16 +10185,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10178,16 +10275,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10274,16 +10371,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10372,16 +10469,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10456,16 +10553,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10558,16 +10655,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10654,16 +10751,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10750,16 +10847,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10846,16 +10943,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -10942,16 +11039,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11038,16 +11135,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11134,16 +11231,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11230,16 +11327,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11332,16 +11429,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11436,16 +11533,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -11526,16 +11623,16 @@ return [
                     'description' => 'The name of the metafield.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 3,
-                    'max'         => 30,
+                    'minLength'   => 3,
+                    'maxLength'   => 30,
                     'required'    => true
                 ],
                 'namespace' => [
                     'description' => 'A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'min'         => 2,
-                    'max'         => 20,
+                    'minLength'   => 2,
+                    'maxLength'   => 20,
                     'required'    => true
                 ],
                 'value' => [
@@ -12085,15 +12182,16 @@ return [
                 'ids' => [
                     'description' => 'Retrieve only orders specified by a comma-separated list of order IDs.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'limit' => [
                     'description' => 'The maximum number of results to show on a page.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
@@ -12154,27 +12252,28 @@ return [
                     'description' => 'Filter orders by their status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ]
+                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ],
+                    'required'    => false
                 ],
                 'financial_status' => [
                     'description' => 'Filter orders by their financial status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ],
+                    'required'    => false
                 ],
                 'fulfillment_status' => [
                     'description' => 'Filter orders by their fulfillment status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ],
+                    'required'    => false
                 ],
                 'fields' => [
                     'description' => 'Retrieve only certain fields, specified by a comma-separated list of fields names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -12202,7 +12301,8 @@ return [
                 'fields' => [
                     'description' => 'Retrieve only certain fields, specified by a comma-separated list of fields names.',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ]
@@ -12252,22 +12352,22 @@ return [
                     'description' => 'Filter orders by their status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ]
+                    'enum'        => [ 'open', 'closed', 'cancelled', 'any' ],
+                    'required'    => false
                 ],
                 'financial_status' => [
                     'description' => 'Filter orders by their financial status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ],
+                    'required'    => false
                 ],
                 'fulfillment_status' => [
                     'description' => 'Filter orders by their fulfillment status.',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ],
+                    'required'    => false
                 ]
             ]
         ],
@@ -12428,8 +12528,8 @@ return [
                     'description' => 'The status of payments associated with the order. Can only be set when the order is created.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ]
+                    'enum'        => [ 'authorized', 'pending', 'paid', 'partially_paid', 'refunded', 'voided', 'partially_refunded', 'any', 'unpaid' ],
+                    'required'    => false
                 ],
                 'fulfillments' => [
                     'description' => 'An array of fulfillments associated with the order.',
@@ -12441,8 +12541,8 @@ return [
                     'description' => 'The order\'s status in terms of fulfilled line items.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ],
+                    'required'    => false
                 ],
                 'location_id' => [
                     'description' => 'The ID of the physical location where the order was processed.',
@@ -12503,8 +12603,8 @@ return [
                     'description' => 'Where the order originated. Can be set only during order creation, and is not writeable afterwards.',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'enum'        => [ 'web', 'pos', 'shopify_draft_order', 'iphone', 'android' ],
                     'required'    => false
-                    'enum'        => [ 'web', 'pos', 'shopify_draft_order', 'iphone', 'android' ]
                 ],
                 'subtotal_price' => [
                     'description' => 'The price of the order in the shop currency after discounts but before shipping, duties, taxes, and tips.',
@@ -12521,7 +12621,8 @@ return [
                 'tags' => [
                     'description' => 'Tags attached to the order, formatted as a string of comma-separated values. Tags are additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'tax_lines' => [
@@ -12576,7 +12677,7 @@ return [
                     'description' => 'The sum of all line item prices, discounts, shipping, taxes, and tips in the shop currency. Must be positive.',
                     'location'    => 'json',
                     'type'        => 'number',
-                    'min'         => 0,
+                    'minimum'     => 0,
                     'required'    => false
                 ],
                 'total_price_set' => [
@@ -12595,7 +12696,7 @@ return [
                     'description' => 'The sum of all the taxes applied to the order in the shop currency. Must be positive.',
                     'location'    => 'json',
                     'type'        => 'number',
-                    'min'         => 0,
+                    'minimum'     => 0,
                     'required'    => false
                 ],
                 'total_tax_set' => [
@@ -12620,8 +12721,8 @@ return [
                     'description' => 'The behaviour to use when updating inventory.',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'enum'        => [ 'bypass', 'decrement_ignoring_policy', 'decrement_obeying_policy' ],
                     'required'    => false
-                    'enum'        => [ 'bypass', 'decrement_ignoring_policy', 'decrement_obeying_policy' ]
                 ],
                 'send_receipt' => [
                     'description' => 'The behaviour to use when updating inventory.',
@@ -12688,8 +12789,8 @@ return [
                     'description' => 'The order\'s status in terms of fulfilled line items.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => false,
-                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ]
+                    'enum'        => [ 'shipped', 'partial', 'unshipped', 'any', 'unfulfilled' ],
+                    'required'    => false
                 ],
                 'note' => [
                     'description' => 'An optional note that a shop owner can attach to the order.',
@@ -12724,7 +12825,8 @@ return [
                 'tags' => [
                     'description' => 'Tags attached to the order, formatted as a string of comma-separated values. Tags are additional short descriptors, commonly used for filtering and searching. Each individual tag is limited to 40 characters in length.',
                     'location'    => 'json',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'send_fulfillment_receipt' => [
@@ -12768,17 +12870,224 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Order Risk
          * https://shopify.dev/api/admin/rest/reference/orders/order-risk
          * ---------------------------------------------------------------------------------------------
          */
+        'CreateOrderRisk' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/risks.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates an order risk for an order',
+            'data'          => [ 'root_key' => 'risk' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that the order risk belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'cause_cancel' => [
+                    'description' => 'Whether this order risk is severe enough to force the cancellation of the order. If true, then this order risk is included in the Order canceled message that\'s shown on the details page of the canceled order.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'checkout_id' => [
+                    'description' => 'The ID of the checkout that the order risk belongs to.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'display' => [
+                    'description' => 'Whether the order risk is displayed on the order details page in the Shopify admin. If false, then this order risk is ignored when Shopify determines your app\'s overall risk level for the order.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'message' => [
+                    'description' => 'The message that\'s displayed to the merchant to indicate the results of the fraud check. The message is displayed only if display is set totrue.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'recommendation' => [
+                    'description' => 'The recommended action given to the merchant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'cancel', 'investigate', 'accept' ],
+                    'required'    => false
+                ],
+                'score' => [
+                    'description' => 'For internal use only. A number between 0 and 1 that\'s assigned to the order. The closer the score is to 1, the more likely it is that the order is fraudulent.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'minimum'     => 0,
+                    'maximum'     => 1,
+                    'required'    => false
+                ],
+                'source' => [
+                    'description' => 'The source of the order risk.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetOrderRisks' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/risks.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of all order risks for an order',
+            'data'          => [ 'root_key' => 'risks' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that the order risk belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetOrderRisk' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/risks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single order risk by its ID',
+            'data'          => [ 'root_key' => 'risk' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that the order risk belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'A unique numeric identifier for the order risk.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'UpdateOrderRisk' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/risks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates an order risk',
+            'data'          => [ 'root_key' => 'risk' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that the order risk belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'A unique numeric identifier for the order risk.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'cause_cancel' => [
+                    'description' => 'Whether this order risk is severe enough to force the cancellation of the order. If true, then this order risk is included in the Order canceled message that\'s shown on the details page of the canceled order.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'checkout_id' => [
+                    'description' => 'The ID of the checkout that the order risk belongs to.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'message' => [
+                    'description' => 'The message that\'s displayed to the merchant to indicate the results of the fraud check. The message is displayed only if display is set totrue.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'recommendation' => [
+                    'description' => 'The recommended action given to the merchant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'cancel', 'investigate', 'accept' ],
+                    'required'    => false
+                ],
+                'score' => [
+                    'description' => 'For internal use only. A number between 0 and 1 that\'s assigned to the order. The closer the score is to 1, the more likely it is that the order is fraudulent.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'minimum'     => 0,
+                    'maximum'     => 1,
+                    'required'    => false
+                ],
+                'source' => [
+                    'description' => 'The source of the order risk.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteOrderRisk' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/orders/{order_id}/risks/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Deletes an order risk for an order',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'order_id' => [
+                    'description' => 'The ID of the order that the order risk belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'A unique numeric identifier for the order risk.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Page
          * https://shopify.dev/api/admin/rest/reference/online-store/page
@@ -12796,10 +13105,89 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'title' => [
+                    'description' => 'Retrieve pages with a given title.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'Retrieve a page with a given handle.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show pages created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show pages created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show pages last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show pages last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Show pages published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Show pages published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Retrieve results based on their published status',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false,
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -12814,10 +13202,62 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Retrieve pages with a given title.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Show pages created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Show pages created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Show pages last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Show pages last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Show pages published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Show pages published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Retrieve results based on their published status',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -12839,35 +13279,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'GetPageMetafields' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/pages/{id}/metafields.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for a page',
-            'data'          => [ 'root_key' => 'metafields' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
                 ],
-                'id' => [
-                    'description' => 'Page ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -12890,15 +13309,42 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
-                'body_html' => [
-                    'description' => 'HTML content for the page',
+                'author' => [
+                    'description' => 'The name of the person who created the page.',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'body_html' => [
+                    'description' => 'The text content of the page, complete with HTML markup.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A unique, human-friendly string for the page, generated automatically from its title. In online store themes, the Liquid templating language refers to a page by its handle.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'published' => [
+                    'description' => 'Whether the page should be published or not.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template being used. For example, if the value is contact, then the page is using the page.contact.liquid template. If the value is an empty string, then the page is using the default page.liquid template.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -12920,10 +13366,49 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Page title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'author' => [
+                    'description' => 'The name of the person who created the page.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'body_html' => [
+                    'description' => 'The text content of the page, complete with HTML markup.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A unique, human-friendly string for the page, generated automatically from its title. In online store themes, the Liquid templating language refers to a page by its handle.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'published' => [
+                    'description' => 'Whether the page should be published or not.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template being used. For example, if the value is contact, then the page is using the page.contact.liquid template. If the value is an empty string, then the page is using the default page.liquid template.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -12950,39 +13435,644 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Payment
          * https://shopify.dev/api/admin/rest/reference/sales-channels/payment
          * ---------------------------------------------------------------------------------------------
          */
+        'StoreCreditCard' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'https://elb.deposit.shopifycs.com/sessions',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Stores a credit card in the card vault. Credit cards cannot be sent to the Checkout API directly. They must be sent to the card vault, which in response will return a session ID. This session ID can then be used when calling the POST #{token}/payments.json endpoint. A session ID is valid only for a single call to the endpoint. The card vault has a static URL and is located at https://elb.deposit.shopifycs.com/sessions. It is also provided via the payment_url property on the Checkout resource.',
+            'data'          => [
+                'root_key_request'  => 'credit_card',
+                'root_key_response' => 'id'
+            ],
+            'parameters'    => [
+                'number' => [
+                    'description' => 'The number on the credit card.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'first_name' => [
+                    'description' => 'The first name of the cardholder.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'last_name' => [
+                    'description' => 'The last name of the cardholder.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'month' => [
+                    'description' => 'The expiry month of the credit card.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'year' => [
+                    'description' => 'The expiry year of the credit card.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'verification_value' => [
+                    'description' => 'The cvv of the credit card.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CreatePayment' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/payments.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Creates a payment on a checkout using the session ID returned by the card vault.',
+            'data'          => [ 'root_key' => 'payment' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'amount' => [
+                    'description' => 'The amount of the payment.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => true
+                ],
+                'request_details' => [
+                    'description' => 'The details of the request.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => true
+                ],
+                'session_id' => [
+                    'description' => 'A session ID provided by the card vault when creating a payment session.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'unique_token' => [
+                    'description' => 'A unique idempotency token generated by your app. This can be any value, but must be unique across all payment requests.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetPayments' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/payments.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of payments on a particular checkout.',
+            'data'          => [ 'root_key' => 'payments' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetPayment' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/payments/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single payment.',
+            'data'          => [ 'root_key' => 'payment' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'The payment ID.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CountPayments' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/checkouts/{token}/payments/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Counts the number of payments attempted on a checkout.',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'token' => [
+                    'description' => 'The checkout token.',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Payout
          * https://shopify.dev/api/admin/rest/reference/shopify_payments/payout
          * ---------------------------------------------------------------------------------------------
          */
+        'GetPayouts' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/payouts.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Return a list of all payouts.',
+            'data'          => [ 'root_key' => 'payouts' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Filter the response to payouts made after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'last_id' => [
+                    'description' => 'Filter the response to payouts made before the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'date_min' => [
+                    'description' => 'Filter the response to payouts made inclusively after the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date',
+                    'required'    => false
+                ],
+                'date_max' => [
+                    'description' => 'Filter the response to payouts made inclusively before the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date',
+                    'required'    => false
+                ],
+                'date' => [
+                    'description' => 'Filter the response to payouts made on the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'Filter the response to payouts made with the specified status.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'scheduled', 'in_transit', 'paid', 'failed', 'canceled' ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetPayout' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/shopify_payments/payouts/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Return a single payout.',
+            'data'          => [ 'root_key' => 'payout' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'The payout ID.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Policy
          * https://shopify.dev/api/admin/rest/reference/store-properties/policy
          * ---------------------------------------------------------------------------------------------
          */
+        'GetPolicies' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/policies.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of the shop\'s policies',
+            'data'          => [ 'root_key' => 'policies' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * PriceRule
          * https://shopify.dev/api/admin/rest/reference/discounts/pricerule
          * ---------------------------------------------------------------------------------------------
          */
+        'CreatePriceRule' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/price_rules.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a new price rule',
+            'data'          => [ 'root_key' => 'price_rule' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'allocation_method' => [
+                    'description' => 'Price rule allocation method',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'each', 'across' ],
+                    'required'    => true
+                ],
+                'customer_selection' => [
+                    'description' => 'Price rule customer selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'all', 'prerequisite' ],
+                    'required'    => true
+                ],
+                'target_selection' => [
+                    'description' => 'Price rule target selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'all', 'entitled' ],
+                    'required'    => true
+                ],
+                'target_type' => [
+                    'description' => 'Price rule target type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'line_item', 'shipping_line' ],
+                    'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Price rule title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'value' => [
+                    'description' => 'Price rule value',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => true
+                ],
+                'value_type' => [
+                    'description' => 'Price rule value type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'fixed_amount', 'percentage' ],
+                    'required'    => true
+                ],
+                'starts_at' => [
+                    'description' => 'Price rule starts at date',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => true
+                ],
+                'ends_at' => [
+                    'description' => 'Price rule ends at date',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'entitled_country_ids' => [
+                    'description' => 'A list of IDs of shipping countries that will be entitled to the discount. It can be used only with target_type set to shipping_line and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'entitled_product_ids' => [
+                    'description' => 'A list of IDs of products that will be entitled to the discount. It can be used only with target_type set to line_item and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'entitled_variant_ids' => [
+                    'description' => 'A list of IDs of product variants that will be entitled to the discount. It can be used only with target_type set to line_item and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'once_per_customer' => [
+                    'description' => 'Whether the generated discount code will be valid only for a single use per customer. This is tracked using customer ID.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'prerequisite_customer_ids' => [
+                    'description' => 'A list of customer IDs. For the price rule to be applicable, the customer must match one of the specified customers.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_quantity_range' => [
+                    'description' => 'The minimum number of items for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_saved_search_ids' => [
+                    'description' => 'A list of customer saved search IDs. For the price rule to be applicable, the customer must be in the group of customers matching a customer saved search.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_shipping_price_range' => [
+                    'description' => 'The maximum shipping price for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_subtotal_range' => [
+                    'description' => 'The minimum subtotal for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_to_entitlement_purchase' => [
+                    'description' => 'The prerequisite purchase for a Buy X Get Y discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'usage_limit' => [
+                    'description' => 'The maximum number of times the price rule can be used, per discount code.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'prerequisite_product_ids' => [
+                    'description' => 'List of product ids that will be a prerequisites for a Buy X Get Y type discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_variant_ids' => [
+                    'description' => 'List of variant ids that will be a prerequisites for a Buy X Get Y type discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_collection_ids' => [
+                    'description' => 'List of collection ids that will be a prerequisites for a Buy X Get Y discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_to_entitlement_quantity_ratio' => [
+                    'description' => 'Buy/Get ratio for a Buy X Get Y discount. prerequisite_quantity defines the necessary \'buy\' quantity and entitled_quantity the offered \'get\' quantity.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'allocation_limit' => [
+                    'description' => 'The number of times the discount can be allocated on the cart - if eligible. For example a Buy 1 hat Get 1 hat for free discount can be applied 3 times on a cart having more than 6 hats, where maximum of 3 hats get discounted - if the allocation_limit is 3. Empty (null) allocation_limit means unlimited number of allocations.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdatePriceRule' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/price_rules/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Update an existing price rule code',
+            'data'          => [ 'root_key' => 'price_rule' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Price rule ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'allocation_method' => [
+                    'description' => 'Price rule allocation method',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'each', 'across' ],
+                    'required'    => false
+                ],
+                'customer_selection' => [
+                    'description' => 'Price rule customer selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'all', 'prerequisite' ],
+                    'required'    => false
+                ],
+                'target_selection' => [
+                    'description' => 'Price rule target selection',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'all', 'entitled' ],
+                    'required'    => false
+                ],
+                'target_type' => [
+                    'description' => 'Price rule target type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'line_item', 'shipping_line' ],
+                    'required'    => false
+                ],
+                'title' => [
+                    'description' => 'Price rule title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'value' => [
+                    'description' => 'Price rule value',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'value_type' => [
+                    'description' => 'Price rule value type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'fixed_amount', 'percentage' ],
+                    'required'    => false
+                ],
+                'starts_at' => [
+                    'description' => 'Price rule starts at date',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'ends_at' => [
+                    'description' => 'Price rule ends at date',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'entitled_country_ids' => [
+                    'description' => 'A list of IDs of shipping countries that will be entitled to the discount. It can be used only with target_type set to shipping_line and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'entitled_product_ids' => [
+                    'description' => 'A list of IDs of products that will be entitled to the discount. It can be used only with target_type set to line_item and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'entitled_variant_ids' => [
+                    'description' => 'A list of IDs of product variants that will be entitled to the discount. It can be used only with target_type set to line_item and target_selection set to entitled.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'once_per_customer' => [
+                    'description' => 'Whether the generated discount code will be valid only for a single use per customer. This is tracked using customer ID.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'prerequisite_customer_ids' => [
+                    'description' => 'A list of customer IDs. For the price rule to be applicable, the customer must match one of the specified customers.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_quantity_range' => [
+                    'description' => 'The minimum number of items for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_saved_search_ids' => [
+                    'description' => 'A list of customer saved search IDs. For the price rule to be applicable, the customer must be in the group of customers matching a customer saved search.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_shipping_price_range' => [
+                    'description' => 'The maximum shipping price for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_subtotal_range' => [
+                    'description' => 'The minimum subtotal for the price rule to be applicable.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_to_entitlement_purchase' => [
+                    'description' => 'The prerequisite purchase for a Buy X Get Y discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'usage_limit' => [
+                    'description' => 'The maximum number of times the price rule can be used, per discount code.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'prerequisite_product_ids' => [
+                    'description' => 'List of product ids that will be a prerequisites for a Buy X Get Y type discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_variant_ids' => [
+                    'description' => 'List of variant ids that will be a prerequisites for a Buy X Get Y type discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_collection_ids' => [
+                    'description' => 'List of collection ids that will be a prerequisites for a Buy X Get Y discount.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'prerequisite_to_entitlement_quantity_ratio' => [
+                    'description' => 'Buy/Get ratio for a Buy X Get Y discount. prerequisite_quantity defines the necessary \'buy\' quantity and entitled_quantity the offered \'get\' quantity.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'allocation_limit' => [
+                    'description' => 'The number of times the discount can be allocated on the cart - if eligible. For example a Buy 1 hat Get 1 hat for free discount can be applied 3 times on a cart having more than 6 hats, where maximum of 3 hats get discounted - if the allocation_limit is 3. Empty (null) allocation_limit means unlimited number of allocations.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ]
+            ]
+        ],
+
         'GetPriceRules' => [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/price_rules.json',
@@ -12995,10 +14085,83 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Count price rules created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Count price rules created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Count price rules last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Count price rules last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'starts_at_min' => [
+                    'description' => 'Count price rules last starting after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'starts_at_max' => [
+                    'description' => 'Count price rules last starting before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'ends_at_min' => [
+                    'description' => 'Count price rules last ending after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'ends_at_max' => [
+                    'description' => 'Count price rules last ending before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'times_used' => [
+                    'description' => 'Show price rules with times used.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13021,18 +14184,14 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
-        'CreatePriceRule' => [
-            'httpMethod'    => 'POST',
-            'uri'           => 'admin/api/{version}/price_rules.json',
+        'CountPriceRules' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/images/count.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Create a new price rule',
-            'data'          => [ 'root_key' => 'price_rule' ],
+            'summary'       => 'Retrieve the number of images for a given product',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -13040,88 +14199,12 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
-                'title' => [
-                    'description' => 'Price rule title',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'target_type' => [
-                    'description' => 'Price rule target type',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'line_item', 'shipping_line' ]
-                ],
-                'target_selection' => [
-                    'description' => 'Price rule target selection',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'all', 'entitled' ]
-                ],
-                'value_type' => [
-                    'description' => 'Price rule value type',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'fixed_amount', 'percentage' ]
-                ],
-                'value' => [
-                    'description' => 'Price rule value',
-                    'location'    => 'json',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'allocation_method' => [
-                    'description' => 'Price rule allocation method',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'each', 'across' ]
-                ],
-                'starts_at' => [
-                    'description' => 'Price rule starts at date',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'format'      => 'date-time',
-                    'required'    => true
-                ],
-                'customer_selection' => [
-                    'description' => 'Price rule customer selection',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'all', 'prerequisite' ]
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
-            ]
-        ],
-
-        'UpdatePriceRule' => [
-            'httpMethod'    => 'PUT',
-            'uri'           => 'admin/api/{version}/price_rules/{id}.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Update an existing price rule code',
-            'data'          => [ 'root_key' => 'price_rule' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Price rule ID',
+                'product_id' => [
+                    'description' => 'Product ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13148,8 +14231,6 @@ return [
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product
          * https://shopify.dev/api/admin/rest/reference/products/product
@@ -13167,10 +14248,129 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'ids' => [
+                    'description' => 'Return only products specified by a comma-separated list of product IDs.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Return up to this many results per page.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Return only products after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'title' => [
+                    'description' => 'Return products by product title.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'vendor' => [
+                    'description' => 'Return products by product vendor.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'Return only products specified by a comma-separated list of product handles.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'product_type' => [
+                    'description' => 'Return products by product type.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'Return only products specified by a comma-separated list of statuses.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'collection_id' => [
+                    'description' => 'Return products by product collection ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Return products created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Return products created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Return products last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Return products last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Return products published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Return products published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Retrieve results based on their published status',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'presentment_currencies' => [
+                    'description' => 'Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13185,10 +14385,68 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'vendor' => [
+                    'description' => 'Return products by product vendor.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'collection_id' => [
+                    'description' => 'Return products by product collection ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Return products created after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Return products created before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Return products last updated after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Return products last updated before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_min' => [
+                    'description' => 'Return products published after date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_at_max' => [
+                    'description' => 'Return products published before date (format: 2014-04-25T16:15:47-04:00)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'published_status' => [
+                    'description' => 'Retrieve results based on their published status',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [ 'published', 'unpublished', 'any' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13210,35 +14468,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'GetProductMetafields' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/products/{id}/metafields.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for a product',
-            'data'          => [ 'root_key' => 'metafields' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
                 ],
-                'id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13260,10 +14497,82 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'body_html' => [
+                    'description' => 'A description of the product. Supports HTML formatting.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A unique human-friendly string for the product. Automatically generated from the product\'s title. Used by the Liquid templating language to refer to objects.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'images' => [
+                    'description' => 'A list of product image objects, each one representing an image associated with the product.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'options' => [
+                    'description' => 'The custom product properties. For example, Size, Color, and Material. Each product can have up to 3 options and each option value can be up to 255 characters. Product variants are made of up combinations of option values. Options cannot be created without values. To create new options, a variant with an associated option value also needs to be created.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'product_type' => [
+                    'description' => 'A categorization for the product used for filtering and searching products.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'published_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when the product was published. Can be set to null to unpublish the product from the Online Store channel.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'The status of the product.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'active', 'archived', 'draft' ],
+                    'required'    => false
+                ],
+                'tags' => [
+                    'description' => 'A string of comma-separated tags that are used for filtering and search. A product can have up to 250 tags. Each tag can have up to 255 characters.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template used for the product page. If this property is specified, then the product page uses a template called "product.suffix.liquid", where "suffix" is the value of this property. If this property is "" or null, then the product page uses the default template "product.liquid"..',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'variants' => [
+                    'description' => 'An array of product variants, each representing a different version of the product.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'vendor' => [
+                    'description' => 'The name of the product\'s vendor.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13285,10 +14594,88 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'title' => [
+                    'description' => 'Product title',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'body_html' => [
+                    'description' => 'A description of the product. Supports HTML formatting.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'A unique human-friendly string for the product. Automatically generated from the product\'s title. Used by the Liquid templating language to refer to objects.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'images' => [
+                    'description' => 'A list of product image objects, each one representing an image associated with the product.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'options' => [
+                    'description' => 'The custom product properties. For example, Size, Color, and Material. Each product can have up to 3 options and each option value can be up to 255 characters. Product variants are made of up combinations of option values. Options cannot be created without values. To create new options, a variant with an associated option value also needs to be created.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'product_type' => [
+                    'description' => 'A categorization for the product used for filtering and searching products.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'published_at' => [
+                    'description' => 'The date and time (ISO 8601 format) when the product was published. Can be set to null to unpublish the product from the Online Store channel.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'status' => [
+                    'description' => 'The status of the product.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'active', 'archived', 'draft' ],
+                    'required'    => false
+                ],
+                'tags' => [
+                    'description' => 'A string of comma-separated tags that are used for filtering and search. A product can have up to 250 tags. Each tag can have up to 255 characters.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'template_suffix' => [
+                    'description' => 'The suffix of the Liquid template used for the product page. If this property is specified, then the product page uses a template called "product.suffix.liquid", where "suffix" is the value of this property. If this property is "" or null, then the product page uses the default template "product.liquid"..',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'variants' => [
+                    'description' => 'An array of product variants, each representing a different version of the product.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'vendor' => [
+                    'description' => 'The name of the product\'s vendor.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13315,8 +14702,6 @@ return [
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product Image
          * https://shopify.dev/api/admin/rest/reference/products/product-image
@@ -13340,10 +14725,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13364,10 +14759,13 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13384,17 +14782,24 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
                 'id' => [
                     'description' => 'Product image ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
             ],
             'additionalParameters' => [
@@ -13420,10 +14825,61 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'position' => [
+                    'description' => 'The order of the product image in the list. The first product image is at position 1 and is the "main" image for the product.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'variant_ids' => [
+                    'description' => 'An array of variant ids associated with the image.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'src' => [
+                    'description' => 'Specifies the location of the product image. This parameter supports URL filters that you can use to retrieve modified copies of the image. For example, add _small, to the filename to retrieve a scaled copy of the image at 100 x 100 px (for example, ipod-nano_small.png), or add _2048x2048 to retrieve a copy of the image constrained at 2048 x 2048 px resolution (for example, ipod-nano_2048x2048.png).',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'attachment' => [
+                    'description' => 'An image provided as raw data.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'filename' => [
+                    'description' => 'Name for the provided attachment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'alt' => [
+                    'description' => 'Alt text for the image.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'width' => [
+                    'description' => 'Width dimension of the image which is determined on upload.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'height' => [
+                    'description' => 'Height dimension of the image which is determined on upload.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13440,21 +14896,72 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'product_id' => [
+                    'description' => 'Product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
                 'id' => [
                     'description' => 'Product image ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'product_id' => [
-                    'description' => 'Product ID',
-                    'location'    => 'uri',
+                'position' => [
+                    'description' => 'The order of the product image in the list. The first product image is at position 1 and is the "main" image for the product.',
+                    'location'    => 'json',
                     'type'        => 'integer',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'variant_ids' => [
+                    'description' => 'An array of variant ids associated with the image.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'src' => [
+                    'description' => 'Specifies the location of the product image. This parameter supports URL filters that you can use to retrieve modified copies of the image. For example, add _small, to the filename to retrieve a scaled copy of the image at 100 x 100 px (for example, ipod-nano_small.png), or add _2048x2048 to retrieve a copy of the image constrained at 2048 x 2048 px resolution (for example, ipod-nano_2048x2048.png).',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'attachment' => [
+                    'description' => 'An image provided as raw data.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'filename' => [
+                    'description' => 'Name for the provided attachment.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'alt' => [
+                    'description' => 'Alt text for the image.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'width' => [
+                    'description' => 'Width dimension of the image which is determined on upload.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'height' => [
+                    'description' => 'Height dimension of the image which is determined on upload.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13470,14 +14977,14 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
-                'id' => [
-                    'description' => 'Product image ID',
+                'product_id' => [
+                    'description' => 'Product ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
                 ],
-                'product_id' => [
-                    'description' => 'Product ID',
+                'id' => [
+                    'description' => 'Product image ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
@@ -13487,17 +14994,90 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product ResourceFeedback
          * https://shopify.dev/api/admin/rest/reference/sales-channels/productresourcefeedback
          * ---------------------------------------------------------------------------------------------
          */
+        'CreateProductResourceFeedback' => [
+            'httpMethod'    => 'POST',
+            'uri'           => 'admin/api/{version}/products/{product_id}/resource_feedback.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create product feedback.',
+            'data'          => [ 'root_key' => 'resource_feedback' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Create feedback for a specific product, using its product id.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'resource_type' => [
+                    'description' => 'Type of resource for which feedback is returned. eg. Shop, Product.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'state' => [
+                    'description' => 'Indicates the state that the Shop or resource is in, from the perspective of your app.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'requires_action', 'success' ],
+                    'required'    => false
+                ],
+                'messages' => [
+                    'description' => 'A concise set of copy strings to be displayed to merchants, to guide them in resolving problems your app encounters when trying to make use of their Shop and its resources. Required only when state is requires_action. Disallowed when state is success. Content restrictions for product feedback: four messages up to 100 characters long.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'feedback_generated_at' => [
+                    'description' => 'The time at which the payload is constructed. Used to help determine whether incoming feedback is outdated compared to feedback already received, and if it should be ignored upon arrival.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'resource_updated_at' => [
+                    'description' => 'The forwarded updated_at timestamp of the product. Used only for versioned resources, where the updated_at timestamp changes based on merchant actions. When required, it is used along with feedback_generated_at to help determine whether incoming feedback is outdated compared to feedback already received, and if it should be ignored upon arrival.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductResourceFeedbacks' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/products/{product_id}/resource_feedback.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve all product feedback from your app associated with the product.',
+            'data'          => [ 'root_key' => 'resource_feedback' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Retrieve feedback for a specific product, by product id.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method HAS METAFIELDS
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Product Variant
          * https://shopify.dev/api/admin/rest/reference/products/product-variant
@@ -13521,10 +15101,35 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'Return up to this many results per page.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'presentment_currencies' => [
+                    'description' => 'Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13546,9 +15151,6 @@ return [
                     'type'        => 'integer',
                     'required'    => true
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13570,31 +15172,13 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'GetProductVariantMetafields' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/variants/{id}/metafields.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of metafields for a variant',
-            'data'          => [ 'root_key' => 'metafields' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
                 ],
-                'id' => [
-                    'description' => 'Specific variant ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
             ],
             'additionalParameters' => [
@@ -13620,10 +15204,117 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'barcode' => [
+                    'description' => 'The barcode, UPC, or ISBN number for the product.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'compare_at_price' => [
+                    'description' => 'The original price of the item before an adjustment or a sale.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'fulfillment_service' => [
+                    'description' => 'The fulfillment service associated with the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'grams' => [
+                    'description' => 'The weight of the product variant in grams.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'image_id' => [
+                    'description' => 'The unique numeric identifier for a product\'s image. The image must be associated to the same product as the variant.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'inventory_item_id' => [
+                    'description' => 'The unique identifier for the inventory item, which is used in the Inventory API to query for inventory information.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'inventory_management' => [
+                    'description' => 'The fulfillment service that tracks the number of items in stock for the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'inventory_policy' => [
+                    'description' => 'Whether customers are allowed to place an order for the product variant when it\'s out of stock.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'deny', 'continue' ],
+                    'required'    => false
+                ],
+                'option1' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'option2' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'option3' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'price' => [
+                    'description' => 'The price of the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'sku' => [
+                    'description' => 'A unique identifier for the product variant in the shop.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'taxable' => [
+                    'description' => 'Whether a tax is charged when the product variant is sold.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'tax_code' => [
+                    'description' => 'This parameter applies only to the stores that have the Avalara AvaTax app installed. Specifies the Avalara tax code for the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'weight' => [
+                    'description' => 'The weight of the product variant in the unit system specified with weight_unit.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'weight_unit' => [
+                    'description' => 'The unit of measurement that applies to the product variant\'s weight. If you don\'t specify a value for weight_unit, then the shop\'s default unit of measurement is applied.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'g', 'kg', 'oz', 'lb' ],
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13645,10 +15336,117 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'barcode' => [
+                    'description' => 'The barcode, UPC, or ISBN number for the product.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'compare_at_price' => [
+                    'description' => 'The original price of the item before an adjustment or a sale.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'fulfillment_service' => [
+                    'description' => 'The fulfillment service associated with the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'grams' => [
+                    'description' => 'The weight of the product variant in grams.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'image_id' => [
+                    'description' => 'The unique numeric identifier for a product\'s image. The image must be associated to the same product as the variant.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'inventory_item_id' => [
+                    'description' => 'The unique identifier for the inventory item, which is used in the Inventory API to query for inventory information.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'inventory_management' => [
+                    'description' => 'The fulfillment service that tracks the number of items in stock for the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'inventory_policy' => [
+                    'description' => 'Whether customers are allowed to place an order for the product variant when it\'s out of stock.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'deny', 'continue' ],
+                    'required'    => false
+                ],
+                'option1' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'option2' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'option3' => [
+                    'description' => 'The custom properties that a shop owner uses to define product variants.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'price' => [
+                    'description' => 'The price of the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'sku' => [
+                    'description' => 'A unique identifier for the product variant in the shop.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'taxable' => [
+                    'description' => 'Whether a tax is charged when the product variant is sold.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'tax_code' => [
+                    'description' => 'This parameter applies only to the stores that have the Avalara AvaTax app installed. Specifies the Avalara tax code for the product variant.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'weight' => [
+                    'description' => 'The weight of the product variant in the unit system specified with weight_unit.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'weight_unit' => [
+                    'description' => 'The unit of measurement that applies to the product variant\'s weight. If you don\'t specify a value for weight_unit, then the shop\'s default unit of measurement is applied.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'g', 'kg', 'oz', 'lb' ],
+                    'required'    => false
+                ],
+                'metafields' => [
+                    'description' => 'The Metafield resource allows you to add additional information to other Admin API resources',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -13664,10 +15462,171 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
                 'id' => [
                     'description' => 'Specific variant ID',
                     'location'    => 'uri',
                     'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+
+        /**
+         * ---------------------------------------------------------------------------------------------
+         * ProductListing
+         * https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting
+         * ---------------------------------------------------------------------------------------------
+         */
+        'GetProductListings' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/product_listings.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve product listings that are published to your app',
+            'data'          => [ 'root_key' => 'product_listings' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_ids' => [
+                    'description' => 'A comma-separated list of product ids',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Amount of results',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 1000,
+                    'required'    => false
+                ],
+                'collection_id' => [
+                    'description' => 'Filter by products belonging to a particular collection',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Filter by product listings last updated after a certain date and time (formatted in ISO 8601)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'handle' => [
+                    'description' => 'Filter by product handle',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetProductListingIds' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/product_listings/product_ids.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve product_ids that are published to your app',
+            'data'          => [ 'root_key' => 'product_ids' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'Amount of results',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 1000,
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CountProductListings' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/product_listings/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a count of products that are published to your app',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetProductListing' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/product_listings/{product_id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieve a specific product listing that is published to your app',
+            'data'          => [ 'root_key' => 'product_listing' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'CreateProductListing' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/product_listings/{product_id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Create a product listing to publish a product to your app',
+            'data'          => [ 'root_key' => 'product_listing' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'product_id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'DeleteProductListing' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/product_listings/{product_id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Delete a product listing to unpublish a product from your app',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
                     'required'    => true
                 ],
                 'product_id' => [
@@ -13681,92 +15640,168 @@ return [
 
 
         /**
-         * @method INCOMPLETE
-         * ---------------------------------------------------------------------------------------------
-         * ProductListing
-         * https://shopify.dev/api/admin/rest/reference/sales-channels/productlisting
-         * ---------------------------------------------------------------------------------------------
-         */
-
-
-        /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Province
          * https://shopify.dev/api/admin/rest/reference/store-properties/province
          * ---------------------------------------------------------------------------------------------
          */
+        'GetProvinces' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries/{country_id}/provinces.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of provinces for a country',
+            'data'          => [ 'root_key' => 'provinces' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'country_id' => [
+                    'description' => 'The ID for the country that the province belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'CountProvinces' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries/{country_id}/provinces/count.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a count of provinces for a country',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'country_id' => [
+                    'description' => 'The ID for the country that the province belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetProvince' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/countries/{country_id}/provinces/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single province for a countryp',
+            'data'          => [ 'root_key' => 'province' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'country_id' => [
+                    'description' => 'The ID for the country that the province belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of fields names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateProvince' => [
+            'httpMethod'    => 'PUT',
+            'uri'           => 'admin/api/{version}/countries/{country_id}/provinces/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Updates an existing province for a country',
+            'data'          => [ 'root_key' => 'province' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'country_id' => [
+                    'description' => 'The ID for the country that the province belongs to.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific product ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'name' => [
+                    'description' => 'The full name of the province.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'shipping_zone_id' => [
+                    'description' => 'The ID for the shipping zone that the province belongs to.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'tax' => [
+                    'description' => 'The sales tax rate to be applied to orders made by customers from this province.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
+                'tax_type' => [
+                    'description' => 'The tax type',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'null', 'normal', 'harmonized', 'compounded' ],
+                    'required'    => false
+                ],
+                'tax_percentage' => [
+                    'description' => 'The province\'s tax in percent format.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * RecurringApplicationCharge
          * https://shopify.dev/api/admin/rest/reference/billing/recurringapplicationcharge
          * ---------------------------------------------------------------------------------------------
          */
-        'GetRecurringApplicationCharges' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/recurring_application_charges.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieves a list of recurring application charges',
-            'data'          => [ 'root_key' => 'recurring_application_charges' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'since_id' => [
-                    'description' => 'Restrict results to after the specified ID',
-                    'location'    => 'query',
-                    'type'        => 'integer',
-                    'required'    => false
-                ],
-                'fields' => [
-                    'description' => 'A comma-separated list of fields to include in the response',
-                    'location'    => 'query',
-                    'type'        => 'string',
-                    'required'    => false
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
-        'GetRecurringApplicationCharge' => [
-            'httpMethod'    => 'GET',
-            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieves a single recurring application charge',
-            'data'          => [ 'root_key' => 'recurring_application_charge' ],
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific recurring application charge ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ],
-                'fields' => [
-                    'description' => 'A comma-separated list of fields to include in the response',
-                    'location'    => 'query',
-                    'type'        => 'string',
-                    'required'    => false
-                ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
-            ]
-        ],
-
         'CreateRecurringApplicationCharge' => [
             'httpMethod'    => 'POST',
             'uri'           => 'admin/api/{version}/recurring_application_charges.json',
@@ -13792,21 +15827,121 @@ return [
                     'type'        => 'number',
                     'required'    => true
                 ],
+                'capped_amount' => [
+                    'description' => 'The limit a customer can be charged for usage based billing. If this property is provided, then you must also provide the terms property.',
+                    'location'    => 'json',
+                    'type'        => 'number',
+                    'required'    => false
+                ],
                 'return_url' => [
                     'description' => 'URL where Shopify must return once the charge has been accepted',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'terms' => [
+                    'description' => 'The terms and conditions of usage based billing charges. Must be present in order to create usage charges, for example when the capped_amount property is provided. Presented to the merchant when they approve an app\'s usage charges.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ],
                 'test' => [
-                    'description' => 'Use to create a test charge',
+                    'description' => 'Whether the application charge is a test transaction. Valid values: true, null.',
                     'location'    => 'json',
                     'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'trial_days' => [
+                    'description' => 'The number of days that the customer is eligible for a free trial.',
+                    'location'    => 'json',
+                    'type'        => 'integer',
                     'required'    => false
                 ]
             ],
             'additionalParameters' => [
                 'location' => 'json'
+            ]
+        ],
+
+        'GetRecurringApplicationCharge' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single recurring application charge',
+            'data'          => [ 'root_key' => 'recurring_application_charge' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific recurring application charge ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetRecurringApplicationCharges' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/recurring_application_charges.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of recurring application charges',
+            'data'          => [ 'root_key' => 'recurring_application_charges' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ]
+            ],
+            'additionalParameters' => [
+                'location' => 'query'
+            ]
+        ],
+
+        'DeleteRecurringApplicationCharge' => [
+            'httpMethod'    => 'DELETE',
+            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Cancels a recurring application charge',
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'Specific recurring application charge ID',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
             ]
         ],
 
@@ -13833,30 +15968,8 @@ return [
             ]
         ],
 
-        'DeleteRecurringApplicationCharge' => [
-            'httpMethod'    => 'DELETE',
-            'uri'           => 'admin/api/{version}/recurring_application_charges/{id}.json',
-            'responseModel' => 'GenericModel',
-            'summary'       => 'Cancels a recurring application charge',
-            'parameters'    => [
-                'version' => [
-                    'description' => 'API version',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ],
-                'id' => [
-                    'description' => 'Specific recurring application charge ID',
-                    'location'    => 'uri',
-                    'type'        => 'integer',
-                    'required'    => true
-                ]
-            ]
-        ],
-
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Redirect
          * https://shopify.dev/api/admin/rest/reference/online-store/redirect
@@ -13874,10 +15987,40 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to show.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict results to after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'path' => [
+                    'description' => 'Show redirects with a given path.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'target' => [
+                    'description' => 'Show redirects with a given target.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13892,10 +16035,19 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'path' => [
+                    'description' => 'Count redirects with a given path.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'target' => [
+                    'description' => 'Count redirects with a given target.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13917,10 +16069,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -13969,13 +16125,13 @@ return [
                     'description' => 'Path URL',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
                 ],
                 'target' => [
                     'description' => 'Target URL',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
                 ]
             ]
         ],
@@ -14003,7 +16159,6 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Refund
          * https://shopify.dev/api/admin/rest/reference/orders/refund
@@ -14027,10 +16182,28 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'in_shop_currency' => [
+                    'description' => 'Show amounts in the shop currency for the underlying transaction.',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -14058,10 +16231,20 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'in_shop_currency' => [
+                    'description' => 'Show amounts in the shop currency for the underlying transaction.',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -14083,10 +16266,25 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'shipping' => [
+                    'description' => 'Specify how much shipping to refund.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'refund_line_items' => [
+                    'description' => 'A list of line item IDs, quantities to refund, and restock instructions.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'currency' => [
+                    'description' => 'The three-letter code (ISO 4217 format) for the currency used for the refund. Note: Required whenever the shipping amount property is provided.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -14108,16 +16306,61 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'notify' => [
+                    'description' => 'Whether to send a refund notification to the customer.',
+                    'location'    => 'json',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'note' => [
+                    'description' => 'An optional note attached to a refund.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'discrepancy_reason' => [
+                    'description' => 'An optional comment that explains a discrepancy between calculated and actual refund amounts. Used to populate the reason property of the resulting order adjustment object attached to the refund.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'restock', 'damage', 'customer', 'other' ],
+                    'required'    => false
+                ],
+                'shipping' => [
+                    'description' => 'Specify how much shipping to refund.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'refund_duties' => [
+                    'description' => 'A list of refunded duties.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'refund_line_items' => [
+                    'description' => 'A list of line item IDs, quantities to refund, and restock instructions.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'transactions' => [
+                    'description' => 'A list of transactions to process as refunds.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'currency' => [
+                    'description' => 'The three-letter code (ISO 4217 format) for the currency used for the refund. Note: Required whenever the shipping amount property is provided.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Report
          * https://shopify.dev/api/admin/rest/reference/analytics/report
@@ -14137,33 +16380,22 @@ return [
                     'required'    => true
                 ],
                 'ids' => [
-                    'description' => 'Comma seperated list of IDs',
+                    'description' => 'A comma-separated list of report IDs.',
                     'location'    => 'query',
-                    'type'        => 'string',
-                    'required'    => false
-                ],
-                'page' => [
-                    'description' => 'Page to show',
-                    'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ],
                 'limit' => [
-                    'description' => 'Amount of results',
+                    'description' => 'The amount of results to return.',
                     'location'    => 'query',
                     'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 250,
-                    'required'    => false
-                ],
-                'fields' => [
-                    'description' => 'A comma-separated list of fields to include in the response',
-                    'location'    => 'query',
-                    'type'        => 'string',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
                     'required'    => false
                 ],
                 'since_id' => [
-                    'description' => 'Restrict results to after the specified ID',
+                    'description' => 'Restrict results to after the specified ID.',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
@@ -14181,10 +16413,14 @@ return [
                     'type'        => 'string',
                     'format'      => 'date-time',
                     'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'A comma-separated list of fields to include in the response.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -14210,12 +16446,10 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -14233,9 +16467,10 @@ return [
                     'required'    => true
                 ],
                 'name' => [
-                    'description' => 'The name of the report. Maximum length: 255 characters',
+                    'description' => 'The name of the report.',
                     'location'    => 'json',
                     'type'        => 'string',
+                    'maxLength'   => 255,
                     'required'    => true
                 ],
                 'shopify_ql' => [
@@ -14244,9 +16479,6 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -14270,9 +16502,10 @@ return [
                     'required'    => true
                 ],
                'name' => [
-                    'description' => 'The name of the report. Maximum length: 255 characters',
+                    'description' => 'The name of the report.',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'maxLength'   => 255,
                     'required'    => false
                 ],
                 'shopify_ql' => [
@@ -14281,9 +16514,6 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -14291,7 +16521,7 @@ return [
             'httpMethod'    => 'DELETE',
             'uri'           => 'admin/api/{version}/reports/{id}.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieves a single report created by your app',
+            'summary'       => 'Deletes a report',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
@@ -14404,8 +16634,8 @@ return [
                     'description' => 'Event value when the script tag is loaded',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'onload' ]
+                    'enum'        => [ 'onload' ],
+                    'required'    => true
                 ],
                 'src' => [
                     'description' => 'URL of the script tag',
@@ -14442,8 +16672,8 @@ return [
                     'description' => 'Event value when the script tag is loaded',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'onload' ]
+                    'enum'        => [ 'onload' ],
+                    'required'    => true
                 ],
                 'src' => [
                     'description' => 'URL of the script tag',
@@ -15003,8 +17233,8 @@ return [
                     'description' => 'The kind of transaction',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'authorization', 'capture', 'sale', 'void', 'refund' ]
+                    'enum'        => [ 'authorization', 'capture', 'sale', 'void', 'refund' ],
+                    'required'    => true
                 ]
             ],
             'additionalParameters' => [
@@ -15042,7 +17272,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ],
@@ -15079,7 +17310,8 @@ return [
                 'fields' => [
                     'description' => 'A comma-separated list of fields to include in the response',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
                     'required'    => false
                 ]
             ],
@@ -15218,8 +17450,8 @@ return [
                     'description' => 'Type of data to return',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
-                    'enum'        => [ 'json', 'xml' ]
+                    'enum'        => [ 'json', 'xml' ],
+                    'required'    => true
                 ],
                 'address' => [
                     'description' => 'Specific URL for the webhook',
@@ -15231,7 +17463,6 @@ return [
                     'description' => 'List of webhook topic',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true,
                     'enum'        => [
                         'carts/create',
                         'carts/update',
@@ -15301,7 +17532,8 @@ return [
                         'themes/publish',
                         'themes/update',
                         'themes/delete'
-                    ]
+                    ],
+                    'required'    => true
                 ]
             ],
             'additionalParameters' => [
