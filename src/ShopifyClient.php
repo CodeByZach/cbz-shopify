@@ -536,6 +536,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getStorefrontAccessTokens(array $args = []) { @command Shopify GetStorefrontAccessTokens }
  *
  * TenderTransaction:
+ * @method array getTenderTransactions(array $args = []) { @command Shopify GetTenderTransactions }
  *
  * Theme:
  * @method array getThemes(array $args = []) { @command Shopify GetThemes }

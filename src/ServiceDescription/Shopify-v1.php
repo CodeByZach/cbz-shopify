@@ -17406,16 +17406,70 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * TenderTransaction
          * https://shopify.dev/api/admin/rest/reference/tendertransaction
          * ---------------------------------------------------------------------------------------------
          */
+        'GetTenderTransactions' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/tender_transactions.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of tender transactions',
+            'data'          => [ 'root_key' => 'storefront_access_tokens' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Retrieve only transactions after the specified ID.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'processed_at_min' => [
+                    'description' => 'Show tender transactions processed_at or after the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'processed_at_max' => [
+                    'description' => 'Show tender transactions processed_at or before the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'processed_at' => [
+                    'description' => 'Show tender transactions processed at the specified date.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'order' => [
+                    'description' => 'Show tender transactions ordered by processed_at in ascending or descending order.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Theme
          * https://shopify.dev/api/admin/rest/reference/online-store/theme
@@ -17433,10 +17487,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17458,10 +17516,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Show only certain fields, specified by a comma-separated list of field names.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -17469,7 +17531,7 @@ return [
             'httpMethod'    => 'POST',
             'uri'           => 'admin/api/{version}/themes.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Create a new theme',
+            'summary'       => 'Creates a theme by providing the public URL of a ZIP file that contains the theme.',
             'data'          => [ 'root_key' => 'theme' ],
             'parameters'    => [
                 'version' => [
@@ -17489,10 +17551,20 @@ return [
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'role' => [
+                    'description' => 'Specifies how the theme is being used within the shop.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'main', 'unpublished', 'demo' ],
+                    'required'    => false
+                ],
+                'body' => [
+                    'description' => 'Body of the theme.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -17519,11 +17591,27 @@ return [
                     'description' => 'Name of the theme',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
+                ],
+                'src' => [
+                    'description' => 'Zip source for the theme',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'role' => [
+                    'description' => 'Specifies how the theme is being used within the shop.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'main', 'unpublished', 'demo' ],
+                    'required'    => false
+                ],
+                'body' => [
+                    'description' => 'Body of the theme.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 

@@ -1130,6 +1130,7 @@ array getStorefrontAccessTokens(array $args = []);
 
 ### [TenderTransaction](https://shopify.dev/api/admin/rest/reference/tendertransaction)
 ```php
+array getTenderTransactions(array $args = []);
 ```
 
 ### [Theme](https://shopify.dev/api/admin/rest/reference/online-store/theme)
