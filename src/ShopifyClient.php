@@ -557,6 +557,9 @@ use Psr\Http\Client\ClientExceptionInterface;
  * @method array getUsageCharges(array $args = []) { @command Shopify GetUsageCharges }
  *
  * User:
+ * @method array getUsers(array $args = []) { @command Shopify GetUsers }
+ * @method array getUser(array $args = []) { @command Shopify GetUser }
+ * @method array getCurrentUser(array $args = []) { @command Shopify GetCurrentUser }
  *
  * Webhook:
  * @method array getWebhooks(array $args = []) { @command Shopify GetWebhooks }

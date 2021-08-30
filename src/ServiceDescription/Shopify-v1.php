@@ -17558,12 +17558,6 @@ return [
                     'type'        => 'string',
                     'enum'        => [ 'main', 'unpublished', 'demo' ],
                     'required'    => false
-                ],
-                'body' => [
-                    'description' => 'Body of the theme.',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => false
                 ]
             ]
         ],
@@ -17605,12 +17599,6 @@ return [
                     'type'        => 'string',
                     'enum'        => [ 'main', 'unpublished', 'demo' ],
                     'required'    => false
-                ],
-                'body' => [
-                    'description' => 'Body of the theme.',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'required'    => false
                 ]
             ]
         ],
@@ -17638,7 +17626,6 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Transaction
          * https://shopify.dev/api/admin/rest/reference/orders/transaction
@@ -17679,7 +17666,7 @@ return [
                 'in_shop_currency' => [
                     'description' => 'Show amounts in the shop currency.',
                     'location'    => 'query',
-                    'type'        => 'boolean'
+                    'type'        => 'boolean',
                     'required'    => false
                 ]
             ]
@@ -17741,7 +17728,7 @@ return [
                 'in_shop_currency' => [
                     'description' => 'Show amounts in the shop currency.',
                     'location'    => 'query',
-                    'type'        => 'boolean'
+                    'type'        => 'boolean',
                     'required'    => false
                 ]
             ]
@@ -17990,16 +17977,75 @@ return [
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * User
          * https://shopify.dev/api/admin/rest/reference/plus/user
          * ---------------------------------------------------------------------------------------------
          */
+        'GetUsers' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/users.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a list of all users',
+            'data'          => [ 'root_key' => 'users' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'The maximum number of results to retrieve.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetUser' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/users/{id}.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves a single user',
+            'data'          => [ 'root_key' => 'user' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'id' => [
+                    'description' => 'The ID of the user\'s staff.',
+                    'location'    => 'uri',
+                    'type'        => 'integer',
+                    'required'    => true
+                ]
+            ]
+        ],
+
+        'GetCurrentUser' => [
+            'httpMethod'    => 'GET',
+            'uri'           => 'admin/api/{version}/users/current.json',
+            'responseModel' => 'GenericModel',
+            'summary'       => 'Retrieves information about the user account associated with the access token used to make this API request. This request works only when the access token was created for a specific user of the shop.',
+            'data'          => [ 'root_key' => 'user' ],
+            'parameters'    => [
+                'version' => [
+                    'description' => 'API version',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ]
+            ]
+        ],
 
 
         /**
-         * @method INCOMPLETE
          * ---------------------------------------------------------------------------------------------
          * Webhook
          * https://shopify.dev/api/admin/rest/reference/events/webhook
@@ -18017,10 +18063,145 @@ return [
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'address' => [
+                    'description' => 'Retrieve webhook subscriptions that send the POST request to this URI.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'created_at_min' => [
+                    'description' => 'Retrieve webhook subscriptions that were created after a given date and time (format: 2014-04-25T16:15:47-04:00).',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'created_at_max' => [
+                    'description' => 'Retrieve webhook subscriptions that were created before a given date and time (format: 2014-04-25T16:15:47-04:00).',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'fields' => [
+                    'description' => 'Comma-separated list of the properties you want returned for each item in the result list. Use this parameter to restrict the returned list of items to only those properties you specify.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Maximum number of webhook subscriptions that should be returned.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'minimum'     => 1,
+                    'maximum'     => 250,
+                    'required'    => false
+                ],
+                'since_id' => [
+                    'description' => 'Restrict the returned list to webhook subscriptions whose id is greater than the specified since_id.',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ],
+                'topic' => [
+                    'description' => 'Show webhook subscriptions with a given topic.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'app/uninstalled',
+                        'carts/create',
+                        'carts/update',
+                        'checkouts/create',
+                        'checkouts/delete',
+                        'checkouts/update',
+                        'collection_listings/add',
+                        'collection_listings/remove',
+                        'collection_listings/update',
+                        'collections/create',
+                        'collections/delete',
+                        'collections/update',
+                        'customer_groups/create',
+                        'customer_groups/delete',
+                        'customer_groups/update',
+                        'customer_payment_methods/create',
+                        'customer_payment_methods/revoke',
+                        'customer_payment_methods/update',
+                        'customers/create',
+                        'customers/delete',
+                        'customers/disable',
+                        'customers/enable',
+                        'customers/update',
+                        'disputes/create',
+                        'disputes/update',
+                        'domains/create',
+                        'domains/destroy',
+                        'domains/update',
+                        'draft_orders/create',
+                        'draft_orders/delete',
+                        'draft_orders/update',
+                        'fulfillment_events/create',
+                        'fulfillment_events/delete',
+                        'fulfillments/create',
+                        'fulfillments/update',
+                        'inventory_items/create',
+                        'inventory_items/delete',
+                        'inventory_items/update',
+                        'inventory_levels/connect',
+                        'inventory_levels/disconnect',
+                        'inventory_levels/update',
+                        'locales/create',
+                        'locales/update',
+                        'locations/create',
+                        'locations/delete',
+                        'locations/update',
+                        'order_transactions/create',
+                        'orders/cancelled',
+                        'orders/create',
+                        'orders/delete',
+                        'orders/edited',
+                        'orders/fulfilled',
+                        'orders/paid',
+                        'orders/partially_fulfilled',
+                        'orders/updated',
+                        'product_listings/add',
+                        'product_listings/remove',
+                        'product_listings/update',
+                        'products/create',
+                        'products/delete',
+                        'products/update',
+                        'profiles/create',
+                        'profiles/delete',
+                        'profiles/update',
+                        'refunds/create',
+                        'shop/update',
+                        'subscription_billing_attempts/failure',
+                        'subscription_billing_attempts/success',
+                        'subscription_contracts/create',
+                        'subscription_contracts/update',
+                        'tender_transactions/create',
+                        'themes/create',
+                        'themes/delete',
+                        'themes/publish',
+                        'themes/update'
+                    ],
+                    'required'    => false
+                ],
+                'updated_at_min' => [
+                    'description' => 'Retrieve webhooks that were updated before a given date and time (format: 2014-04-25T16:15:47-04:00).',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
+                ],
+                'updated_at_max' => [
+                    'description' => 'Retrieve webhooks that were updated after a given date and time (format: 2014-04-25T16:15:47-04:00).',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'format'      => 'date-time',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -18028,17 +18209,103 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/webhooks/count.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve the number of webhooks',
+            'summary'       => 'Retrieves a count of existing webhook subscriptions.',
             'parameters'    => [
                 'version' => [
                     'description' => 'API version',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'address' => [
+                    'description' => 'Retrieve webhook subscriptions that send the POST request to this URI.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'topic' => [
+                    'description' => 'Show webhook subscriptions with a given topic.',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'app/uninstalled',
+                        'carts/create',
+                        'carts/update',
+                        'checkouts/create',
+                        'checkouts/delete',
+                        'checkouts/update',
+                        'collection_listings/add',
+                        'collection_listings/remove',
+                        'collection_listings/update',
+                        'collections/create',
+                        'collections/delete',
+                        'collections/update',
+                        'customer_groups/create',
+                        'customer_groups/delete',
+                        'customer_groups/update',
+                        'customer_payment_methods/create',
+                        'customer_payment_methods/revoke',
+                        'customer_payment_methods/update',
+                        'customers/create',
+                        'customers/delete',
+                        'customers/disable',
+                        'customers/enable',
+                        'customers/update',
+                        'disputes/create',
+                        'disputes/update',
+                        'domains/create',
+                        'domains/destroy',
+                        'domains/update',
+                        'draft_orders/create',
+                        'draft_orders/delete',
+                        'draft_orders/update',
+                        'fulfillment_events/create',
+                        'fulfillment_events/delete',
+                        'fulfillments/create',
+                        'fulfillments/update',
+                        'inventory_items/create',
+                        'inventory_items/delete',
+                        'inventory_items/update',
+                        'inventory_levels/connect',
+                        'inventory_levels/disconnect',
+                        'inventory_levels/update',
+                        'locales/create',
+                        'locales/update',
+                        'locations/create',
+                        'locations/delete',
+                        'locations/update',
+                        'order_transactions/create',
+                        'orders/cancelled',
+                        'orders/create',
+                        'orders/delete',
+                        'orders/edited',
+                        'orders/fulfilled',
+                        'orders/paid',
+                        'orders/partially_fulfilled',
+                        'orders/updated',
+                        'product_listings/add',
+                        'product_listings/remove',
+                        'product_listings/update',
+                        'products/create',
+                        'products/delete',
+                        'products/update',
+                        'profiles/create',
+                        'profiles/delete',
+                        'profiles/update',
+                        'refunds/create',
+                        'shop/update',
+                        'subscription_billing_attempts/failure',
+                        'subscription_billing_attempts/success',
+                        'subscription_contracts/create',
+                        'subscription_contracts/update',
+                        'tender_transactions/create',
+                        'themes/create',
+                        'themes/delete',
+                        'themes/publish',
+                        'themes/update'
+                    ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -18060,10 +18327,14 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Comma-separated list of the properties you want returned for each item in the result list. Use this parameter to restrict the returned list of items to only those properties you specify.',
+                    'location'    => 'query',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'query'
             ]
         ],
 
@@ -18080,98 +18351,121 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
-                'format' => [
-                    'description' => 'Type of data to return',
-                    'location'    => 'json',
-                    'type'        => 'string',
-                    'enum'        => [ 'json', 'xml' ],
-                    'required'    => true
-                ],
                 'address' => [
-                    'description' => 'Specific URL for the webhook',
+                    'description' => 'Webhook subscriptions that send the POST request to this URI.',
                     'location'    => 'json',
                     'type'        => 'string',
                     'required'    => true
                 ],
                 'topic' => [
-                    'description' => 'List of webhook topic',
+                    'description' => 'Use this parameter to select the data format for the payload.',
                     'location'    => 'json',
                     'type'        => 'string',
                     'enum'        => [
+                        'app/uninstalled',
                         'carts/create',
                         'carts/update',
                         'checkouts/create',
-                        'checkouts/update',
                         'checkouts/delete',
-                        'collections/create',
-                        'collections/update',
-                        'collections/delete',
+                        'checkouts/update',
                         'collection_listings/add',
-                        'collection_listings/update',
                         'collection_listings/remove',
+                        'collection_listings/update',
+                        'collections/create',
+                        'collections/delete',
+                        'collections/update',
+                        'customer_groups/create',
+                        'customer_groups/delete',
+                        'customer_groups/update',
+                        'customer_payment_methods/create',
+                        'customer_payment_methods/revoke',
+                        'customer_payment_methods/update',
                         'customers/create',
+                        'customers/delete',
                         'customers/disable',
                         'customers/enable',
                         'customers/update',
-                        'customers/delete',
-                        'customer_groups/create',
-                        'customer_groups/update',
-                        'customer_groups/delete',
                         'disputes/create',
                         'disputes/update',
                         'domains/create',
                         'domains/destroy',
                         'domains/update',
                         'draft_orders/create',
-                        'draft_orders/update',
                         'draft_orders/delete',
-                        'fulfillments/create',
-                        'fulfillments/update',
+                        'draft_orders/update',
                         'fulfillment_events/create',
                         'fulfillment_events/delete',
+                        'fulfillments/create',
+                        'fulfillments/update',
                         'inventory_items/create',
-                        'inventory_items/update',
                         'inventory_items/delete',
+                        'inventory_items/update',
                         'inventory_levels/connect',
                         'inventory_levels/disconnect',
                         'inventory_levels/update',
+                        'locales/create',
+                        'locales/update',
                         'locations/create',
-                        'locations/update',
                         'locations/delete',
+                        'locations/update',
+                        'order_transactions/create',
                         'orders/cancelled',
                         'orders/create',
+                        'orders/delete',
+                        'orders/edited',
                         'orders/fulfilled',
                         'orders/paid',
                         'orders/partially_fulfilled',
                         'orders/updated',
-                        'orders/delete',
-                        'orders/edited',
-                        'order_transactions/create',
-                        'products/create',
-                        'products/update',
-                        'products/delete',
                         'product_listings/add',
-                        'product_listings/update',
                         'product_listings/remove',
+                        'product_listings/update',
+                        'products/create',
+                        'products/delete',
+                        'products/update',
                         'profiles/create',
-                        'profiles/update',
                         'profiles/delete',
+                        'profiles/update',
                         'refunds/create',
-                        'app/uninstalled',
                         'shop/update',
-                        'locales/create',
-                        'locales/update',
+                        'subscription_billing_attempts/failure',
+                        'subscription_billing_attempts/success',
+                        'subscription_contracts/create',
+                        'subscription_contracts/update',
                         'tender_transactions/create',
                         'themes/create',
+                        'themes/delete',
                         'themes/publish',
-                        'themes/update',
-                        'themes/delete'
+                        'themes/update'
                     ],
                     'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Optional array of fields that should be included in the webhook subscription.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'format' => [
+                    'description' => 'Use this parameter to select the data format for the payload.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'JSON', 'XML' ],
+                    'required'    => false
+                ],
+                'metafield_namespaces' => [
+                    'description' => 'Optional array of namespaces for any metafields that should be included with each webhook.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'private_metafield_namespaces' => [
+                    'description' => 'Optional array of namespaces for any private metafields that should be included with each webhook.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 
@@ -18193,10 +18487,122 @@ return [
                     'location'    => 'uri',
                     'type'        => 'integer',
                     'required'    => true
+                ],
+                'address' => [
+                    'description' => 'Webhook subscriptions that send the POST request to this URI.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'topic' => [
+                    'description' => 'Use this parameter to select the data format for the payload.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [
+                        'app/uninstalled',
+                        'carts/create',
+                        'carts/update',
+                        'checkouts/create',
+                        'checkouts/delete',
+                        'checkouts/update',
+                        'collection_listings/add',
+                        'collection_listings/remove',
+                        'collection_listings/update',
+                        'collections/create',
+                        'collections/delete',
+                        'collections/update',
+                        'customer_groups/create',
+                        'customer_groups/delete',
+                        'customer_groups/update',
+                        'customer_payment_methods/create',
+                        'customer_payment_methods/revoke',
+                        'customer_payment_methods/update',
+                        'customers/create',
+                        'customers/delete',
+                        'customers/disable',
+                        'customers/enable',
+                        'customers/update',
+                        'disputes/create',
+                        'disputes/update',
+                        'domains/create',
+                        'domains/destroy',
+                        'domains/update',
+                        'draft_orders/create',
+                        'draft_orders/delete',
+                        'draft_orders/update',
+                        'fulfillment_events/create',
+                        'fulfillment_events/delete',
+                        'fulfillments/create',
+                        'fulfillments/update',
+                        'inventory_items/create',
+                        'inventory_items/delete',
+                        'inventory_items/update',
+                        'inventory_levels/connect',
+                        'inventory_levels/disconnect',
+                        'inventory_levels/update',
+                        'locales/create',
+                        'locales/update',
+                        'locations/create',
+                        'locations/delete',
+                        'locations/update',
+                        'order_transactions/create',
+                        'orders/cancelled',
+                        'orders/create',
+                        'orders/delete',
+                        'orders/edited',
+                        'orders/fulfilled',
+                        'orders/paid',
+                        'orders/partially_fulfilled',
+                        'orders/updated',
+                        'product_listings/add',
+                        'product_listings/remove',
+                        'product_listings/update',
+                        'products/create',
+                        'products/delete',
+                        'products/update',
+                        'profiles/create',
+                        'profiles/delete',
+                        'profiles/update',
+                        'refunds/create',
+                        'shop/update',
+                        'subscription_billing_attempts/failure',
+                        'subscription_billing_attempts/success',
+                        'subscription_contracts/create',
+                        'subscription_contracts/update',
+                        'tender_transactions/create',
+                        'themes/create',
+                        'themes/delete',
+                        'themes/publish',
+                        'themes/update'
+                    ],
+                    'required'    => true
+                ],
+                'fields' => [
+                    'description' => 'Optional array of fields that should be included in the webhook subscription.',
+                    'location'    => 'json',
+                    'type'        => [ 'string', 'array' ],
+                    'filters'     => [ '\CbzShopify\Util::implodeIfArray' ],
+                    'required'    => false
+                ],
+                'format' => [
+                    'description' => 'Use this parameter to select the data format for the payload.',
+                    'location'    => 'json',
+                    'type'        => 'string',
+                    'enum'        => [ 'JSON', 'XML' ],
+                    'required'    => false
+                ],
+                'metafield_namespaces' => [
+                    'description' => 'Optional array of namespaces for any metafields that should be included with each webhook.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'private_metafield_namespaces' => [
+                    'description' => 'Optional array of namespaces for any private metafields that should be included with each webhook.',
+                    'location'    => 'json',
+                    'type'        => 'array',
+                    'required'    => false
                 ]
-            ],
-            'additionalParameters' => [
-                'location' => 'json'
             ]
         ],
 

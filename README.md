@@ -1159,6 +1159,9 @@ array getUsageCharges(array $args = []);
 
 ### [User](https://shopify.dev/api/admin/rest/reference/plus/user)
 ```php
+array getUsers(array $args = []);
+array getUser(array $args = []);
+array getCurrentUser(array $args = []);
 ```
 
 ### [Webhook](https://shopify.dev/api/admin/rest/reference/events/webhook)
