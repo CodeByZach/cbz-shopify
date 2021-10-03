@@ -1,7 +1,7 @@
 CbzShopify
 ==========
 
-[![Latest Release](https://img.shields.io/github/tag/codebyzach/cbz-shopify.svg?label=version)](https://github.com/codebyzach/cbz-shopify/releases) [![Shopify Admin API](https://img.shields.io/badge/style-flat-green?logo=shopify&style=flat&color=#7AB55C&label=Shopify%20Admin%20API&message=2021-07)](https://shopify.dev/api/admin)
+[![Latest Release](https://img.shields.io/github/tag/codebyzach/cbz-shopify.svg?label=version)](https://github.com/codebyzach/cbz-shopify/releases) [![Shopify Admin API](https://img.shields.io/badge/Shopify%20Admin%20API-2021--07-%237AB55C?logo=shopify&color=#7AB55C)](https://shopify.dev/api/admin)
 
 CbzShopify is a modern PHP library based on Guzzle for the [Shopify Admin API](https://shopify.dev/api/admin).
 
