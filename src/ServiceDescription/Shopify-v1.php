@@ -1039,7 +1039,7 @@ return [
             'httpMethod'    => 'GET',
             'uri'           => 'admin/api/{version}/assigned_fulfillment_orders.json',
             'responseModel' => 'GenericModel',
-            'summary'       => 'Retrieve a list of assets for a given theme',
+            'summary'       => 'Retrieves a list of fulfillment orders on a shop for a specific app.',
             'data'          => [ 'root_key' => 'fulfillment_orders' ],
             'parameters'    => [
                 'version' => [
